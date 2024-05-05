@@ -5059,11 +5059,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Z:\\WEEV\\GIT\\Weev\\WeevServices\\WeevServices.csproj",
+      "projectUniqueName": "Z:\\WEEV\\git test\\Weev\\WeevServices\\WeevServices.csproj",
       "projectName": "WeevServices",
-      "projectPath": "Z:\\WEEV\\GIT\\Weev\\WeevServices\\WeevServices.csproj",
+      "projectPath": "Z:\\WEEV\\git test\\Weev\\WeevServices\\WeevServices.csproj",
       "packagesPath": "C:\\Users\\Mohit Malhotra\\.nuget\\packages\\",
-      "outputPath": "Z:\\WEEV\\GIT\\Weev\\WeevServices\\obj\\",
+      "outputPath": "Z:\\WEEV\\git test\\Weev\\WeevServices\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mohit Malhotra\\AppData\\Roaming\\NuGet\\NuGet.Config",

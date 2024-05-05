@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lnLprXBav6VO3t/sDpHEws7YmXYENw3+CcMzVarztRM/8kTGrBDgkS1qcNBtiPFmte4x+M9UeC2ETAS4InWG5Q==",
+  "dgSpecHash": "u8ZWeGFG7lQSvSxUQ5VXA3uQ0adruQtf1vE2RKyq+clO1SbTpq1/UfXK33L05lZ3QNWz/rgju7/WmqTYjhdbOg==",
   "success": true,
-  "projectFilePath": "Z:\\WEEV\\GIT\\Weev\\WeevServices\\WeevServices.csproj",
+  "projectFilePath": "Z:\\WEEV\\git test\\Weev\\WeevServices\\WeevServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mohit Malhotra\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Mohit Malhotra\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
