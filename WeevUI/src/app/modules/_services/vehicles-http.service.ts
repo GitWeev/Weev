@@ -29,7 +29,7 @@ export class VehiclesHttpService {
        headers: headers,
      });
   }
-  
+  //color name
   getTabNameWithID(token: string,twId:any): Observable<any> {
     
     let headers = new HttpHeaders();   
@@ -38,12 +38,38 @@ export class VehiclesHttpService {
        headers: headers,
      });
   }
-
+  //image name
+  getAllTabNameWithID(token: string,twId:any): Observable<any> {
+    
+    let headers = new HttpHeaders();   
+    headers.append('Authorization', `Bearer ${token}`);       
+     return this.http.get<any>(`${LAPI_URL}/TwoMainimagedataAll/${twId}`, {
+       headers: headers,
+     });
+  }
+  //image path
+  getAllImageNameWithID(token: string,twId:any): Observable<any> {
+    
+    let headers = new HttpHeaders();   
+    headers.append('Authorization', `Bearer ${token}`);       
+     return this.http.get<any>(`${LAPI_URL}/TwoMainimagedata/${twId}`, {
+       headers: headers,
+     });
+  }
+  //color path
   getImgNameWithID(token: string,twId:any): Observable<any> {
     
     let headers = new HttpHeaders();   
     headers.append('Authorization', `Bearer ${token}`);       
      return this.http.get<any>(`${LAPI_URL}/TwoImagedata/${twId}`, {
+       headers: headers,
+     });
+  }
+
+  getTwoWheelerDataByType(token: string,Vehicle:string): Observable<any> {
+    let headers = new HttpHeaders();    
+    headers.append('Authorization', `Bearer ${token}`);       
+     return this.http.get<any>(`${LAPI_URL}/TwoWheelerType/${Vehicle}`, {
        headers: headers,
      });
   }
