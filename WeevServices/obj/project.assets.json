@@ -5054,26 +5054,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mohit Malhotra\\.nuget\\packages\\": {}
+    "C:\\Users\\Abhyudya\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\WeevServices.csproj",
+      "projectUniqueName": "C:\\Users\\Abhyudya\\Documents\\GitHub\\Weev\\WeevServices\\WeevServices.csproj",
       "projectName": "WeevServices",
-      "projectPath": "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\WeevServices.csproj",
-      "packagesPath": "C:\\Users\\Mohit Malhotra\\.nuget\\packages\\",
-      "outputPath": "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\obj\\",
+      "projectPath": "C:\\Users\\Abhyudya\\Documents\\GitHub\\Weev\\WeevServices\\WeevServices.csproj",
+      "packagesPath": "C:\\Users\\Abhyudya\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Abhyudya\\Documents\\GitHub\\Weev\\WeevServices\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Mohit Malhotra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Abhyudya\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5086,6 +5086,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -5132,7 +5137,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
