@@ -1,0 +1,110 @@
+.header .nav {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 10px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header .nav .leftarea {
+  width: 15%;
+  // transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.header .nav .rightarea {
+  width: 75%;
+  // transition: width 0.3s ease; /* Add transition */
+}
+
+.header .nav .leftarea img {
+  width: 90px;
+  height: auto;
+}
+
+.header .nav .rightarea .search-box {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  height: 40px;
+  padding: 0 10px;
+  transition: width 0.3s ease;
+  -webkit-box-shadow: inset 0px 0px 14px -2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0px 0px 14px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 0px 14px -2px rgba(0, 0, 0, 0.1);
+}
+
+.header .nav .rightarea .search-box input {
+  width: 100%; /* Default width for desktop */
+  border: none;
+  height: 100%;
+  background: none;
+}
+
+.header .nav .rightarea .search-box input:focus {
+  background: none;
+  outline: none;
+}
+
+.header .nav .rightarea .search-box button {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .nav .rightarea .search-box img {
+  height: 20px;
+  width: 20px;
+}
+
+.header .nav .rightarea .search-box .suggestion-title {
+  padding: 10px 5px 10px 20px;
+  font-size: 12px;
+  color: #7a7a7a;
+  text-transform: uppercase;
+}
+
+.header .nav .rightarea .search-box .suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  overflow-y: auto;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.header .nav .rightarea .search-box:focus .suggestions,
+.header .nav .rightarea .search-box:active .suggestions {
+  display: block;
+}
+
+.header .nav .rightarea .search-box .suggestion-item {
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  padding: 10px 5px 10px 20px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.header .nav .rightarea .search-box .suggestion-item .trending-icon {
+  margin-right: 10px;
+}
+
+.header .nav .rightarea .search-box .suggestion-item:focus {
+  background-color: #f0f0f0;
+}

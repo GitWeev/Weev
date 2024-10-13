@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WeevServices")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb03c07b207e2637cceb5eba46519895249038f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("WeevServices")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WeevServices")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

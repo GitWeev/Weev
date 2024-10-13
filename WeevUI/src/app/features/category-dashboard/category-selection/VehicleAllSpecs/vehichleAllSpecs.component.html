@@ -1,0 +1,101 @@
+<div class="category">
+    <div class="category_containers">
+        <app-categorynavbar [activeTab]="activeTab"></app-categorynavbar>
+    </div>
+    <div *ngIf="loading" class="loading">
+        <div class="loader"></div>
+     </div>
+    <div *ngIf="!loading" class="mainDetails">
+        <div class="gallery-container">
+            <div class="main-image-container">
+                <img src="{{productListModel?.path}}" alt="" onerror="this.src='assets/images/pr4.png';">
+            </div>
+        </div>
+        <div class="description">
+            <div class="title">
+                <div>Specifications of {{productListModel?.manufacturer}} {{productListModel?.model}}</div>
+            </div>
+            <!-- <div class="details">
+                {{ getTruncatedFeatures(productListModel?.additionalFeatures) }}
+            </div> -->
+            <div class="price">Price: Rs. {{productListModel?.exShowroomPrice}}</div>
+            <div class="status">Booking Status: <div class="currentStatus">Available</div>
+            </div>
+            <!-- <div class="color">
+                Colours : 4
+            </div> -->
+        </div>
+    </div>
+    <div *ngIf="!loading" class="spec-container">
+        <h2 class="modelspecs_title">Overview
+        </h2>
+        <div class="table">
+            <div *ngFor="let entry of getOverviewSpecs()">
+                <div class="spec-row">
+                    <div class="spec-label">{{ entry.key }} :</div>
+                    <div class="spec-value" style="white-space: pre-line;">{{ entry.value }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngIf="!loading" class="spec-container">
+        <h2 class="modelspecs_title">Booking Detail
+        </h2>
+        <div class="table">
+            <div *ngFor="let entry of getBookingDetailSpecs()">
+                <div class="spec-row">
+                    <div class="spec-label">{{ entry.key }} :</div>
+                    <div class="spec-value" style="white-space: pre-line;">{{ entry.value }}</div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div *ngIf="!loading" class="spec-container">
+        <h2 class="modelspecs_title">Power and Battery
+        </h2>
+        <div class="table">
+            <div *ngFor="let entry of getPowerAndBatterySpecs()">
+                <div class="spec-row">
+                    <div class="spec-label">{{ entry.key }} :</div>
+                    <div class="spec-value" style="white-space: pre-line;">{{ entry.value }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!loading" class="spec-container">
+        <h2 class="modelspecs_title">Features
+        </h2>
+        <div class="table">
+            <div *ngFor="let entry of getFeaturesSpecs()">
+                <div class="spec-row">
+                    <div class="spec-label">{{ entry.key }} :</div>
+                    <div class="spec-value" style="white-space: pre-line;">{{ entry.value }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!loading" class="spec-container">
+        <h2 class="modelspecs_title">Additional Features
+        </h2>
+        <div class="table">
+            <div *ngFor="let entry of getAdditionalFeaturesSpecs()">
+                <div class="spec-row">
+                    <div class="spec-label">{{ entry.key }} :</div>
+                    <div class="spec-value" style="white-space: pre-line;">{{ entry.value }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!loading" class="spec-container">
+        <h2 class="modelspecs_title">Specifications
+        </h2>
+        <div class="table">
+            <div *ngFor="let entry of getSpecificationsSpecs()">
+                <div class="spec-row">
+                    <div class="spec-label">{{ entry.key }} :</div>
+                    <div class="spec-value" style="white-space: pre-line;">{{ entry.value }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
