@@ -1,46 +1,49 @@
-<header>
-    <nav>
-       <!-- Brand/logo -->
-       <div class="leftarea">
-          <a href="index.html">
-          <img class="logo" src="assets/images/evlogo.svg" /> 
-        </a>
-       </div>
-        <div class="searcharea desbar">
-
-                   <input type="text" class="form-control searchinput" id="usr">
-                   <span class="icon">
-                       <i class="la la-search"></i>
-                   </span>
+<div class="header">
+   <div class="nav">
+      <div class="leftarea">
+         <a routerLink="/home">
+            <img class="logo" src="assets/images/evlogo.svg" />
+         </a>
+      </div>
+      <div class="rightarea">
+         <div class="search-box">
+            <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="showSuggestions()"
+               (click)="search();" />
+            <button (click)="search();">
+               <img src="assets/images/search.svg" alt="Search" />
+            </button>
+            <div *ngIf="suggestionsVisible" class="suggestions">
+               <!-- <div *ngIf="suggestionTitleVisible" class="suggestion-title">Top vehicles</div> -->
+               <div *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion.twId)"
+                  class="suggestion-item">
+                  <div class="trending-icon" *ngIf="specificTwIds.includes(suggestion.twId)">
+                     <img src="assets/svg/trending.svg" />
+                  </div>
+                  <div class="suggestion-text">
+                     {{ suggestion.manufacturer }} {{ suggestion.model }} {{ suggestion.variant }}
+                  </div>
                </div>
-       <div class="rightarea">
-          <ul>
-              <li class="mbar">
-               
-             <a class="">
-                   <div class="searchcontainer">
-                      <input id="search" type="text" placeholder="Search...">
-                      <div class="search"></div>
-                    </div>
-                </a> 
-             </li>
-             <li>
-                <a class=" " href="index.html">
-                <img src="assets/images/love.svg"/>
-                </a>
-             </li>
-             <li>
-                <a class=" " href="index.html">
-                <img src="assets/images/profile.svg"/>
-                </a>
-             </li>
-             <!-- <li *ngIf="!isLogin">
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+<!-- <li>
+               <a class=" " href="index.html">
+                  <img src="assets/images/love.svg" />
+               </a>
+            </li>
+            <li>
+               <a class=" " href="index.html">
+                  <img src="assets/images/profile.svg" />
+               </a>
+            </li> -->
+<!-- <li *ngIf="!isLogin">
                <button class="btorng"  type="button" (click)="onSubmit(isLogin)">LogOut</button>
             </li>
             <li *ngIf="isLogin">
                <button class="btorng"  type="button" (click)="onSubmit(isLogin)">LogIn</button>
             </li> -->
-          </ul>
-       </div>
-    </nav>
- </header>

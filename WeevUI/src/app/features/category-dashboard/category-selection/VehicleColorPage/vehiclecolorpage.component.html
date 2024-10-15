@@ -1,0 +1,82 @@
+<div class="category">
+    <div class="category_containers">
+        <app-categorynavbar [activeTab]="activeTab"></app-categorynavbar>
+    </div>
+    <div *ngIf="loading" class="loading">
+        <div class="loader"></div>
+     </div>
+    <div *ngIf="!loading" class="mainDetails">
+        <div class="gallery-container">
+            <div class="main-image-container">
+                <img src="{{productListModel?.path}}" alt="" onerror="this.src='assets/images/pr4.png';">
+            </div>
+        </div>
+        <div class="description">
+            <div class="title">
+                <div>Images of {{productListModel?.manufacturer}} {{productListModel?.model}}</div>
+            </div>
+            <div class="details">
+                {{ getTruncatedFeatures(productListModel?.additionalFeatures) }}
+            </div>
+            <div class="price">Price: Rs. {{productListModel?.exShowroomPrice}}</div>
+            <div class="status">Booking Status: <div class="currentStatus">Available</div>
+            </div>
+            <!-- <div class="color">
+                Colours : 4
+            </div> -->
+        </div>
+    </div>
+    <!-- images  -->
+    <div *ngIf="!loading" class="color_container">
+        <div id="colorCarousel" class="carousel-color">
+            <div class="carousel-inner">
+                <div *ngFor="let imagePath of ReqimagePaths; let i = index" [class.active]="i === currentIndexImage">
+                    <img [src]="imagePath.imagePath" alt="Vehicle Image" class="carousel-image">
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-button prev-button" (click)="prevSlideImage()"><img src="assets/svg/Back.svg"
+                        alt=""></button>
+                <button class="carousel-button next-button" (click)="nextSlideImage()"><img src="assets/svg/Back.svg"
+                        alt="" style="transform: rotate(180deg);"></button>
+            </div>
+        </div>
+        <div class="thumbnail-container-wrapper">
+            <div class="thumbnail-container" #thumbnailContainer>
+                <div *ngFor="let imagePath of ReqimagePaths; let i = index" class="thumbnail"
+                    (click)="currentIndexImage = i; scrollThumbnails(i)" [class.selected]="i === currentIndexImage"
+                    [style.opacity]="i === currentIndexImage ? '1' : '0.5'" [style.transition]="'opacity 0.3s ease'">
+                    <img [src]="imagePath.imagePath" alt="Thumbnail" class="thumbnail-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- color -->
+    <div *ngIf="!loading" class="color_container" id="image_container">
+        <div class="color-title">Color Options For {{productListModel?.manufacturer}} {{productListModel?.model}}</div>
+        <div id="colorCarousel" class="carousel-image">
+            <div class="carousel-inner">
+                <div *ngFor="let imagePath of colorimagePaths; let i = index" [class.active]="i === currentIndexColor">
+                    <img [src]="imagePath.colorPath" alt="Vehicle Image" class="carousel-image">
+                </div>
+            </div>
+            <!-- <div class="carousel-controls">
+                <button class="carousel-button prev-button" (click)="prevSlideColor()"><img src="assets/svg/Back.svg"
+                        alt=""></button>
+                <button class="carousel-button next-button" (click)="nextSlideColor()"><img src="assets/svg/Back.svg"
+                        alt="" style="transform: rotate(180deg);"></button>
+            </div> -->
+        </div>
+        <div class="thumbnail-container-wrapper">
+            <div class="thumbnail-container">
+                <div *ngFor="let imagePath of colorimagePaths; let i = index" class="thumbnail "
+                    (click)="currentIndexColor = i" [class.selected]="i === currentIndexColor"
+                    [style.opacity]="i === currentIndexColor ? '1' : '0.5'" [style.transition]="'opacity 0.3s ease'">
+                    <img [src]="imagePath.colorPath" alt="Thumbnail" class="thumbnail-image">
+                    <div class="color-name">
+                        {{imagePath.colorName}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

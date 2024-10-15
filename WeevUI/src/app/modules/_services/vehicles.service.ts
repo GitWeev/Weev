@@ -38,6 +38,7 @@ constructor(
     );
   }
 
+  
   getProductDataWithID(twId:any): Observable<any> {
     const auth = this.getAuthFromLocalStorage();
     if (!auth ) {
@@ -53,7 +54,23 @@ constructor(
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
-
+  
+  getOtherModelswithID(twId:any): Observable<any> {
+    const auth = this.getAuthFromLocalStorage();
+    if (!auth ) {
+      return of(undefined);
+    }
+    this.isLoadingSubject.next(true);
+    return this.vehiclesHttpService.getProductDataWithID(auth,twId)
+    .pipe(
+      map((TwoWheeler: any) => {
+        
+        return TwoWheeler;
+      }),
+      finalize(() => this.isLoadingSubject.next(false))
+    );
+  }
+  //color name
   getTabNameWithID(twId:any): Observable<any> {
     const auth = this.getAuthFromLocalStorage();
     if (!auth ) {
@@ -69,6 +86,39 @@ constructor(
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
+  //image path
+  getAllImageNameWithID(twId:any): Observable<any> {
+    const auth = this.getAuthFromLocalStorage();
+    if (!auth ) {
+      return of(undefined);
+    }
+    this.isLoadingSubject.next(true);
+    return this.vehiclesHttpService.getAllImageNameWithID(auth,twId)
+    .pipe(
+      map((TwoWheeler: any) => {
+        
+        return TwoWheeler;
+      }),
+      finalize(() => this.isLoadingSubject.next(false))
+    );
+  }
+  //image name
+  getAllTabNameWithID(twId:any): Observable<any> {
+    const auth = this.getAuthFromLocalStorage();
+    if (!auth ) {
+      return of(undefined);
+    }
+    this.isLoadingSubject.next(true);
+    return this.vehiclesHttpService.getAllTabNameWithID(auth,twId)
+    .pipe(
+      map((TwoWheeler: any) => {
+        
+        return TwoWheeler;
+      }),
+      finalize(() => this.isLoadingSubject.next(false))
+    );
+  }
+// color path
   getImgNameWithID(twId:any): Observable<any> {
     const auth = this.getAuthFromLocalStorage();
     if (!auth ) {
@@ -84,6 +134,21 @@ constructor(
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
+//bike or scooter
+  getTwoWheelerDataByType(Vehicle:string): Observable<any> {
+    const auth = this.getAuthFromLocalStorage();
+    if (!auth ) {
+      return of(undefined);
+    }
+    this.isLoadingSubject.next(true);
+    return this.vehiclesHttpService.getTwoWheelerDataByType(auth,Vehicle)
+    .pipe(
+      map((TwoWheeler: any) => {return TwoWheeler;
+      }),
+      finalize(() => this.isLoadingSubject.next(false))
+    );
+  }
+  
   private getAuthFromLocalStorage(): string {
     try {      
       const authData = JSON.parse(
