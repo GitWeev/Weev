@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using WeevServices.Common;
 using WeevServices.Models;
@@ -122,7 +121,7 @@ namespace WeevServices.Controllers
         {
             try
             {
-               await Db.Connection.OpenAsync();
+                await Db.Connection.OpenAsync();
                 var query = new UserModel(Db);
                 var result = await query.AddCustomerenquiries(request);
                 if (result >= 1)

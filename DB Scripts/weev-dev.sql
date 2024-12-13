@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `weev` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `weev`;
+CREATE DATABASE  IF NOT EXISTS `weev-dev` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `weev-dev`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
  
 -- Host: localhost    Database: weev
@@ -697,7 +697,6 @@ DELIMITER ;
 
  
  -- Table for Main image--
-use weev;
 -- DROP table main_image; 
 
 CREATE TABLE `main_image` (
@@ -776,7 +775,7 @@ VALUES
 ( 44, '', '1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ( 45, '', '1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ( 46, '../../../assets/images/2W/Pure/eTryst 350/Images', '1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
-SELECT * FROM weev.main_image;
+-- SELECT * FROM weev.main_image;
 -- drop table main_image;-- 
 -- Table for Main image--
 
@@ -809,7 +808,7 @@ BEGIN
         CONCAT(Path, '/', Image18, '.jpeg') Image18, 
         CONCAT(Path, '/', Image19, '.jpeg') Image19, 
         CONCAT(Path, '/', Image20, '.jpeg') Image20
-    FROM weev.main_image 
+    FROM main_image 
     WHERE 
         TW_Ref_ID = Id;
 END$$
@@ -927,8 +926,3 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-21  6:43:52
--- drop procedure GetmainimagebyTWID;
--- drop procedure GetmainimagebyID;
--- drop procedure GetTwowheelerdataByVehicleType;
--- drop table main_image;
