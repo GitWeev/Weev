@@ -52,6 +52,22 @@ namespace WeevServices.Models
             command.CommandType = CommandType.StoredProcedure;
             return await ReadAllTaskAsync(await command.ExecuteReaderAsync());
         }
+
+        //bikeor scooter
+        public async Task<List<TwoWheeler>> FindOneVehicleAsync(string Vehicle)
+        {
+            using var connectionString = Db.Connection;
+            MySqlCommand cmd = new MySqlCommand("GetTwowheelerdataByVehicleType", connectionString);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter
+            {
+                ParameterName = "@Vehicle",
+                DbType = DbType.String,
+                Value = Vehicle,
+            });
+            var result = await ReadAllTaskAsync(await cmd.ExecuteReaderAsync());
+            return await ReadAllTaskAsync(await cmd.ExecuteReaderAsync());
+        }
         private async Task<List<VehiclesModels>> ReadAllAsync(DbDataReader reader)
         {           
             var posts = new List<VehiclesModels>();
@@ -151,6 +167,38 @@ namespace WeevServices.Models
            
             return result.Count > 0 ? result[0] : null;
         }
+        // mainimage 
+        public async Task<TwoMainimagedata> FindOneMainImgAsync(int twId)
+        {
+            using var connectionString = Db.Connection;
+            MySqlCommand cmd = new MySqlCommand("GetmainimagebyTWID", connectionString);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter
+            {
+                ParameterName = "@id",
+                DbType = DbType.Int32,
+                Value = twId,
+            });
+            var result = await ReadAllMainImgTaskAsync(await cmd.ExecuteReaderAsync());
+           
+            return result.Count > 0 ? result[0] : null;
+        }
+
+        //name of the images present
+        public async Task<List<string>> FindAllMainImgAsync(int twId)
+        {
+            using var connectionString = Db.Connection;
+            MySqlCommand cmd = new MySqlCommand("Getmainimagebyid", connectionString);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter
+            {
+                ParameterName = "@id",
+                DbType = DbType.Int32,
+                Value = twId,
+            });
+            var result = await ReadAllTabNameTaskAsync(await cmd.ExecuteReaderAsync());
+            return result.Count > 0 ? result : null;
+        }
 
         private async Task<List<Twoimagedata>> ReadAllImgTaskAsync(DbDataReader reader)
         {
@@ -159,6 +207,16 @@ namespace WeevServices.Models
             dt.Load(reader);
             List<Twoimagedata> posts = new List<Twoimagedata>();
             posts = ConvertDataTable<Twoimagedata>(dt);
+            return posts;
+        }   
+        // mainimage     
+        private async Task<List<TwoMainimagedata>> ReadAllMainImgTaskAsync(DbDataReader reader)
+        {
+            DataTable dt = new DataTable();
+            // var posts = new List<TwoWheeler>();
+            dt.Load(reader);
+            List<TwoMainimagedata> posts = new List<TwoMainimagedata>();
+            posts = ConvertDataTable<TwoMainimagedata>(dt);
             return posts;
         }       
 

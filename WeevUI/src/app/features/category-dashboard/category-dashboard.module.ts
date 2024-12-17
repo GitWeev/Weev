@@ -5,7 +5,9 @@ import { BikesDetailsComponent } from './bikes-details/bikes-details.component';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategorySelectionComponent } from './category-selection/category-selection.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { VehicleColorPageComponent } from './category-selection/VehicleColorPage/vehiclecolorpage.component';
+import { VehicleAllSpecsComponent } from './category-selection/VehicleAllSpecs/vehichleAllSpecs.component';
+import { CategorynavbarComponent } from './category-selection/categorynavbar/categorynavbar.component';
 
 
 @NgModule({
@@ -13,10 +15,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     BikesDetailsComponent,
     CategorySelectionComponent,
+    VehicleColorPageComponent,
+    VehicleAllSpecsComponent,
+    CategorynavbarComponent
   ],
   imports: [
-    CommonModule,FormsModule, ReactiveFormsModule,
-    CategoryRoutingModule
-  ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CategoryRoutingModule,
+    FormsModule
+  ],
 })
-export class CategoryDashboardModule { }
+export class CategoryDashboardModule {}

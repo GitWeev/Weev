@@ -13,6 +13,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/app/modules/auth/_services/auth-interceptor';
 import { AuthService } from 'src/app/modules/auth/_services/auth.service';
 import { AuthGuardService } from 'src/app/modules/auth/_services/auth-guard.service';
+import { BrandsComponent } from './brands/brands.component';
+import { ElectricVehicleBlogComponent } from './blogs/electric-vehicle-blog/electric-vehicle-blog.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+// import { VehicleColorPageComponent } from '../category-dashboard/category-selection/VehicleColorPage/VehicleColorPage.component'; // Add this line
+
 
 
 
@@ -25,7 +30,10 @@ import { AuthGuardService } from 'src/app/modules/auth/_services/auth-guard.serv
     RecentVehiclesComponent,
     SerachMeComponent,
     BlogsComponent,
-    LoginComponent
+    LoginComponent,
+    BrandsComponent,
+    ElectricVehicleBlogComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     CommonModule,FormsModule, ReactiveFormsModule,

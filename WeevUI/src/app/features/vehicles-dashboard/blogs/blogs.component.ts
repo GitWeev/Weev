@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
+
+  blog(){
+    this.router.navigate(['/Blog']);
+  }
+  blog2(){
+    this.router.navigate(['/Blog2']);
+  }
+blog3()
+{
+  this.router.navigate(['/Blog3']);
+}
+
 
 }
