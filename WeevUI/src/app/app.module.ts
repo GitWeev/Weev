@@ -15,6 +15,12 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { SearchPipePipe } from './search-pipe.pipe';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { MobileHeaderComponent } from './component/mobile-header/mobileHeader.component';
+import { BlogsComponent } from './features/vehicles-dashboard/blogs/blogs.component';
+import { ElectricVehicleBlogComponent } from './features/electric-vehicle-blog/electric-vehicle-blog.component';
+import { ElectricVehicleBlogComponent2 } from './features/vehicles-dashboard/blogs/electric-vehicle-blog-2/electric-vehicle-blog-2.component';
+import { ElectricVehicleBlogComponent3 } from './features/vehicles-dashboard/blogs/electric-vehicle-blog-3/electric-vehicle-blog-3.component';
+import { PrivacyPolicyComponent } from './features/vehicles-dashboard/privacy-policy/privacy-policy.component';
+import { BlogPageComponent } from './features/vehicles-dashboard/blog-page/blog-page.component';
 
 
 @NgModule({
@@ -26,7 +32,11 @@ import { MobileHeaderComponent } from './component/mobile-header/mobileHeader.co
     EmailValidatorDirective,
     CustomerEnquiriesComponent,
     SearchPipePipe,
-    MobileHeaderComponent
+    MobileHeaderComponent,
+    ElectricVehicleBlogComponent,
+    ElectricVehicleBlogComponent2,
+    ElectricVehicleBlogComponent3,
+    BlogPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +45,8 @@ import { MobileHeaderComponent } from './component/mobile-header/mobileHeader.co
     VehiclesDashboardModule,
     CategoryDashboardModule,
     FormsModule, ReactiveFormsModule,
-    ModalModule
+    ModalModule,
+    ReactiveFormsModule,
   ],
   // providers: [BsModalService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   providers: [BsModalService, { provide: LocationStrategy, useClass: PathLocationStrategy }],

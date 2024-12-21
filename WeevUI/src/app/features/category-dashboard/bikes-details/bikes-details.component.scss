@@ -2,6 +2,11 @@
   margin: 5px;
   height: 15px;
 }
+
+.headingarea{
+  width: 70%;
+  border-bottom: 3px solid rgb(99,5,168,0.5);
+}
 .bike_title {
   font-weight: 900;
 }
@@ -43,6 +48,14 @@
   justify-content: center;
 }
 
+.pagehead{
+  color: #6305A8;
+}
+
+.line{
+  background-color: rgb(99,5,168,0.5)
+}
+
 .bikes-landingarea {
   max-width: 100%;
   margin-left: 16%;
@@ -60,6 +73,7 @@
   justify-content: center;
   width: 100%;
   padding: 20px;
+  padding-top: 0px;
 }
 
 .filter-buttons {
@@ -88,7 +102,7 @@
 
 .vehicleBox {
   position: relative;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(78, 78, 78, 0.3);
   border-radius: 15px;
   overflow: hidden;
   width: 100%;
@@ -98,7 +112,7 @@
 
 .vehicleBox:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(78, 78, 78, 0.5);
 }
 
 .vehicleBox img {
@@ -115,12 +129,15 @@
 .infobox h4 {
   font-size: 1.4em;
   margin: 0;
+  font-weight: 600;
+  color: #575760;
 }
 
 .infobox p {
-  color: #27ae60;
+  color: #575760;
   font-size: 1.2em;
   margin: 10px 0;
+  font-weight: 400;
 }
 
 .infobox span {

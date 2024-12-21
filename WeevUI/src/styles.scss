@@ -10,6 +10,7 @@
 
 * {
   font-family: Roboto;
+  // font-family: 'Nunito', sans-serif;
   // outline: 1px solid red;  
 }
 
@@ -1072,7 +1073,8 @@ main {
 
 footer {
   width: 100%;
-  @extend .orange-bg;
+  // @extend .orange-bg;
+  background: #575760;
   margin-top: 100px;
   @include flbox($direction: column);
   .footerbox {
@@ -1606,7 +1608,7 @@ img.hover-shadow {
   }
 
   @include mobile {
-    margin: 20px 0 0 0;
+    margin: 10px 0 0 0;
     .breadcrumb {
       margin: 0;
     }

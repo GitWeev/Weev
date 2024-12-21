@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 import { ProductListModel } from 'src/app/modules/auth/_models/product.model';
@@ -13,7 +13,7 @@ export class VehicleColorPageComponent {
   @ViewChild('thumbnailContainer', { static: false })
   thumbnailContainer!: ElementRef;
   productListModel: ProductListModel | undefined;
-  productID: number = 0;
+  productID: number = 0 ;
   productlist: Array<ProductListModel> = new Array<ProductListModel>();
 
   colorimagePaths: { colorPath: string; colorName: string }[] = [];
@@ -26,6 +26,9 @@ export class VehicleColorPageComponent {
   loading: boolean = false;
   loadingTimeout: any;
 
+  isMobileView: boolean = false;
+  productName: string ='';
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -33,7 +36,21 @@ export class VehicleColorPageComponent {
     private cd: ChangeDetectorRef
   ) {
     this.route.params.subscribe((params) => (this.productID = params['twId']));
+    
+    //vinay
+    // this.route.params.subscribe((params) => (this.productName = params['twId']));
+
     this.activeTab = 'images';
+    this.checkMobileView(window.innerWidth);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) { // Explicitly define the type of event
+    const target = event.target as Window; // Cast the target to Window
+    this.checkMobileView(target.innerWidth);
+  }
+  checkMobileView(width: number) {
+    this.isMobileView = width < 768; // Adjust the width threshold as needed
   }
 
 
@@ -45,9 +62,24 @@ export class VehicleColorPageComponent {
       this.getTabNameWithID(+this.productID);
       this.getAllTabNameWithID(+this.productID);
     }
-
+    // this.getTwoWheelerDatas();
   }
 
+//vinay
+//   twowheelerlist: Array<ProductListModel> = new Array<ProductListModel>();
+//   getTwoWheelerDatas() {
+//     this.vehiclesService.getTwoWheelerData()
+//       .subscribe((response) => {
+//         this.twowheelerlist = response;
+//         const twowheeler = this.twowheelerlist.find(i => i.manufacturer+''+i.model === this.productName);
+//         this.productID=twowheeler.twId;
+//         this.productListModel = Object.assign({}, EMPTY_Application);
+//         if (this.productID != 0 || this.productID != undefined) {
+//           this.getProductDataWithID(+this.productID);
+//         }
+//     
+//       });
+//   }
 
   startLoading() {
     this.loading = true;
@@ -155,17 +187,17 @@ export class VehicleColorPageComponent {
       (this.currentIndexImage + 1) % this.ReqimagePaths.length;
     this.scrollThumbnails(this.currentIndexImage);
   }
-  // prevSlideColor() {
-  //   // Ensure currentIndexImage wraps around correctly
-  //   this.currentIndexColor =
-  //     (this.currentIndexColor - 1 + this.colorimagePaths.length) % this.colorimagePaths.length;
-  // }
+  prevSlideColor() {
+    // Ensure currentIndexImage wraps around correctly
+    this.currentIndexColor =
+      (this.currentIndexColor - 1 + this.colorimagePaths.length) % this.colorimagePaths.length;
+  }
 
-  // nextSlideColor() {
-  //   // Ensure currentIndexImage wraps around correctly
-  //   this.currentIndexColor =
-  //     (this.currentIndexColor + 1) % this.colorimagePaths.length;
-  // }
+  nextSlideColor() {
+    // Ensure currentIndexImage wraps around correctly
+    this.currentIndexColor =
+      (this.currentIndexColor + 1) % this.colorimagePaths.length;
+  }
 
   visibleThumbnails = 2; // Number of thumbnails visible at a time
   scrollThumbnails(currentIndex: number) {
@@ -209,6 +241,8 @@ export class VehicleColorPageComponent {
         }
       }, 100);
     });
+
+    
   }
 
   private keyDisplayMap: { [key: string]: string } = {

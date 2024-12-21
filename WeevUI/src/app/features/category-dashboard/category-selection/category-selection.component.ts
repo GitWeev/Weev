@@ -5,6 +5,7 @@ import {
   ViewChild,
   OnInit,
   ChangeDetectorRef,
+  HostListener,
 } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -67,6 +68,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
   title: string = '';
   loading: boolean = false; // Add loading state
   loadingTimeout: any;
+  productName: string ='';
 
   constructor(
     private modal: UntypedFormBuilder,
@@ -78,13 +80,20 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     private cd: ChangeDetectorRef,
     private router: Router
   ) {
-    this.route.params.subscribe((params) => (this.productID = params['twId']));
+    // this.route.params.subscribe((params) => (this.productID = params['twId']));
+    this.route.params.subscribe((params) => ( this.productName= params['twId']));
+
   }
+  
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.startLoading();
     this.scrollToBottom();
+
+    //vinay 
+    // this.getTwoWheelerDatas();
+
     this.route.params.subscribe((params) => {
       this.productID = params['twId'];
       this.getProductDataWithID(this.productID); // Fetch data when twId changes
@@ -99,6 +108,30 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       this.getAllTabNameWithID(+this.productID);
     }
   }
+
+  // getTwoWheelerDatas() {
+  //   this.vehiclesService.getTwoWheelerData()
+  //     .subscribe((response) => {
+  //       this.twowheelerlist = response;
+  //       const twowheeler = this.twowheelerlist.find(i => i.manufacturer+''+i.model === this.productName);
+  //       this.productID=twowheeler.twId;
+  //       this.scrollToBottom();
+  //   this.productListModel = Object.assign({}, EMPTY_Application);
+  //   if (this.productID != 0 || this.productID != undefined) {
+  //     this.productlist = twowheeler; // Assign transformed response
+  //     this.productListModel = this.productlist;
+  //     this.fetchData();
+  //     this.selectedRating = this.productListModel?.ourRating ?? 0;
+  //     this.unSelectRating = this.countRating - this.selectedRating;
+  //     this.getTabNameWithID(this.productID);
+  //     //this.getProductDataWithID(+this.productID);
+  //     // this.getImgNameWithID(+this.productID);
+  //     this.getOtherModelswithID(+this.productID);
+  //     this.getTwoWheelerData();
+  //     this.getforVarientsData();
+  //   }
+  //     });
+  // }
 
   startLoading() {
     this.loading = true;
@@ -394,6 +427,17 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
 
   onColors() {
     this.twId = this.productID;
+    //vinay
+    // this.router.navigate(['/Selection', this.productName, 'Colors']).then(() => {
+    //   setTimeout(() => {
+    //     const imageContainer = document.getElementById('image_container');
+    //     if (imageContainer) {
+    //       imageContainer.scrollIntoView({ behavior: 'smooth' });
+    //       // console.log('scrolling');
+    //     }
+    //   }, 510); // Set timeout to 500 milliseconds
+    // });
+
     this.router.navigate(['/Selection', this.twId, 'Colors']).then(() => {
       setTimeout(() => {
         const imageContainer = document.getElementById('image_container');
@@ -743,3 +787,4 @@ const EMPTY_Application: ProductListModel = {
 //     this.isShowFeatures = true;
 //   }
 // }
+
