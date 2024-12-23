@@ -5059,11 +5059,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\codefolder\\Weev\\WeevServices\\WeevServices.csproj",
+      "projectUniqueName": "E:\\codefolder\\weevmain\\Weev\\WeevServices\\WeevServices.csproj",
       "projectName": "WeevServices",
-      "projectPath": "E:\\codefolder\\Weev\\WeevServices\\WeevServices.csproj",
+      "projectPath": "E:\\codefolder\\weevmain\\Weev\\WeevServices\\WeevServices.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "E:\\codefolder\\Weev\\WeevServices\\obj\\",
+      "outputPath": "E:\\codefolder\\weevmain\\Weev\\WeevServices\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

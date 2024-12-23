@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6zyS+pvkT2k=",
+  "dgSpecHash": "2YZfzwDiFUU=",
   "success": true,
-  "projectFilePath": "E:\\codefolder\\Weev\\WeevServices\\WeevServices.csproj",
+  "projectFilePath": "E:\\codefolder\\weevmain\\Weev\\WeevServices\\WeevServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

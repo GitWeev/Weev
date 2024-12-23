@@ -188,6 +188,8 @@
         
         public string? Path { get; set; }
 
+        public string? VehicleType {get ; set; }
+
     }
 
     public class Twoimagedata
