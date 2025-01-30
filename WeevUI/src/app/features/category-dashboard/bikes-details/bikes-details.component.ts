@@ -156,9 +156,9 @@ export class BikesDetailsComponent implements OnInit {
   // manufacturer + model //exShowroomPrice //
 
   onSelect(twId: any) {
-    this.router.navigate(['/Selection', twId]);
-    // const twowheeler = this.allTwoWheelerList.find(i => i.twId === twId);
-    // this.router.navigate(["/Selection", twowheeler.manufacturer+''+twowheeler.model]);
+    // this.router.navigate(['/Selection', twId]);
+    const twowheeler = this.allTwoWheelerList.find(i => i.twId === twId);
+    this.router.navigate(["/Selection", twowheeler.manufacturer+'_'+twowheeler.model+'_'+twowheeler.variant]);
 
   }
 }

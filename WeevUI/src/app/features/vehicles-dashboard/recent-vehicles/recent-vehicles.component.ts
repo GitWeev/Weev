@@ -24,7 +24,6 @@ export class RecentVehiclesComponent implements OnInit {
   getTwoWheelerData() {
     this.vehiclesService.getTwoWheelerData().subscribe((response) => {
       this.twowheelerlist = response;
-
       const topVariants = this.twowheelerlist.filter(item => item.variantType === "Top").slice(0, 8);
 
       this.toptwowheelerlist.push(...topVariants);
@@ -46,8 +45,8 @@ export class RecentVehiclesComponent implements OnInit {
       }
     });
   }  
-
   onSelect(twId: any) {
-    this.router.navigate(['/Selection', twId]);
+    const twowheeler = this.twowheelerlist.find(i => i.twId === twId);
+    this.router.navigate(['/Selection', twowheeler.manufacturer+'_'+twowheeler.model+'_'+twowheeler.variant]);
   }
 }

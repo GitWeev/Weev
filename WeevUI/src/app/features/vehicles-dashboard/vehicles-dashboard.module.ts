@@ -33,7 +33,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     LoginComponent,
     BrandsComponent,
     ElectricVehicleBlogComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+
   ],
   imports: [
     CommonModule,FormsModule, ReactiveFormsModule,

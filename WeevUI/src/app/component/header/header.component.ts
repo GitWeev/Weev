@@ -86,23 +86,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onSelect(twId: any) {
-    this.router.navigate(['/Selection', twId]);
+    const twowheeler = this.suggestions.find(i => i.twId === twId);
+    this.router.navigate(['/Selection', twowheeler.manufacturer+'_'+twowheeler.model+'_'+twowheeler.variant]);
   }
 }
 
-// ngOnInit(): void {
-// this.token=localStorage.getItem("token");
-// if(this.token =="" || this.token ==undefined){
-//   this.authService.logout();
-//   this.isLogin=true;
-// }else{
-//   this.isLogin=false;
-// }
-// }
 
-// onSubmit(isLogin:boolean) {
-//   if(!isLogin){
-//     this.isLogin=true;
-//     this.authService.logout();
-//   }
-// }

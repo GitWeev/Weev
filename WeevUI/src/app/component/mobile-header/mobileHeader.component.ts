@@ -35,12 +35,11 @@ export class MobileHeaderComponent implements OnInit {
     const searchBox = document.querySelector('.search-box');
 
     if (searchBox && !searchBox.contains(target)) {
-      this.suggestionsVisible = false; 
-      this.resetLayout();// Hide suggestions when clicking outside
+      this.suggestionsVisible = false; // Hide suggestions when clicking outside
     }
   }
 
-  specificTwIds: Array<any> = [34,3,8,5,21]; 
+   specificTwIds: Array<any> = [34,3,8,5,21]; 
 
   showSuggestions() {
     if (this.searchTerm) { // Check if there is a searchTerm
@@ -64,20 +63,19 @@ export class MobileHeaderComponent implements OnInit {
     this.suggestionTitleVisible = this.searchTerm.length === 0; // Hide title if there is input
   }
 
-  
-
   hideSuggestions() {
     this.suggestionsVisible = false;
   }
 
   search() {
     this.showSuggestions();
+
   }
 
   getTwoWheelerData() {
     this.vehiclesService.getTwoWheelerData().subscribe((response) => {
       this.suggestions = response.map((item: any) => item);
-      console.log(this.suggestions);
+      // console.log(this.suggestions);
     });
   }
 
@@ -88,7 +86,8 @@ export class MobileHeaderComponent implements OnInit {
   }
 
   onSelect(twId: any) {
-    this.router.navigate(['/Selection', twId]);
+    const twowheeler = this.suggestions.find(i => i.twId === twId);
+    this.router.navigate(['/Selection', twowheeler.manufacturer+'_'+twowheeler.model+'_'+twowheeler.variant]);
   }
 
   isSearchBoxActive: boolean = false;
@@ -108,20 +107,3 @@ export class MobileHeaderComponent implements OnInit {
     this.renderer.setStyle(document.querySelector('.search-box'), 'width', '100%');
   }
 }
-
-// ngOnInit(): void {
-// this.token=localStorage.getItem("token");
-// if(this.token =="" || this.token ==undefined){
-//   this.authService.logout();
-//   this.isLogin=true;
-// }else{
-//   this.isLogin=false;
-// }
-// }
-
-// onSubmit(isLogin:boolean) {
-//   if(!isLogin){
-//     this.isLogin=true;
-//     this.authService.logout();
-//   }
-// }
