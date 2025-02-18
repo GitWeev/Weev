@@ -63,7 +63,20 @@
   
     
     </div>
-  
+    <div class="sidebar"> <!-- Adjust height here -->
+      <div class="brands-container">
+        <div class="brands-header">
+          <div>Brands</div>
+        </div>
+        <div class="brands-content">
+          <div class="brands-list">
+            <div class="brand-item" *ngFor="let brand of brands" (click)="navigateToBrand(brand.name)">
+              <img [src]="brand.image">
+              <div class="brand-name">{{brand.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Sticky Sidebar (Right Column - 30% width) -->
       <div class="sidebar">  <!-- Adjust height here -->
         <div class="sticky">
@@ -87,7 +100,7 @@
   
          
         </div>
-  
+        
       </div>
       </div>
     </div>
