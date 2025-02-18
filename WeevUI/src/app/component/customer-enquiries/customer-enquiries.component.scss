@@ -17,7 +17,7 @@
     position: relative;
     width: auto;
     max-width: 600px;
-    margin: 1rem;
+    // margin: 1rem;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -93,9 +93,9 @@
   /* Enquiry Form Footer */
   .customer-enquiry-footer {
     display: flex;
-    justify-content: flex-end;
-    padding-top: 15px;
-    border-top: 1px solid #ddd;
+    justify-content: flex-start;
+    padding-top: 0px;
+    // border-top: 1px solid #ddd;
   }
   
   .customer-enquiry-submit {

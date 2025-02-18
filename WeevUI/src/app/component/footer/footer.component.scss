@@ -5,7 +5,7 @@
   align-items: center;
   background-color: #575760;
   flex-direction: column;
-  padding: 100px 0 100px 0;
+  padding: 50px 0 50px 0;
 }
 
 .footer {
@@ -28,6 +28,7 @@ span
   display: flex;
   flex-direction: column;
   padding: 20px;
+  align-items:center
   // background-color: #575760;
   // border-right: 1px solid white;
 }
@@ -40,6 +41,7 @@ span
   font-size: 1.5em;
   // border-bottom: 2px solid #fff;
   padding-bottom: 5px;
+  width: auto;
 }
 
 .contact-form{
@@ -147,7 +149,7 @@ span
 @media (max-width: 768px) {
   .footer {
     width: 100%;
-    grid-template-columns: 1fr; /* Stack sections vertically */
+    grid-template-columns: repeat(3, 1fr);;
     padding: 15px;
   }
 
@@ -159,6 +161,6 @@ span
   .navigation h3,
   .social-media h3,
   .Brands h3 {
-    font-size: 1.2em; /* Adjust font size */
+    font-size: 14px; /* Adjust font size */
   }
 }

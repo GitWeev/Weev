@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/_services/auth.service';
 import { DialogService } from 'src/app/modules/_services/dialog.service';
 import { CustomerEnquiriesComponent } from 'src/app/component/customer-enquiries/customer-enquiries.component';
@@ -15,10 +15,11 @@ export class FooterComponent implements OnInit {
   currentDateYear: Date = new Date();
   
   constructor(private router: Router,private authService: AuthService,
-    private readonly dialogService: DialogService,) {     
+    private readonly dialogService: DialogService,private cd: ChangeDetectorRef,) {     
   }
 
   ngOnInit(): void {
+    this.cd.detectChanges(); 
   }
   public open(modal: any): void {
       const name = { type: 'Customeenquiry', value: 'vinay' };
@@ -32,7 +33,12 @@ export class FooterComponent implements OnInit {
           }
         });
     }
-  
+    brands: string[] = ['Ola', 'Ather', 'Revolt', 'Ultraviolette', 'Odysse', 'Bajaj'];
+    navigateToBrand(brand: string) {
+      // Implement your navigation logic here
+    this.router.navigate(["/Bikes/Brand/",brand]);
+    }
+
   privacypolicy(){
     this.router.navigate(['PrivacyPolicy']);
   }

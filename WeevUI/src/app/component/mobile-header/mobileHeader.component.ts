@@ -42,26 +42,32 @@ export class MobileHeaderComponent implements OnInit {
 
    specificTwIds: Array<any> = [34,3,8,5,21]; 
 
-  showSuggestions() {
-    if (this.searchTerm) { // Check if there is a searchTerm
-      this.filteredSuggestions = this.suggestions.filter(suggestion =>
-        suggestion.manufacturer.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        suggestion.model.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        suggestion.variant.toLowerCase().includes(this.searchTerm.toLowerCase())
-      )
-      this.suggestionsVisible = this.filteredSuggestions.length > 0; // Show if there are filtered suggestions
+   showSuggestions() {
+    if (this.searchTerm) {
+      const searchWords = this.searchTerm.toLowerCase().split(/\s+/); // Split input into words
+  
+      this.filteredSuggestions = this.suggestions.filter(suggestion => 
+        searchWords.every(word => 
+          suggestion.manufacturer.toLowerCase().includes(word) ||
+          suggestion.model.toLowerCase().includes(word) ||
+          suggestion.variant.toLowerCase().includes(word)
+        )
+      );
+  
+      this.suggestionsVisible = this.filteredSuggestions.length > 0;
     } else {
-      // Filter suggestions based on specific twIds when there is no searchTerm
       this.filteredSuggestions = this.suggestions.filter(suggestion =>
         this.specificTwIds.includes(suggestion.twId)
       );
-      // Sort filtered suggestions based on the order of specificTwIds
-      this.filteredSuggestions.sort((a, b) => {
-        return this.specificTwIds.indexOf(a.twId) - this.specificTwIds.indexOf(b.twId);
-      })
-      this.suggestionsVisible = this.filteredSuggestions.length > 0; // Show if there are filtered suggestions
+      
+      this.filteredSuggestions.sort((a, b) => 
+        this.specificTwIds.indexOf(a.twId) - this.specificTwIds.indexOf(b.twId)
+      );
+  
+      this.suggestionsVisible = this.filteredSuggestions.length > 0;
     }
-    this.suggestionTitleVisible = this.searchTerm.length === 0; // Hide title if there is input
+  
+    this.suggestionTitleVisible = this.searchTerm.length === 0;
   }
 
   hideSuggestions() {

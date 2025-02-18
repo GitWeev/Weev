@@ -1,29 +1,42 @@
 <div class="footer-container">
   <div class="footer">
-    <!-- Contact Us Section -->
-    <div class="footer-section contact-us" (click)="open(popup)">
-     <ul class="nav-links">
-     <li><a ><h3>Contact Us</h3></a></li></ul>
-    </div>
     <div class="footer-section navigation">
-      <h3>Quick Links</h3>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/About">About Us</a></li>
-        <li><a href="/BlogPageComponent">Blogs</a></li>
-        <li><a href="/Bikes/Type/Bikes">Bikes</a></li>
-        <li><a href="/Bikes/Type/Scooters">Scooters</a></li>
-      </ul>
-    </div> 
+      <div class="brands">
+        <h3>Quick Links</h3>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/About">About Us</a></li>
+          <li><a (click)="open(popup)">
+              Contact Us
+            </a></li>
+          <li><a href="/BlogPageComponent">Blogs</a></li>
+          <li><a href="/Bikes/Type/Bikes">Bikes</a></li>
+          <li><a href="/Bikes/Type/Scooters">Scooters</a></li>
+        </ul>
+      </div>
+    </div>
     <!-- Brands and Social Media Section -->
+    <div class="footer-section">
+      <div class="Brands">
+        <h3>Bikes</h3>
+        <ul class="brand-links">
+          <li><a href="/Bikes/Brand/Torq">Torq</a></li>
+          <li><a href="/Bikes/Brand/Ather">Ather</a></li>
+          <li><a href="/Bikes/Brand/Revolt">Revolt</a></li>
+          <li><a href="/Bikes/Brand/Ultraviolette">Ultraviolette</a></li>
+          <li><a href="/Bikes/Brand/Odysse">Odysse</a></li>
+          <li><a href="/Bikes/Brand/Kabira Mobility">Kabira Mobility</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-section">
       <div class="Brands">
         <h3>Brands</h3>
         <ul class="brand-links">
           <li><a href="/Bikes/Brand/Ola">Ola</a></li>
           <li><a href="/Bikes/Brand/Ather">Ather</a></li>
-          <li><a href="/Bikes/Brand/Revolt">Revolt</a></li>
-          <li><a href="/Bikes/Brand/Ultraviolette">Ultraviolette</a></li>
+          <li><a href="/Bikes/Brand/Simple">Simple</a></li>
+          <li><a href="/Bikes/Brand/Hero">Hero</a></li>
           <li><a href="/Bikes/Brand/Odysse">Odysse</a></li>
           <li><a href="/Bikes/Brand/Bajaj">Bajaj</a></li>
         </ul>
@@ -31,13 +44,13 @@
     </div>
   </div>
 
- </div>
- <!-- Privacy Policy and Copyright -->
- <div class="privacy-copyright">
-    <div class="privacy-terms">
-       <div class="" (click)="privacypolicy()">Privacy Policy</div>
-       <div class="copyright">
-        © 2024 WEev
-     </div>
+</div>
+<!-- Privacy Policy and Copyright -->
+<div class="privacy-copyright">
+  <div class="privacy-terms">
+    <div class="" (click)="privacypolicy()">Privacy Policy</div>
+    <div class="copyright">
+      © 2024 WEev
     </div>
- </div>
+  </div>
+</div>
