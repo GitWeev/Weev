@@ -35,7 +35,8 @@ export class MobileHeaderComponent implements OnInit {
     const searchBox = document.querySelector('.search-box');
 
     if (searchBox && !searchBox.contains(target)) {
-      this.suggestionsVisible = false; // Hide suggestions when clicking outside
+      this.suggestionsVisible = false;
+      this.resetLayout(); // Hide suggestions when clicking outside
     }
   }
 

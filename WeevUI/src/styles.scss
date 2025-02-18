@@ -1020,8 +1020,8 @@ main {
       &:focus.error {
         animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         transform: translate3d(0, 0, 0);
-        @include box-shadow(0 0 10px rgba(#c73223, 0.3));
-        border: 1px solid #c73223;
+        @include box-shadow(0 0 10px rgba(#6305A8, 0.3));
+        border: 1px solid #6305A8;
       }
       @keyframes shake {
         10%,
