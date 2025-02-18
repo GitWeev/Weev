@@ -1044,19 +1044,19 @@ main {
       }
     }
     .form-control:focus {
-      @include box-shadow(0 0 0 2px rgba(#6305A8, 0.2));
-      border: 1px solid #FDC9FD;
+      @include box-shadow(0 0 0 2px rgba($orng, 0.2));
+      border: 1px solid $orng;
       background-color: $white;
     }
     .form-control:focus ~ label {
       font-size: 12px;
-      color: #6305A8;
+      color: $orng;
       top: -12px;
       background: #fff;
     }
     .form-control:valid ~ label {
       font-size: 12px;
-      color: #6305A8;
+      color: $orng;
       top: -12px;
       background: #fff;
     }

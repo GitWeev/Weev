@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-electric-vehicle-blog-2',
   templateUrl: './electric-vehicle-blog-2.component.html',
@@ -196,23 +196,21 @@ export class ElectricVehicleBlogComponent2 {
     
 
   };
-  sectionTitle11 = 'Summary: Making the Switch to Electric Vehicles';
-  cont11='Hello';
-  sectionTitle12 = 'Conclusion';
-  cont12='Hello';
-
-
-
-
-
+  subSectionEE= {
+    title: 'Summary: Making the Switch to Electric Vehicles',
+  content:'Switching to an electric vehicle offers numerous benefits, including environmental advantages, long-term cost savings, and reduced dependence on fossil fuels. By determining your needs and budget, evaluating charging infrastructure, maintaining battery life, and considering financing options, you can make an informed decision when choosing the right electric vehicle for your lifestyle. Overcoming range anxiety and understanding safety and maintenance requirements are important aspects of ownership. Embrace the potential of electric vehicles and consider taking the necessary steps towards a cleaner, more sustainable future',
+  };
+  subSectionFF = {title:'Conclusion',
+  content:'The rise of electric vehicles represents a transformative shift in the automotive industry. As the world becomes more environmentally conscious, owning an electric vehicle is increasingly becoming a symbol of progress and sustainability. By joining the electric vehicle revolution, you contribute to a greener future and inspire others to make the switch. Take the next steps towards electric vehicle ownership and experience the benefits firsthand',};
 
 
 
   twowheelerlist: Array<any> = new Array<any>();
   toptwowheelerlist: Array<any> = new Array<any>();
   recenttwowheelerlist: Array<any> = new Array<any>();
+  brands: any[] = [];
 
-  constructor(private router: Router, public vehiclesService: VehiclesService){
+  constructor(private http: HttpClient, private router: Router, public vehiclesService: VehiclesService){
 
   }
 
@@ -222,7 +220,11 @@ export class ElectricVehicleBlogComponent2 {
   ngOnInit(): void {
     this.getTwoWheelerData();
     window.scrollTo(0, 0); // Scroll to top
-   
+    
+    this.http.get<any[]>('assets/json/brands.json').subscribe(data => {
+      this.brands = data;
+    //   console.log(this.brands);
+    });
 
     // const stickyElement = document.querySelector('.sticky') as HTMLElement;
     // this.stickyOffSet=stickyElement.offsetTop;
@@ -234,7 +236,10 @@ export class ElectricVehicleBlogComponent2 {
   //   this.isSticky=window.pageYOffset>this.stickyOffSet;
   // }
   
-
+  navigateToBrand(Brand: string) {
+    console.log(`Navigating to brand: ${Brand}`); // Debugging line
+    this.router.navigate(['/Bikes/Brand/', Brand]); // Ensure this matches the route configuration
+}
  
   getTwoWheelerData() {
     this.vehiclesService.getTwoWheelerData().subscribe((response) => {
