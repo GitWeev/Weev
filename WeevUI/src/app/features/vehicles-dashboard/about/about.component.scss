@@ -34,7 +34,7 @@
 }
 
 .mission-section {
-  background: url("../../../../assets/images/Vision.png") no-repeat center center/cover;
+  background: url("../../../../assets/images/mission.jpg") no-repeat center center/cover;
 }
 
 .vision-section {
@@ -60,7 +60,7 @@
     rgba(255, 255, 255, 0.1), /* More transparent at the start */
     rgba(255, 255, 255, 0.03) /* Very light transparency at the end */
   );
-  backdrop-filter: blur(20px); /* Stronger blur for better separation */
+  backdrop-filter: blur(7px); /* Stronger blur for better separation */
   -webkit-backdrop-filter: blur(20px); /* Safari support */
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); /* Softer shadow */
   border: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border for subtle edge */
@@ -97,6 +97,7 @@ p {
   .vision-header {
     width: 90%;
     padding: 20px;
+    border-radius: 10px;
   }
 
   h1,
