@@ -104,12 +104,13 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       this.productListModel = Object.assign({}, EMPTY_Application);
       if (this.productID != 0 || this.productID != undefined) {
         this.productlist = twowheeler;
-        this.productListModel = this.productlist;
+        this.productListModel = this.transformResponse(this.productlist);
         this.fetchData();
         this.selectedRating = this.productListModel?.ourRating ?? 0;
         this.unSelectRating = this.countRating - this.selectedRating;
         this.getTabNameWithID(this.productID);
         this.getOtherModelswithID(+this.productID);
+        this.getAllTabNameWithID(+this.productID);
         // this.getTwoWheelerData();
         // this.getforVarientsData();
 

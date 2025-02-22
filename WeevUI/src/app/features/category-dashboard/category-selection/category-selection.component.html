@@ -148,7 +148,7 @@
                <div class="model" *ngFor="let model of nextproductlist" (click)="onVarientClick(model.twId)">
                   <img src="{{model.path}}" alt="Product Image" onerror="this.src='assets/images/pr4.png';">
                   <div class="card-content">
-                     <div class="title">{{ model.manufacturer }} {{ model.model }} {{model.twId}}</div>
+                     <div class="title">{{ model.manufacturer }} {{ model.model }}</div>
                      <p>Price: ₹{{ model.exShowroomPrice }}</p>
                   </div>
                </div>
