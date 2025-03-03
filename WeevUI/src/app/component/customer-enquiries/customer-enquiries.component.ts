@@ -60,6 +60,7 @@ export class CustomerEnquiriesComponent implements OnInit {
     let data: any = this.userForm;
     this.onClose.next(data);
     this.bsModalRef.hide();
+    console.log("Data: ", data)
   }
 
   get username() {
