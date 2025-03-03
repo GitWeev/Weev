@@ -4,12 +4,22 @@ select*from twowheelerdata;
 SET SQL_SAFE_UPDATES = 0;
 UPDATE `twowheelerdata`
 SET `VehicleType` = 'Scooter'
-WHERE `Manufacturer` IN ('Ola', 'Ampere','Ather','TVS','Bajaj','Hero','Simple','Ampere','Okinawa','Pure EV','Benling','Okinawa','Okaya','River','Rowwet','One Electric Motorcycles');
+WHERE `Manufacturer` IN ('Ola', 'Ampere','Ather','TVS','Bajaj','Hero','Simple','Ampere','Okinawa','Benling','Okinawa','Okaya','River','Rowwet');
 
 
 UPDATE `twowheelerdata`
 SET `VehicleType` = 'Bike'
-WHERE `Manufacturer` IN ('Torq', 'Oben','Kabira Mobility','Odysse','Atumobile','HOP','Ultraviolette','EVeium','Komaki','Revolt');
+WHERE `Manufacturer` IN ('Torq', 'Oben','Kabira Mobility','Odysse','Atumobile','HOP','Ultraviolette','EVeium','Komaki','Revolt','One Electric Motorcycles','');
+
+UPDATE `twowheelerdata`
+SET `VehicleType` = 'Bike'
+WHERE `Manufacturer` = 'Pure EV' 
+AND `Model` = 'eTryst 350';
+
+UPDATE `twowheelerdata`
+SET `VehicleType` = 'Scooter'
+WHERE `Manufacturer` = 'Pure EV' 
+AND `Model` = 'Epluto 7G';
 
 -- UPDATE `main_image`  
 -- SET  
@@ -35,6 +45,8 @@ WHERE `Manufacturer` IN ('Torq', 'Oben','Kabira Mobility','Odysse','Atumobile','
 --   Red = 'Bounce-Infinity E1-Sporty Red'  
 -- WHERE Id = 43;
 
+-- DELETE FROM `twimagedata` WHERE `Id` = 43;
+DELETE FROM `twowheelerdata` WHERE `TWId` IN (43, 44, 45, 46);
 
 
 select * from main_image
