@@ -69,10 +69,6 @@ export class CustomerEnquiriesComponent implements OnInit {
     this.formSubmitted = true;
   }
 
-  resetForm() {
-    this.formSubmitted = false;
-    this.enquiriesForm.reset(); // Clears the form
-  }
   
   
 
