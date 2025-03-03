@@ -201,7 +201,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
 
   onVarientClick(item: any) {
     this.loading = true;
-    console.log(this.twowheelerlist);
+    // console.log(this.twowheelerlist);
     const twowheeler = this.twowheelerlist.find(
       (i) =>
         // console.log(i.twid);

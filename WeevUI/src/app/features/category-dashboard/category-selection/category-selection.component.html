@@ -12,18 +12,18 @@
                </div>
                <div class="thumbnails-container">
                   <div class="thumbnails">
-                     <div class="thumbnail" (click)="onColors()">
-                        <img src="{{productListModel?.path}}" alt=""
-                           style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px);">
-                        <div class="text-content">
-                           {{colorCount}}<br>Colors
-                        </div>
-                     </div>
                      <div class="thumbnail" (click)="onImages()">
                         <img src="{{productListModel?.path}}" alt=""
                            style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px);">
                         <div class="text-content">
                            {{imageCount}}<br>Images
+                        </div>
+                     </div>
+                     <div class="thumbnail" (click)="onColors()">
+                        <img src="{{productListModel?.path}}" alt=""
+                           style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px);">
+                        <div class="text-content">
+                           {{colorCount}}<br>Colors
                         </div>
                      </div>
                   </div>
@@ -44,7 +44,7 @@
                   This variant of {{productListModel?.manufacturer}} {{productListModel?.model}} has a battery capacity of {{productListModel?.batteryCapacity}} and charges in {{productListModel?.chargingTime0To80Perc}}. It offers a maximum range of {{productListModel?.rangeOfVehicle}} and a max speed of {{productListModel?.maxSpeed}}.
 
                </div>
-               <div class="price">Price: Rs. {{productListModel?.exShowroomPrice}}</div>
+               <div class="price">Price: {{productListModel?.exShowroomPrice}}</div>
                <!-- <div class="status">Booking Status: <div class="currentStatus">Available</div>
                </div> -->
                <!-- <div>
