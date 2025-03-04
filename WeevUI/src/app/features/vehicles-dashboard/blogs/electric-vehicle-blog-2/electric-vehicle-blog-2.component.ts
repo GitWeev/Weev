@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-electric-vehicle-blog-2',
   templateUrl: './electric-vehicle-blog-2.component.html',

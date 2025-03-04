@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 import { ICustomerenquiries } from 'src/app/_models/IUserRegistration.models';
@@ -9,7 +16,7 @@ import { onlyNumber } from 'src/app/utils/only-number.directive';
 @Component({
   selector: 'app-customer-enquiries',
   templateUrl: './customer-enquiries.component.html',
-  styleUrls: ['./customer-enquiries.component.scss']
+  styleUrls: ['./customer-enquiries.component.scss'],
 })
 export class CustomerEnquiriesComponent implements OnInit {
   public onClose!: Subject<string | null>;
@@ -21,7 +28,7 @@ export class CustomerEnquiriesComponent implements OnInit {
   userForm: ICustomerenquiries;
   successMessage: string = '';
   formSubmitted: boolean = false;
-  
+
   constructor(public bsModalRef: BsModalRef) {
     this.userForm = {} as ICustomerenquiries;
   }
@@ -45,12 +52,12 @@ export class CustomerEnquiriesComponent implements OnInit {
         Validators.minLength(10),
         Validators.maxLength(10),
         onlyNumber(),
-        this.mobileNumberValidator()
+        this.mobileNumberValidator(),
       ]),
     });
   }
 
-  closed() {    
+  closed() {
     this.bsModalRef.hide();
     this.onClose.next('');
   }
@@ -68,13 +75,6 @@ export class CustomerEnquiriesComponent implements OnInit {
     // Show success message
     this.formSubmitted = true;
   }
-
-  resetForm() {
-    this.formSubmitted = false;
-    this.enquiriesForm.reset(); // Clears the form
-  }
-  
-  
 
   get username() {
     return this.enquiriesForm.get('username')!;
