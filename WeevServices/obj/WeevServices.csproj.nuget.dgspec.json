@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "E:\\Weev\\WeevServices\\WeevServices.csproj": {}
   },
   "projects": {
@@ -13,29 +12,12 @@
         "projectPath": "E:\\Weev\\WeevServices\\WeevServices.csproj",
         "packagesPath": "C:\\Users\\Abhyudya\\.nuget\\packages\\",
         "outputPath": "E:\\Weev\\WeevServices\\obj\\",
-=======
-    "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\WeevServices.csproj": {}
-  },
-  "projects": {
-    "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\WeevServices.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\WeevServices.csproj",
-        "projectName": "WeevServices",
-        "projectPath": "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\WeevServices.csproj",
-        "packagesPath": "C:\\Users\\Mohit Malhotra\\.nuget\\packages\\",
-        "outputPath": "Z:\\WEEV\\GIT Repository\\Weev\\WeevServices\\obj\\",
->>>>>>> e902d8e5b3b338b5990454105d3783d305c8094f
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\Abhyudya\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\Mohit Malhotra\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e902d8e5b3b338b5990454105d3783d305c8094f
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -43,10 +25,6 @@
           "net6.0"
         ],
         "sources": {
-<<<<<<< HEAD
-=======
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
->>>>>>> e902d8e5b3b338b5990454105d3783d305c8094f
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,7 +37,6 @@
           "warnAsError": [
             "NU1605"
           ]
-<<<<<<< HEAD
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
@@ -67,9 +44,6 @@
           "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
-=======
-        }
->>>>>>> e902d8e5b3b338b5990454105d3783d305c8094f
       },
       "frameworks": {
         "net6.0": {
@@ -115,11 +89,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
->>>>>>> e902d8e5b3b338b5990454105d3783d305c8094f
         }
       }
     }

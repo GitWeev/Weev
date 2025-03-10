@@ -28,9 +28,9 @@
 
         public string? ConditionOfVehicle { get; set; }
 
-        public decimal? Accelration0To60kmph { get; set; }
+        public string? Accelration0To60kmph { get; set; }
 
-        public decimal? Accelration0To40kmph { get; set; }
+        public string? Accelration0To40kmph { get; set; }
 
         public string? Category { get; set; }
 
@@ -40,7 +40,7 @@
 
         public string? BookingSite { get; set; }
 
-        public int? BookingPrice { get; set; }
+        public string? BookingPrice { get; set; }
 
         public decimal? ContinuousPower { get; set; }
 
@@ -58,7 +58,7 @@
 
         public string? ChargingAtHome { get; set; }
 
-        public int? NoOfBatteries { get; set; }
+        public string? NoOfBatteries { get; set; }
 
         public string? SwappableBattery { get; set; }
 
@@ -78,9 +78,9 @@
 
         public string? DistanceToEmptyIndicator { get; set; }
 
-        public decimal? ChargerOutputMin { get; set; }
+        public string? ChargerOutputMin { get; set; }
 
-        public decimal? ChargerOutputMax { get; set; }
+        public string? ChargerOutputMax { get; set; }
 
         public string? ChargingPoint { get; set; }
 
@@ -134,15 +134,15 @@
 
         public string? BootSpace { get; set; }
 
-        public int? Width { get; set; }
+        public string? Width { get; set; }
 
-        public int? Length { get; set; }
+        public string? Length { get; set; }
 
-        public int? Height { get; set; }
+        public string? Height { get; set; }
 
-        public int? SaddleHeight { get; set; }
+        public string? SaddleHeight { get; set; }
 
-        public int? GroundClearance { get; set; }
+        public string? GroundClearance { get; set; }
 
         public int? Wheelbase { get; set; }
 
@@ -158,15 +158,15 @@
 
         public string? MotorType { get; set; }
 
-        public int? MotorWarrantyForMonths { get; set; }
+        public string? MotorWarrantyForMonths { get; set; }
 
-        public int? MotorWarrantyForKm { get; set; }
+        public string? MotorWarrantyForKm { get; set; }
 
         public string? DriveType { get; set; }
 
-        public int? BatteryWarrantyForMonths { get; set; }
+        public string? BatteryWarrantyForMonths { get; set; }
 
-        public int? BatteryWarrantyForKm { get; set; }
+        public string? BatteryWarrantyForKm { get; set; }
 
         public string? WaterProofRating { get; set; }
 
