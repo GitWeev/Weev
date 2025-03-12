@@ -52,9 +52,9 @@
 
         public decimal? BatteryCapacity { get; set; }
 
-        public int? ChargingTime0To80Perc { get; set; }
+        public string? ChargingTime0To80Perc { get; set; }
 
-        public int? ChargingTime0To100Perc { get; set; }
+        public string? ChargingTime0To100Perc { get; set; }
 
         public string? ChargingAtHome { get; set; }
 
@@ -182,13 +182,13 @@
 
         public string? WheelSize { get; set; }
 
-        public string? WheelsType { get; set; }        
+        public string? WheelsType { get; set; }
 
         public int? OurRating { get; set; }
-        
+
         public string? Path { get; set; }
 
-        public string? VehicleType {get ; set; }
+        public string? VehicleType { get; set; }
 
     }
 
