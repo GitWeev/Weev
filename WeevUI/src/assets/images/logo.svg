@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="16.7977 27.1487 240.0145 60.1682" width="240.015px" height="60.169px">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="138.864" y1="20.664" x2="138.864" y2="70.577" id="gradient-1" gradientTransform="matrix(0.736444, 0.367953, -0.354944, 0.861061, 49.827058, -43.145264)">
+      <stop offset="0" style="stop-color: rgb(216, 8, 128);"/>
+      <stop offset="1" style="stop-color: rgb(57, 33, 171);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="41.634" y1="9.469" x2="41.634" y2="40.389" id="gradient-0" gradientTransform="matrix(-0.002113, -0.999998, 5.003926, -0.010574, -82.630693, 68.148434)">
+      <stop offset="0" style="stop-color: rgb(57, 33, 171);"/>
+      <stop offset="1" style="stop-color: rgb(216, 8, 128);"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(1.3538739681243896, 0, 0, 1.3538739681243896, -35.9241943359375, -6.384101867675781)" fill="#6b3b98">
+    <path d="M 147.513 51.518 C 148.912 50.293 148.689 48.565 147.021 47.679 L 143.875 46.005 C 142.206 45.118 141.203 42.975 141.646 41.243 L 145.435 26.395 C 145.876 24.663 145.094 24.247 143.696 25.471 L 124.286 42.46 C 122.888 43.684 123.11 45.412 124.778 46.3 L 127.924 47.972 C 129.593 48.859 130.596 51.003 130.155 52.735 L 126.364 67.582 C 125.923 69.315 126.705 69.73 128.103 68.507 L 147.513 51.518 Z" style="fill: url(&quot;#gradient-1&quot;);"/>
+  </g>
+</svg>
