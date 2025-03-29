@@ -10,9 +10,10 @@ import { ProductListModel } from 'src/app/modules/auth/_models/product.model';
 })
 export class VehicleAllSpecsComponent {
   productListModel: ProductListModel | undefined;
-  productID: number = 0;
+  productID: number = 0;  
+  productName: string = '';
   productlist: Array<ProductListModel> = new Array<ProductListModel>();
-
+  twowheelerlist: Array<any> = [];
   activeTab: string = '';
   loading: boolean = false;
   loadingTimeout: any;
@@ -23,17 +24,28 @@ export class VehicleAllSpecsComponent {
     private vehiclesService: VehiclesService,
     private cd: ChangeDetectorRef
   ) {
-    this.route.params.subscribe((params) => (this.productID = params['twId']));
+    this.route.params.subscribe((params) => (this.productName = params['twId']));
+    // console.log(this.productName,'specs');
     this.activeTab = 'specs';
   }
   ngOnInit(): void {
     window.scrollTo(0, 0); // Scroll to top
-    this.startLoading();
-    this.productListModel = Object.assign({}, EMPTY_Application);
-    if (this.productID != 0 || this.productID != undefined) {
-      this.getProductDataWithID(+this.productID);
-    }
+    this.startLoading();    
+    this.getTwoWheelerDatas();
   }
+
+  getTwoWheelerDatas() {
+    this.productListModel = Object.assign({}, EMPTY_Application);
+    this.vehiclesService.getTwoWheelerData()
+      .subscribe((response) => {
+        this.twowheelerlist = response;
+        const twowheeler = this.twowheelerlist.find(i => i.manufacturer+'_'+i.model+'_'+i.variant === this.productName);
+        this.productID=twowheeler.twId;
+        const transformedResponse = this.transformResponse(twowheeler);
+        this.productListModel =transformedResponse;
+        console.log(this.productListModel);
+      });  
+ }
 
   startLoading() {
     this.loading = true;
@@ -65,24 +77,24 @@ export class VehicleAllSpecsComponent {
     return transformedResponse;
   }
 
-  getProductDataWithID(productID: any) {
-    this.startLoading();
-    this.vehiclesService
-      .getProductDataWithID(productID)
-      .subscribe((response) => {
-        const transformedResponse = this.transformResponse(response);
-        this.productlist = transformedResponse;
-        this.productListModel = this.productlist;
-      });
-  }
+  // getProductDataWithID(productID: any) {
+  //   this.startLoading();
+  //   this.vehiclesService
+  //     .getProductDataWithID(productID)
+  //     .subscribe((response) => {
+        // const transformedResponse = this.transformResponse(response);
+        // this.productlist = transformedResponse;
+        // this.productListModel = this.productlist;
+  //     });
+  // }
 
   onDetails() {
-    this.router.navigate(['/Selection', this.productID]);
+    this.router.navigate(['/Selection', this.productName]);
   }
 
   onVarient() {
-    this.twId = this.productID;
-    this.router.navigate(['/Selection', this.twId]).then(() => {
+    
+    this.router.navigate(['/Selection', this.productName]).then(() => {
       setTimeout(() => {
         const variants_Container = document.getElementById('variantsContainer');
         if (variants_Container) {
@@ -96,14 +108,14 @@ export class VehicleAllSpecsComponent {
   }
 
   onImages() {
-    this.twId = this.productID;
-    this.router.navigate(['/Selection', this.twId, 'Colors']);
+    
+    this.router.navigate(['/Selection', this.productName, 'Colors']);
   }
 
   twId: number = 0;
   onColors() {
-    this.twId = this.productID;
-    this.router.navigate(['/Selection', this.twId, 'Colors']).then(() => {
+    
+    this.router.navigate(['/Selection', this.productName, 'Colors']).then(() => {
       setTimeout(() => {
         const imageContainer = document.getElementById('image_container');
         if (imageContainer) {
@@ -115,22 +127,7 @@ export class VehicleAllSpecsComponent {
   }
 
   getOverviewSpecs(): Array<{ key: string; value: any }> {
-    // const excludedKeys = ['path', 'twId']; // Define keys to exclude
-
-    // // Iterate over all keys in productListModel except those in excludedKeys
-    // return Object.keys(this.productListModel || {})
-    //   .filter(key => !excludedKeys.includes(key)) // Exclude keys in excludedKeys
-    //   .map((key) => {
-    //     const value = this.productListModel?.[key as keyof ProductListModel];
-    //     return value !== undefined && value !== '' && value !== null
-    //       ? {
-    //           key: this.keyDisplayMap[key] || key, // Use mapped key or original key
-    //           value: value, // Use the transformed value directly
-    //         }
-    //       : null;
-    //   })
-    //   .filter((item): item is { key: string; value: any } => item !== null); // Type guard to filter out null values
-    const selectedKeys = [
+     const selectedKeys = [
       'manufacturer',
       'model',
       'variant',

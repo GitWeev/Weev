@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
 
+
 const routes: Routes = [
   {
     path: '',

@@ -49,17 +49,21 @@ namespace WeevServices.Models
         public async Task<int> AddProductAsync(Customerenquiries product)
         {
             using var connectionString = Db.Connection;
-            MySqlCommand cmd = new MySqlCommand("InsertCustomerenquiries", connectionString);
-            cmd.CommandType = CommandType.StoredProcedure;
-            var parameter = new List<SqlParameter>();
-            parameter.Add(new SqlParameter("@Username", product.Username));
-            parameter.Add(new SqlParameter("@Email", product.Email));
-            parameter.Add(new SqlParameter("@Mobile", product.Mobile));
+            await connectionString.OpenAsync(); // Open connection asynchronously
 
-            var result = await Task.Run(() => cmd.ExecuteNonQuery());
-           //.ExecuteSqlRawAsync(@"exec InsertCustomerenquiries @Username, @Email, @Mobile", parameter.ToArray())); ;
+            using MySqlCommand cmd = new MySqlCommand("InsertCustomerenquiries", connectionString);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // Use MySqlParameter instead of SqlParameter
+            cmd.Parameters.Add(new MySqlParameter("UserNames", MySqlDbType.VarChar, 45)).Value = product.Username;
+            cmd.Parameters.Add(new MySqlParameter("Emails", MySqlDbType.VarChar, 50)).Value = product.Email;
+            cmd.Parameters.Add(new MySqlParameter("Mobiles", MySqlDbType.VarChar, 10)).Value = product.Mobile;
+
+            // Execute the stored procedure
+            int result = await cmd.ExecuteNonQueryAsync();
 
             return result;
         }
+
     }
 }
