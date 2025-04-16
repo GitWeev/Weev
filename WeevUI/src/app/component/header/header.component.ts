@@ -75,7 +75,6 @@ export class HeaderComponent implements OnInit {
 
   search() {
     this.showSuggestions();
-
   }
 
   getTwoWheelerData() {

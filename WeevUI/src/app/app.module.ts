@@ -22,6 +22,7 @@ import { ElectricVehicleBlogComponent3 } from './features/vehicles-dashboard/blo
 import { PrivacyPolicyComponent } from './features/vehicles-dashboard/privacy-policy/privacy-policy.component';
 import { BlogPageComponent } from './features/vehicles-dashboard/blog-page/blog-page.component';
 
+
 import { GoogleAnalyticsService } from './modules/_services/google-analytics.service';
 
 @NgModule({
