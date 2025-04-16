@@ -188,4 +188,3 @@ MODIFY COLUMN `FastChargingTimeUpto80Perc` VARCHAR(30);
 UPDATE `twowheelerdata`
 SET FastChargingTimeUpto80Perc='NA'
 WHERE FastChargingTimeUpto80Perc=0;
-

@@ -276,6 +276,12 @@ namespace WeevServices.Models
                 DbType = DbType.String,
                 Value = customers.Mobile,
             });
+            cmd.Parameters.Add(new MySqlParameter
+            {
+                ParameterName = "@Url",
+                DbType = DbType.String,
+                Value = customers.Url,
+            });
             int result = cmd.ExecuteNonQuery();
             return result;
 

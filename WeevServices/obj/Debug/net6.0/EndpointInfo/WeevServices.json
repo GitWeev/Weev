@@ -422,6 +422,10 @@
           "mobile": {
             "type": "string",
             "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
