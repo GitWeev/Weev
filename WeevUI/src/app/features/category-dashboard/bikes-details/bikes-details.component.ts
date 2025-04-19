@@ -73,9 +73,7 @@ export class BikesDetailsComponent implements OnInit {
   getTwoWheelerData() {
     this.vehiclesService.getTwoWheelerData().subscribe((response) => {
       this.allTwoWheelerList = response;
-      const vehicleWithImage = this.allTwoWheelerList.filter((i) => i.isActive==1);
-
-      this.allTwoWheelerList=vehicleWithImage;
+      
       if (this.title == 'Bikes') {
         this.filterByType('all');
         this.title = 'All Vehicles';
