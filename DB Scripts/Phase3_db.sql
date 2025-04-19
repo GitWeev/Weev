@@ -173,7 +173,18 @@ WHERE
     OR Height = 0 
     OR SaddleHeight = 0 
     OR GroundClearance = 0;
-
-
-
-
+ALTER TABLE `twowheelerdata`
+MODIFY COLUMN `ChargingTime0To80Perc` VARCHAR(30);
+ALTER TABLE `twowheelerdata`
+MODIFY COLUMN `ChargingTime0To100Perc` VARCHAR(30);
+UPDATE `twowheelerdata`
+SET ChargingTime0To80Perc='NA'
+WHERE ChargingTime0To80Perc=0;
+UPDATE `twowheelerdata`
+SET ChargingTime0To100Perc='NA'
+WHERE ChargingTime0To100Perc=0;
+ALTER TABLE `twowheelerdata`
+MODIFY COLUMN `FastChargingTimeUpto80Perc` VARCHAR(30);
+UPDATE `twowheelerdata`
+SET FastChargingTimeUpto80Perc='NA'
+WHERE FastChargingTimeUpto80Perc=0;

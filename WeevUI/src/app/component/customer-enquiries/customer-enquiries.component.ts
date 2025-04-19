@@ -54,6 +54,7 @@ export class CustomerEnquiriesComponent implements OnInit {
         onlyNumber(),
         this.mobileNumberValidator(),
       ]),
+      Url: new FormControl(window.location.href),
     });
   }
 
@@ -71,6 +72,7 @@ export class CustomerEnquiriesComponent implements OnInit {
     }
     this.userForm = this.enquiriesForm.value;
     let data: any = this.userForm;
+    console.log(data);
     this.onClose.next(data);
     // Show success message
     this.formSubmitted = true;

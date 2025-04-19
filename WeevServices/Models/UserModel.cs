@@ -41,7 +41,13 @@ namespace WeevServices.Models
                 DbType = DbType.String,
                 Value = customers.Mobile,
             });
-            
+            cmd.Parameters.Add(new MySqlParameter
+            {
+                ParameterName = "@Url",
+                DbType = DbType.String,
+                Value = customers.Url,
+            });
+
             int result = await Task.Run(() => cmd.ExecuteNonQuery());            
             return result ;
         }
@@ -58,6 +64,8 @@ namespace WeevServices.Models
             cmd.Parameters.Add(new MySqlParameter("UserNames", MySqlDbType.VarChar, 45)).Value = product.Username;
             cmd.Parameters.Add(new MySqlParameter("Emails", MySqlDbType.VarChar, 50)).Value = product.Email;
             cmd.Parameters.Add(new MySqlParameter("Mobiles", MySqlDbType.VarChar, 10)).Value = product.Mobile;
+            cmd.Parameters.Add(new MySqlParameter("Url", MySqlDbType.VarChar)).Value = product.Url;
+
 
             // Execute the stored procedure
             int result = await cmd.ExecuteNonQueryAsync();

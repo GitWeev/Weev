@@ -121,6 +121,7 @@ namespace WeevServices.Controllers
         public async Task<IActionResult> Customerenquiries([FromBody] Customerenquiries request)
         {
             try
+            
             {
                await Db.Connection.OpenAsync();
                 var query = new UserModel(Db);
