@@ -13,12 +13,13 @@ SET Path = '../../../assets/images/',
     Image1 = 'pr1'
 WHERE TW_Ref_ID = 25;
 
-UPDATE main_image
-SET Path = '../../../assets/images', 
-    Image1 = 'pr1'
-WHERE TW_Ref_ID IN (25,29,39,40,41,42,43,44,31,32);
 
 
+UPDATE twowheelerdata
+SET ExShowroomPrice = 165900
+WHERE TWId = 23;
 
-
+UPDATE twowheelerdata
+SET ExShowroomPrice = 176000
+WHERE TWId = 21;
 

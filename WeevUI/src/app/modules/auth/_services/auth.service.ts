@@ -69,7 +69,8 @@ export class AuthService {
     UserRegister ={
       username: userRegistrationForm.username,
       mobile: userRegistrationForm.mobile,
-      email: userRegistrationForm.email
+      email: userRegistrationForm.email,
+      url: userRegistrationForm.Url,
       }     
     this.http.post(`${LAPI_URL}/Customerenquiries`,  UserRegister )
       .subscribe((res: any) => {
