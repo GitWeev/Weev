@@ -189,8 +189,8 @@ SET Processor= 'NA'
 WHERE Processor = '';
 
 Update `twowheelerdata`
-SET DimensionAndCapacity='NA'
-WHERE DimensionAndCapacity = '';
+SET DimensionsAndCapacity='NA'
+WHERE DimensionsAndCapacity = '';
 
 Update `twowheelerdata`
 SET ChargingStationLocator='NA'
@@ -208,6 +208,7 @@ WHERE `Manufacturer` = 'Bounce';
 UPDATE `twowheelerdata`
 SET VariantType='Base'
 WHERE TWId in('43','44','45');
+
 
 SELECT * FROM weev.twowheelerdata;
 
