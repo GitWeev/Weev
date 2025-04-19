@@ -81,8 +81,7 @@ export class MobileHeaderComponent implements OnInit {
 
   getTwoWheelerData() {
     this.vehiclesService.getTwoWheelerData().subscribe((response) => {
-      this.suggestions = response.map((item: any) => item);
-      // console.log(this.suggestions);
+      this.suggestions = response.filter((item: any) => item.isActive == 1).map((item: any) => item);
     });
   }
 
