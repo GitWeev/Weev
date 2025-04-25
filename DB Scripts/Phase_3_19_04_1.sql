@@ -26,8 +26,8 @@ UPDATE `twowheelerdata` SET BOOKINGPRICE = 4999 WHERE MANUFACTURER = 'Ultraviole
 UPDATE `twowheelerdata` SET BOOKINGPRICE = 4999 WHERE MANUFACTURER = 'Ultraviolette' AND MODEL = 'F77';
 UPDATE `twowheelerdata` SET BOOKINGPRICE = 4999 WHERE MANUFACTURER = 'Ultraviolette' AND MODEL = 'F77 Limited';
 UPDATE `twowheelerdata` SET BOOKINGPRICE = 0 WHERE MANUFACTURER = 'One Electric Motorcycles' AND MODEL = 'KRIDN';
-DELETE FROM main_image
-WHERE TW_Ref_ID = 43;
+
+DELETE FROM main_image WHERE TW_Ref_ID = 43;
 
 
 -- Unlocking the table, in case it was locked in a previous transaction
@@ -42,6 +42,7 @@ VALUES (
   '', '', '', '', '',
   '', '', '', '', '',''
 );
+
 DELETE FROM twimagedata
 WHERE TW_Ref_ID = 43;
 

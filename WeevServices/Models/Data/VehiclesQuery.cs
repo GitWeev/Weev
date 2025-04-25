@@ -69,7 +69,7 @@ namespace WeevServices.Models
             return await ReadAllTaskAsync(await cmd.ExecuteReaderAsync());
         }
         private async Task<List<VehiclesModels>> ReadAllAsync(DbDataReader reader)
-        {           
+        {
             var posts = new List<VehiclesModels>();
             using (reader)
             {
@@ -97,7 +97,7 @@ namespace WeevServices.Models
             foreach (PropertyInfo prop in Props)
             {
                 //Defining type of data column gives proper data table
-                var type = (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType);
+                var type = prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
                 //Setting column names as Property names
                 dataTable.Columns.Add(prop.Name, type);
             }
@@ -147,7 +147,7 @@ namespace WeevServices.Models
             DataTable dt = new DataTable();
             // var posts = new List<TwoWheeler>();
             dt.Load(reader);
-             List<TwoWheeler> posts = new List<TwoWheeler>();
+            List<TwoWheeler> posts = new List<TwoWheeler>();
             posts = ConvertDataTable<TwoWheeler>(dt);
             return posts;
         }
@@ -164,7 +164,7 @@ namespace WeevServices.Models
                 Value = twId,
             });
             var result = await ReadAllImgTaskAsync(await cmd.ExecuteReaderAsync());
-           
+
             return result.Count > 0 ? result[0] : null;
         }
         // mainimage 
@@ -180,7 +180,7 @@ namespace WeevServices.Models
                 Value = twId,
             });
             var result = await ReadAllMainImgTaskAsync(await cmd.ExecuteReaderAsync());
-           
+
             return result.Count > 0 ? result[0] : null;
         }
 
@@ -208,7 +208,7 @@ namespace WeevServices.Models
             List<Twoimagedata> posts = new List<Twoimagedata>();
             posts = ConvertDataTable<Twoimagedata>(dt);
             return posts;
-        }   
+        }
         // mainimage     
         private async Task<List<TwoMainimagedata>> ReadAllMainImgTaskAsync(DbDataReader reader)
         {
@@ -218,7 +218,7 @@ namespace WeevServices.Models
             List<TwoMainimagedata> posts = new List<TwoMainimagedata>();
             posts = ConvertDataTable<TwoMainimagedata>(dt);
             return posts;
-        }       
+        }
 
         public async Task<List<string>> FindImgTabAsync(int twId)
         {
@@ -241,7 +241,7 @@ namespace WeevServices.Models
             while (reader.Read())
             {
                 tabName = reader["ColumnNames"].ToString();
-               
+
             }
             List<string> lstoutResult = new List<string>();
             string[] names = tabName.Split(',');

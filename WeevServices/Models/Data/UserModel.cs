@@ -16,24 +16,24 @@ namespace WeevServices.Models
         {
             Db = db;
         }
-        
+
         public async Task<int> AddCustomerenquiries(Customerenquiries customers)
         {
-            using var connectionString = Db.Connection;          
+            using var connectionString = Db.Connection;
             MySqlCommand cmd = new MySqlCommand("InsertCustomerenquiries", connectionString);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter
             {
                 ParameterName = "@Usernames",
                 DbType = DbType.String,
-                Value = customers.Username,                
+                Value = customers.Username,
             });
             cmd.Parameters.Add(new MySqlParameter
             {
                 ParameterName = "@Emails",
                 DbType = DbType.String,
                 Value = customers.Email,
-               
+
             });
             cmd.Parameters.Add(new MySqlParameter
             {
@@ -48,8 +48,8 @@ namespace WeevServices.Models
                 Value = customers.Url,
             });
 
-            int result = await Task.Run(() => cmd.ExecuteNonQuery());            
-            return result ;
+            int result = await Task.Run(() => cmd.ExecuteNonQuery());
+            return result;
         }
 
         public async Task<int> AddProductAsync(Customerenquiries product)

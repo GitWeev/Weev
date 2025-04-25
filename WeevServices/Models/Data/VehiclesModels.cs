@@ -5,7 +5,7 @@ namespace WeevServices.Models
 {
     public class VehiclesModels
     {
-        
+
         public int Twid { get; set; }
 
         public string? Manufacturer { get; set; }
