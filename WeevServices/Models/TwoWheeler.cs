@@ -52,9 +52,9 @@
 
         public decimal? BatteryCapacity { get; set; }
 
-        public string? ChargingTime0To80Perc { get; set; }
+        public int? ChargingTime0To80Perc { get; set; }
 
-        public string? ChargingTime0To100Perc { get; set; }
+        public int? ChargingTime0To100Perc { get; set; }
 
         public string? ChargingAtHome { get; set; }
 
