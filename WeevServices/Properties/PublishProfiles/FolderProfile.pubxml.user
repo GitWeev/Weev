@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>Z:\WEEV\Temp build service</_PublishTargetUrl>
-    <History>True|2025-04-19T14:50:08.7129137Z;True|2025-04-19T20:07:21.2203597+05:30;True|2025-04-08T17:42:11.1113591+05:30;True|2025-02-22T13:54:38.4353248+05:30;True|2025-02-01T23:13:19.2213616+05:30;True|2024-02-18T16:23:15.3260127+05:30;</History>
+    <History>True|2025-05-06T12:52:17.8482012Z;True|2025-04-19T20:20:08.7129137+05:30;True|2025-04-19T20:07:21.2203597+05:30;True|2025-04-08T17:42:11.1113591+05:30;True|2025-02-22T13:54:38.4353248+05:30;True|2025-02-01T23:13:19.2213616+05:30;True|2024-02-18T16:23:15.3260127+05:30;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

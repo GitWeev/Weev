@@ -18,6 +18,16 @@ UPDATE main_image
 SET Path = '../../../assets/images/2W/River/Indie/Images', 
     Image1 = '1'
 WHERE TW_Ref_ID IN (40);
+
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM twimagedata
+WHERE TW_Ref_ID = 31;
+
+DELETE FROM twimagedata
+WHERE TW_Ref_ID = 36;
+
 INSERT INTO `twimagedata` 
 VALUES
 (
