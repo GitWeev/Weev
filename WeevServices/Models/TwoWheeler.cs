@@ -188,7 +188,7 @@
 
         public string? Path { get; set; }
 
-        public string? VehichleType { get; set; }
+        public string? VehicleType { get; set; }
 
     }
 
