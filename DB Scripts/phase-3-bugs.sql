@@ -13,7 +13,7 @@ SET Path = '../../../assets/images/',
     Image1 = 'pr1'
 WHERE TW_Ref_ID = 25;
 
-
+SELECT * FROM weev.twowheelerdata;
 
 UPDATE twowheelerdata
 SET ExShowroomPrice = 165900
