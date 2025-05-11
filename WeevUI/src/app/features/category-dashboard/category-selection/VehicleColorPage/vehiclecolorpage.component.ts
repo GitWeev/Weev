@@ -339,7 +339,7 @@ export class VehicleColorPageComponent {
       `${(value / 60).toFixed(2)} hours (0-80%)`,
     chargingTime0To100Perc: (value) =>
       `${(value / 60).toFixed(2)} hours (0-100%)`,
-    bookingPrice: (value) => `${value} ₹`,
+    bookingPrice: (value) =>  ` ₹${value} `,
     accelration0To60kmph: (value) => `${value} sec (0-60 km/h)`,
     accelration0To40kmph: (value) => `${value} sec (0-40 km/h)`,
     continuousPower: (value) => `${value} kW`,

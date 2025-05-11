@@ -41,10 +41,10 @@
                </div>
                <div class="details">
                   <!-- {{productListModel?.additionalFeatures}} -->
-                  This variant of {{productListModel?.manufacturer}} {{productListModel?.model}} has a battery capacity of {{productListModel?.batteryCapacity}} and charges in {{productListModel?.chargingTime0To80Perc}}. It offers a maximum range of {{productListModel?.rangeOfVehicle}} and a max speed of {{productListModel?.maxSpeed}}.
+                  This variant of {{productListModel?.manufacturer}} {{productListModel?.model}} has a battery capacity of {{productListModel?.batteryCapacity}} and charges in {{productListModel?.chargingTime}}. It offers a maximum range of {{productListModel?.rangeOfVehicle}} and a max speed of {{productListModel?.maxSpeed}}.
 
                </div>
-               <div class="price">Price: {{productListModel?.exShowroomPrice}}</div>
+               <div class="price">Price: {{productListModel?.exShowroomPrice}}*</div>
                <!-- <div class="status">Booking Status: <div class="currentStatus">Available</div>
                </div> -->
                <!-- <div>
@@ -88,7 +88,7 @@
             </div>
          </div>
          <div class="variants-container" id="variantsContainer">
-            <h2 class="variants-title">{{productListModel?.manufacturer}} {{productListModel?.model}}'s Varients</h2>
+            <h2 class="variants-title">{{productListModel?.manufacturer}} {{productListModel?.model}}'s Variants</h2>
             <table class="variants-table">
                <thead>
                   <tr>
@@ -149,7 +149,7 @@
                   <img src="{{model.path}}" alt="Product Image" onerror="this.src='assets/images/pr4.png';">
                   <div class="card-content">
                      <div class="title">{{ model.manufacturer }} {{ model.model }}</div>
-                     <p>Price: ₹{{ model.exShowroomPrice }}</p>
+                     <p>Price: ₹{{ model.exShowroomPrice }}*</p>
                   </div>
                </div>
             </div>

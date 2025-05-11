@@ -423,7 +423,7 @@ export class VehicleAllSpecsComponent {
       this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-80%)`,
     chargingTime0To100Perc: (value) =>
       this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-100%)`,
-    bookingPrice: (value) => (this.isNA(value) ? 'NA' : `${value} ₹`),
+    bookingPrice: (value) => (this.isNA(value) ? 'NA' : ` ₹${value} `),
     accelration0To60kmph: (value) =>
       this.isNA(value) ? 'NA' : `${value} sec (0-60 km/h)`,
     accelration0To40kmph: (value) =>

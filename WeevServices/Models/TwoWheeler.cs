@@ -28,9 +28,9 @@
 
         public string? ConditionOfVehicle { get; set; }
 
-        public decimal? Accelration0To60kmph { get; set; }
+        public decimal? Acceleration0To60kmph { get; set; }
 
-        public decimal? Accelration0To40kmph { get; set; }
+        public decimal? Acceleration0To40kmph { get; set; }
 
         public string? Category { get; set; }
 
