@@ -129,6 +129,8 @@ BEGIN
 
 END ;;
 DELIMITER ;
+
+SET SQL_SAFE_UPDATES = 0;
 UPDATE `twowheelerdata`
 SET `VehicleType` = 'Scooter'
 WHERE `Manufacturer` = 'Pure EV' AND `Model` = 'Epluto 7G';
