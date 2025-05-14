@@ -458,8 +458,8 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     maxSpeed: 'Max Speed',
     chargingTime: 'Charging Time',
     conditionOfVehicle: 'Condition of Vehicle',
-    accelration0To60kmph: 'Accelration 0-60 kmph',
-    accelration0To40kmph: 'Accelration 0-40 kmph',
+    acceleration0To60kmph: 'Acceleration 0-60 kmph',
+    acceleration0To40kmph: 'Acceleration 0-40 kmph',
     category: 'Category',
     available: 'Available',
     offlineOronline: 'Offline/Online',
@@ -554,9 +554,9 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-100%)`,
     bookingPrice: (value) => (this.isNA(value) ? 'NA' : ` ₹
 ${value} `),
-    accelration0To60kmph: (value) =>
+    acceleration0To60kmph: (value) =>
       this.isNA(value) ? 'NA' : `${value} sec (0-60 km/h)`,
-    accelration0To40kmph: (value) =>
+    acceleration0To40kmph: (value) =>
       this.isNA(value) ? 'NA' : `${value} sec (0-40 km/h)`,
     continuousPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     motorPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
@@ -626,8 +626,8 @@ const EMPTY_Application: ProductListModel = {
   maxSpeed: 0,
   chargingTime: 0,
   conditionOfVehicle: undefined,
-  accelration0To60kmph: 0,
-  accelration0To40kmph: 0,
+  acceleration0To60kmph: 0,
+  acceleration0To40kmph: 0,
   category: undefined,
   available: undefined,
   offlineOronline: undefined,
