@@ -138,3 +138,7 @@ WHERE `Manufacturer` = 'Pure EV' AND `Model` = 'Epluto 7G';
 UPDATE `twowheelerdata`
 SET `VehicleType` = 'Bike'
 WHERE `Manufacturer` IN ('Torq', 'Oben', 'Kabira Mobility', 'Odysse', 'Atumobile', 'HOP', 'Ultraviolette', 'EVeium', 'Komaki', 'Revolt', 'One Electric Motorcycles');
+
+UPDATE twowheelerdata
+SET VehicleType = 'Bike'
+WHERE Manufacturer = 'Rowwet'

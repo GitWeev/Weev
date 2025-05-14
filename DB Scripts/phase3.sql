@@ -1,9 +1,6 @@
 USE `weev`;
 DROP procedure IF EXISTS `GetTwowheelerdataByVehicleType`;
 
-USE `weev`;
-DROP procedure IF EXISTS `weev`.`GetTwowheelerdataByVehicleType`;
-;
 
 DELIMITER $$
 USE `weev`$$
