@@ -141,4 +141,9 @@ WHERE `Manufacturer` IN ('Torq', 'Oben', 'Kabira Mobility', 'Odysse', 'Atumobile
 
 UPDATE twowheelerdata
 SET VehicleType = 'Bike'
-WHERE Manufacturer = 'Rowwet'
+WHERE Manufacturer = 'Rowwet';
+
+
+Update `twowheelerdata`
+SET variant= 'STD'
+WHERE variant = 'NA';
