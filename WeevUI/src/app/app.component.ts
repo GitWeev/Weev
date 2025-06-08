@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleAnalyticsService } from './modules/_services/google-analytics.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { GtmService } from './modules/_services/gtm.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 
   title = 'WEev';
 
-  constructor(private gaService: GoogleAnalyticsService, private router: Router) {
+  constructor(private gaService: GoogleAnalyticsService, private router: Router, private gtm: GtmService) {
     // Observe window resize events
     const resizeObserver = new ResizeObserver(() => {
       if (this.isDesktopMode() !== this.previousMode) {
