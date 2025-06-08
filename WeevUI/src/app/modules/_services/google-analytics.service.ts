@@ -1,53 +1,34 @@
 import { Injectable } from '@angular/core';
+import { Router, NavigationEnd, Event } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
-declare global {
-  interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-  }
-}
+declare let gtag: Function;
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAnalyticsService {
-  private isGAInitialized = false;
+  private measurementId = 'G-5WGG8XLBLT'; // Replace with your GA4 Measurement ID
 
-  constructor() {
-    this.loadGoogleAnalytics();
+  constructor(private router: Router) {
+    this.trackPageViews();
   }
 
-  private loadGoogleAnalytics() {
-    console.log("Loading Google Analytics...");
+  private trackPageViews(): void {
+    this.router.events
+      .pipe(filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const pagePath = event.urlAfterRedirects;
+        console.log(`[GA] Tracking page view: ${pagePath}`);
 
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-5WGG8XLBLT';
-    document.head.appendChild(script);
-
-    script.onload = () => {
-      console.log("Google Analytics script loaded.");
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
-        window.dataLayer.push(args);
-      }
-      window.gtag = gtag;
-
-      window.gtag('js', new Date());
-      window.gtag('config', 'G-5WGG8XLBLT');
-
-      this.isGAInitialized = true; 
-    };
+        gtag('config', this.measurementId, {
+          page_path: pagePath
+        });
+      });
   }
 
-  trackEvent(eventName: string, eventParams: any = {}) {
-    if (!this.isGAInitialized) {
-      console.warn('Google Analytics is not initialized yet.');
-      return;
-    }
-
-    console.log(`Tracking event: ${eventName}`, eventParams);
-    window.gtag('event', eventName, eventParams);
+  public trackEvent(eventName: string, params: { [key: string]: any }): void {
+    console.log(`[GA] Tracking event: ${eventName}`, params);
+    gtag('event', eventName, params);
   }
 }

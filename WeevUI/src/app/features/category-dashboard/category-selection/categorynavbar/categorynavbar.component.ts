@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 import { ProductListModel } from 'src/app/modules/auth/_models/product.model';
@@ -10,8 +10,8 @@ import { ProductListModel } from 'src/app/modules/auth/_models/product.model';
 })
 export class CategorynavbarComponent implements OnInit {
 
-    @Input() activeTab: string = 'model';
-    twowheelerlist: Array<any> = [];
+  @Input() activeTab: string = 'model';
+  twowheelerlist: Array<any> = [];
   twId: number = 0;
   productID: number = 0;
   productName: string ='';
@@ -19,32 +19,30 @@ export class CategorynavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private vehiclesService: VehiclesService
-  ) {this.route.params.subscribe((params) => ( this.productName= params['twId']));
+    private vehiclesService: VehiclesService,
+    private cd: ChangeDetectorRef,    
+  ) {
   }
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.getTwoWheelerDatas();
-    
+    this.route.params.subscribe((params) => {
+      this.productName = params['twId'];
+      this.getTwoWheelerDatas();
+    });
+    this.cd.detectChanges();
   }
   getTwoWheelerDatas() {
     this.productListModel = Object.assign({}, EMPTY_Application);
     this.vehiclesService.getTwoWheelerData()
-      .subscribe((response) => {
-        this.twowheelerlist = response;
-        const twowheeler = this.twowheelerlist.find(i => i.manufacturer+'_'+i.model+'_'+i.variant === this.productName);
-        this.productID=twowheeler.twId;
-        this.productListModel =twowheeler;
-    
-      });
+    .subscribe((response) => {
+      this.twowheelerlist = response;
+      const twowheeler = this.twowheelerlist.find(i => i.manufacturer+'_'+i.model+'_'+i.variant === this.productName);
+      this.productID=twowheeler.twId;
+      this.productListModel =twowheeler;
+      
+    });
     }
-  // getProductDataWithID(productID: number) {
-  //   this.vehiclesService.getProductDataWithID(productID).subscribe((data) => {
-  //     this.productListModel = data;
-  //   });
-  // }
-
 
   onModel() {
     this.router.navigate(['/Selection', this.productName]);
@@ -75,13 +73,11 @@ export class CategorynavbarComponent implements OnInit {
   }
 
   onImages() {
-    
     this.router.navigate(['/Selection', this.productName, 'Colors']);
     window.scrollTo(0, 0);
   }
 
   onColors() {
-  
    this.router.navigate(['/Selection', this.productName, 'Colors']).then(() => {
     setTimeout(() => {
       const imageContainer = document.getElementById('image_container');
