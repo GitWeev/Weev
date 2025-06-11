@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bikes-details',
@@ -31,7 +32,9 @@ export class BikesDetailsComponent implements OnInit {
     private router: Router,
     public vehiclesService: VehiclesService,
     private cd: ChangeDetectorRef,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private meta: Meta,
+    private titleService: Title
   ) {
     // console.log(this.router.url);
     this.title = this.router.url.replace('/', '');
@@ -42,9 +45,9 @@ export class BikesDetailsComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
       this.brand = params['Brand'];
     });
-    
+
     this.getTwoWheelerData();
-    this.cd.detectChanges(); 
+    this.cd.detectChanges();
 
     window.scrollTo(0, 0);
     this.loadMoreItems();
@@ -56,24 +59,37 @@ export class BikesDetailsComponent implements OnInit {
       this.itemsToShow
     );
   }
-  // @HostListener('window:scroll', [])
-  // onScroll() {
-  //   const pos =
-  //     window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000; // Trigger when near bottom
-  //   if (pos && !this.loadingMore) {
-  //     this.loadingMore = true; // Set loading flag
-  //     setTimeout(() => {
-  //       this.itemsToShow += 8; // Increase the number of items to show
-  //       this.loadMoreItems(); // Load more items
-  //       this.loadingMore = false; // Reset loading flag
-  //     }, 1000); // 1 second delay
-  //   }
-  // }
+
+  updateSEOTags(originalTitle: string) {
+    let title = '';
+    let description = '';
+  
+    if (originalTitle === 'Bikes') {
+      title = 'WEEV | Top Electric Two-Wheelers in India | Compare Price, Specs & Range';
+      description = 'Browse all top electric bikes and scooters in India. Compare prices, range, battery capacity, top speed, features, and images of popular EVs. Book online easily.';
+    } else if (originalTitle === 'Bikes/Type/Bikes') {
+      title = 'WEEV | Electric Bikes in India | Compare Range, Price & Features';
+      description = 'Explore the latest electric bikes in India. Check top speed, charging time, range, specs, features, and prices. Choose the best e-bike and book online.';
+    } else if (originalTitle === 'Bikes/Type/Scooters') {
+      title = 'WEEV | Electric Scooters in India | Range, Charging, Specs & Price';
+      description = 'Compare all electric scooters available in India. View specifications, range, charging time, top speed, features, and prices of leading models. Book online now.';
+    } else {
+      title = `WEEV | ${this.brand} Electric Bikes & Scooters | Compare Price, Specs & Booking`;
+      description = `Discover ${this.brand} electric bikes and scooters in India. View detailed specs, range, battery, top speed, and price. Find the best ${this.brand} EV model and book online.`;
+    }
+  
+    this.titleService.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: description });
+  }
+  
+  
 
   getTwoWheelerData() {
     this.vehiclesService.getTwoWheelerData().subscribe((response) => {
       this.allTwoWheelerList = response;
-      
+
+      let originalTitle = this.title;
+
       if (this.title == 'Bikes') {
         this.filterByType('all');
         this.title = 'All Vehicles';
@@ -90,6 +106,7 @@ export class BikesDetailsComponent implements OnInit {
         this.filterByType('Brand');
         this.title = this.brand;
       }
+      this.updateSEOTags(originalTitle);
       // console.log(this.allTwoWheelerList);
     });
 
@@ -119,16 +136,22 @@ export class BikesDetailsComponent implements OnInit {
             this.filteredtwowheelerlist.push(this.allTwoWheelerList[i]);
           }
         }
-        console.log(this.filteredtwowheelerlist.length)
+        console.log(this.filteredtwowheelerlist.length);
       } else if (type === 'bike') {
         for (var i = 0; i < this.allTwoWheelerList.length; i++) {
-          if (this.allTwoWheelerList[i].variantType === 'Top' && this.allTwoWheelerList[i].vehicleType ==='Bike') {
+          if (
+            this.allTwoWheelerList[i].variantType === 'Top' &&
+            this.allTwoWheelerList[i].vehicleType === 'Bike'
+          ) {
             this.filteredtwowheelerlist.push(this.allTwoWheelerList[i]);
           }
         }
       } else if (type === 'scooter') {
         for (var i = 0; i < this.allTwoWheelerList.length; i++) {
-          if (this.allTwoWheelerList[i].variantType === 'Top' && this.allTwoWheelerList[i].vehicleType ==='Scooter') {
+          if (
+            this.allTwoWheelerList[i].variantType === 'Top' &&
+            this.allTwoWheelerList[i].vehicleType === 'Scooter'
+          ) {
             this.filteredtwowheelerlist.push(this.allTwoWheelerList[i]);
           }
         }
@@ -158,8 +181,14 @@ export class BikesDetailsComponent implements OnInit {
 
   onSelect(twId: any) {
     // this.router.navigate(['/Selection', twId]);
-    const twowheeler = this.allTwoWheelerList.find(i => i.twId === twId);
-    this.router.navigate(["/Selection", twowheeler.manufacturer+'_'+twowheeler.model+'_'+twowheeler.variant]);
-
+    const twowheeler = this.allTwoWheelerList.find((i) => i.twId === twId);
+    this.router.navigate([
+      '/Selection',
+      twowheeler.manufacturer +
+        '_' +
+        twowheeler.model +
+        '_' +
+        twowheeler.variant,
+    ]);
   }
 }

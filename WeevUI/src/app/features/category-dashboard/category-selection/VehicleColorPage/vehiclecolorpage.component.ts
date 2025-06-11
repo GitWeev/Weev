@@ -1,7 +1,15 @@
-import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  ChangeDetectorRef,
+  HostListener,
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 import { ProductListModel } from 'src/app/modules/auth/_models/product.model';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-vehiclecolorpage',
@@ -12,13 +20,13 @@ export class VehicleColorPageComponent {
   @ViewChild('thumbnailContainer', { static: false })
   thumbnailContainer!: ElementRef;
   productListModel: ProductListModel | undefined;
-  productID: number = 0 ;
+  productID: number = 0;
   productlist: Array<ProductListModel> = new Array<ProductListModel>();
   twowheelerlist: Array<any> = [];
   colorimagePaths: { colorPath: string; colorName: string }[] = [];
-  ReqimagePaths: { imagePath: string}[] = [];
+  ReqimagePaths: { imagePath: string }[] = [];
   currentIndexImage: number = 0;
-  currentIndexColor: number =0;
+  currentIndexColor: number = 0;
 
   activeTab: string = '';
 
@@ -26,25 +34,30 @@ export class VehicleColorPageComponent {
   loadingTimeout: any;
 
   isMobileView: boolean = false;
-  productName: string ='';
+  productName: string = '';
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private vehiclesService: VehiclesService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private meta: Meta,
+    private titleService: Title,
   ) {
     this.route.params.subscribe((params) => (this.productID = params['twId']));
-    
+
     //vinay
-     this.route.params.subscribe((params) => (this.productName = params['twId']));
+    this.route.params.subscribe(
+      (params) => (this.productName = params['twId'])
+    );
 
     this.activeTab = 'images';
     this.checkMobileView(window.innerWidth);
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: Event) { // Explicitly define the type of event
+  onResize(event: Event) {
+    // Explicitly define the type of event
     const target = event.target as Window; // Cast the target to Window
     this.checkMobileView(target.innerWidth);
   }
@@ -52,25 +65,46 @@ export class VehicleColorPageComponent {
     this.isMobileView = width < 768; // Adjust the width threshold as needed
   }
 
-
   ngOnInit(): void {
-    this.startLoading();    
-     this.getTwoWheelerDatas();
+    this.startLoading();
+    this.getTwoWheelerDatas();
   }
 
-//vinay
-  
+  //vinay
+
   getTwoWheelerDatas() {
-    this.vehiclesService.getTwoWheelerData()
-      .subscribe((response) => {
-        this.twowheelerlist = response;
-        const twowheeler = this.twowheelerlist.find(i => i.manufacturer+'_'+i.model+'_'+i.variant === this.productName);
-        this.productID=twowheeler.twId;
-        this.productListModel = Object.assign({}, EMPTY_Application);
-        if (this.productID != 0 || this.productID != undefined) {
-          this.getProductDataWithID(+this.productID);
-        }});
+    this.vehiclesService.getTwoWheelerData().subscribe((response) => {
+      this.twowheelerlist = response;
+      const twowheeler = this.twowheelerlist.find(
+        (i) =>
+          i.manufacturer + '_' + i.model + '_' + i.variant === this.productName
+      );
+      this.productID = twowheeler.twId;
+      this.productListModel = Object.assign({}, EMPTY_Application);
+      if (this.productID != 0 || this.productID != undefined) {
+        this.getProductDataWithID(+this.productID);
       }
+    });
+  }
+
+  updateSEOTags() {
+    if (!this.productListModel) return;
+  
+    const manufacturer = this.productListModel.manufacturer || '';
+    const model = this.productListModel.model || '';
+    const variant = this.productListModel.variant || '';
+    const batteryCapacity = this.productListModel.batteryCapacity || '';
+    const chargingTime = this.valueTransformMap['chargingTime']?.(this.productListModel.chargingTime) || '';
+    const range = this.valueTransformMap['rangeOfVehicle']?.(this.productListModel.rangeOfVehicle) || '';
+    const maxSpeed = this.valueTransformMap['maxSpeed']?.(this.productListModel.maxSpeed) || '';
+  
+    const title = `WEEV | ${manufacturer} ${model} ${variant} | Color Options, Images, Battery, Range & Speed`;
+    const description = `Check available colors and images for ${manufacturer} ${model} ${variant}. Battery: ${batteryCapacity} kWh, Range: ${range}, Top Speed: ${maxSpeed}, Charging: ${chargingTime}.`;
+  
+    this.titleService.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: description });
+  }
+  
 
   startLoading() {
     this.loading = true;
@@ -112,8 +146,10 @@ export class VehicleColorPageComponent {
         this.productListModel = this.productlist;
         this.getAllTabNameWithID(productID);
         this.getTabNameWithID(productID);
-      });
+        this.updateSEOTags();
+        });
   }
+  
   //image path
   imagetabs: Array<any> = new Array<any>();
   imagePaths: Array<any> = new Array<any>();
@@ -134,7 +170,7 @@ export class VehicleColorPageComponent {
       .subscribe((response) => {
         this.imagePaths = response;
         this.ReqimagePaths = this.imagetabs.map((tab) => ({
-          imagePath:this.imagePaths[tab],  
+          imagePath: this.imagePaths[tab],
         }));
         // console.log(this.ReqimagePaths);
       });
@@ -170,7 +206,8 @@ export class VehicleColorPageComponent {
   prevSlideImage() {
     // Ensure currentIndexImage wraps around correctly
     this.currentIndexImage =
-      (this.currentIndexImage - 1 + this.ReqimagePaths.length) % this.ReqimagePaths.length;
+      (this.currentIndexImage - 1 + this.ReqimagePaths.length) %
+      this.ReqimagePaths.length;
     this.scrollThumbnails(this.currentIndexImage);
   }
 
@@ -183,7 +220,8 @@ export class VehicleColorPageComponent {
   prevSlideColor() {
     // Ensure currentIndexImage wraps around correctly
     this.currentIndexColor =
-      (this.currentIndexColor - 1 + this.colorimagePaths.length) % this.colorimagePaths.length;
+      (this.currentIndexColor - 1 + this.colorimagePaths.length) %
+      this.colorimagePaths.length;
   }
 
   nextSlideColor() {
@@ -216,13 +254,10 @@ export class VehicleColorPageComponent {
   }
 
   onSpecs() {
-   
     this.router.navigate(['/Selection', this.productName, 'Specs']);
   }
 
-  
   onVarient() {
-    
     this.router.navigate(['/Selection', this.productName]).then(() => {
       setTimeout(() => {
         const variants_Container = document.getElementById('variantsContainer');
@@ -234,8 +269,6 @@ export class VehicleColorPageComponent {
         }
       }, 100);
     });
-
-    
   }
 
   private keyDisplayMap: { [key: string]: string } = {
@@ -339,7 +372,7 @@ export class VehicleColorPageComponent {
       `${(value / 60).toFixed(2)} hours (0-80%)`,
     chargingTime0To100Perc: (value) =>
       `${(value / 60).toFixed(2)} hours (0-100%)`,
-    bookingPrice: (value) =>  ` ₹${value} `,
+    bookingPrice: (value) => ` ₹${value} `,
     acceleration0To60kmph: (value) => `${value} sec (0-60 km/h)`,
     acceleration0To40kmph: (value) => `${value} sec (0-40 km/h)`,
     continuousPower: (value) => `${value} kW`,

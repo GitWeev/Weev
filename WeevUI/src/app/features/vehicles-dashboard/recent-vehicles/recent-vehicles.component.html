@@ -1,57 +1,67 @@
 <div class="recent-vehicles-container">
-   <div class="recent-vehicles-title">Top Vehicles</div>
-   <div class="landingarea">
-      <div class="vehicleBox" *ngFor="let Cll of toptwowheelerlist">
-         <img src="{{Cll.path}}" alt="" onerror="this.src='assets/images/pr1.png';" class="image"
-            (click)="onSelect(Cll.twId)">
-         <div class="infobox" (click)="onSelect(Cll.twId)">
-            <div class="vehicle-title">{{Cll.manufacturer}} {{Cll.model}}
-               <span>
-                  <img src="assets/images/star-g.svg"
+   <div class="section-header">
+      <h2 class="section-title">Top Vehicles</h2>
+   </div>
+   <div class="vehicles-grid">
+      <div class="vehicle-card" *ngFor="let Cll of toptwowheelerlist" (click)="onSelect(Cll.twId)">
+         <div class="vehicle-image-container">
+            <img src="{{Cll.path}}" alt="{{Cll.manufacturer}} {{Cll.model}}" 
+                 onerror="this.src='assets/images/pr1.png';" class="vehicle-image">
+         </div>
+         <div class="vehicle-info">
+            <div class="vehicle-title">
+               {{Cll.manufacturer}} {{Cll.model}}
+               <div class="rating">
+                  <img src="assets/images/star-g.svg" class="star filled"
                      *ngFor="let item of [].constructor(Cll.selectedRating); let i = index">
-                  <img src="assets/images/star-w.svg"
+                  <img src="assets/images/star-w.svg" class="star empty"
                      *ngFor="let item of [].constructor(Cll.unSelectRating); let i = index">
-               </span>
+               </div>
             </div>
-            <p>Rs. {{Cll.exShowroomPrice}} *</p>
+            <p class="vehicle-price">₹{{Cll.exShowroomPrice | number:'1.0-0'}}*</p>
          </div>
       </div>
    </div>
-   <div class="viewAll" routerLink="/Bikes">
-      <div class="viewAll-container">
-         <div class="olay">View All</div>
-         <img src="assets/svg/arrow.svg" alt="">
-      </div>
+   <div class="view-all-container">
+      <a class="view-all-button" routerLink="/Bikes">
+         <span>View All</span>
+         <div class="icon-container">
+            <img src="assets/svg/arrow.svg" alt="View all" class="arrow-icon">
+         </div>
+      </a>
    </div>
 </div>
-<div class="recent-vehicles-container">
-   <div class="recent-vehicles-title">Recent Vehicles</div>
-   <div class="landingarea">
-      <div class="vehicleBox" *ngFor="let Cll of recenttwowheelerlist">
-         <img src="{{Cll.path}}" alt="" onerror="this.src='assets/images/pr1.png';" class="image"
-            (click)="onSelect(Cll.twId)">
-         <div class="infobox" (click)="onSelect(Cll.twId)">
-            <div class="vehicle-title">{{Cll.manufacturer}} {{Cll.model}}
-               <span>
-                  <img src="assets/images/star-g.svg"
-                     *ngFor="let item of [].constructor(Cll.selectedRating); let i = index">
-                  <img src="assets/images/star-w.svg"
-                     *ngFor="let item of [].constructor(Cll.unSelectRating); let i = index">
-               </span>
-            </div>
-            <p>Rs. {{Cll.exShowroomPrice}} *</p>
 
+<div class="recent-vehicles-container">
+   <div class="section-header">
+      <h2 class="section-title">Recent Vehicles</h2>
+   </div>
+   <div class="vehicles-grid">
+      <div class="vehicle-card" *ngFor="let Cll of recenttwowheelerlist" (click)="onSelect(Cll.twId)">
+         <div class="vehicle-image-container">
+            <img src="{{Cll.path}}" alt="{{Cll.manufacturer}} {{Cll.model}}" 
+                 onerror="this.src='assets/images/pr1.png';" class="vehicle-image">
+         </div>
+         <div class="vehicle-info">
+            <div class="vehicle-title">
+               {{Cll.manufacturer}} {{Cll.model}}
+               <div class="rating">
+                  <img src="assets/images/star-g.svg" class="star filled"
+                     *ngFor="let item of [].constructor(Cll.selectedRating); let i = index">
+                  <img src="assets/images/star-w.svg" class="star empty"
+                     *ngFor="let item of [].constructor(Cll.unSelectRating); let i = index">
+               </div>
+            </div>
+            <p class="vehicle-price">₹{{Cll.exShowroomPrice | number:'1.0-0'}}*</p>
          </div>
       </div>
-      <!-- <div class="vehicleBox viewAll" *ngFor="let Cll of recenttwowheelerlist | slice:-1">
-         <img src="{{Cll.path}}" alt="">
-         <a routerLink="/Bikes" class="olay">View All</a>
-      </div> -->
    </div>
-   <div class="viewAll" routerLink="/Bikes">
-      <div class="viewAll-container">
-         <div class="olay">View All</div>
-         <img src="assets/svg/arrow.svg" alt="" >
-      </div>
+   <div class="view-all-container">
+      <a class="view-all-button" routerLink="/Bikes">
+         <span>View All</span>
+         <div class="icon-container">
+            <img src="assets/svg/arrow.svg" alt="View all" class="arrow-icon">
+         </div>
+      </a>
    </div>
 </div>

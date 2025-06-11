@@ -1,0 +1,30 @@
+<div class="blog-container" *ngIf="blog">
+  <div *ngIf="blog">
+    <div class="blog-header">
+      <h1>{{ blog.title }}</h1>
+    </div>
+  
+    <ng-container *ngIf="blog.type === 'standard'">
+      <div class="blog-section" *ngFor="let section of blog.sections">
+        <h2 class="section-heading">{{ section.title }}</h2>
+        <img *ngIf="section.image" [src]="section.image" class="section-image" [alt]="section.title">
+  
+        <div class="blog-articles">
+          <article *ngFor="let sub of section.subsections" class="blog-article">
+            <h3 class="article-title">{{ sub.title }}</h3>
+            <p class="article-content">{{ sub.content }}</p>
+          </article>
+        </div>
+      </div>
+    </ng-container>
+  
+    <ng-container *ngIf="blog.type === 'new'">
+      <div class="new-blog-block" *ngFor="let block of blog.blocks">
+        <h2 class="block-title">{{ block.emoji }} {{ block.heading }}</h2>
+        <img *ngIf="block.image" [src]="block.image" class="block-image" [alt]="block.heading">
+        <div class="block-content" [innerHTML]="formatBlockContent(block.content)"></div>
+      </div>
+    </ng-container>
+  
+  </div>
+</div>

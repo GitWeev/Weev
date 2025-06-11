@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-blog-page',
@@ -57,23 +59,22 @@ export class BlogPageComponent {
   visibleBlogs = this.blogs.slice(0, 4); // Initially show the first 4 blogs.
 
   constructor(
-    private router: Router
+    private router: Router,
+    private meta: Meta, private titleService: Title
   ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('WEEV Blog | EV News, Comparisons, Buying Guides & More');
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Explore the WEEV Blog for the latest updates on electric vehicles in India. Read expert comparisons, reviews, EV news, battery tips, charging guides, and feature breakdowns.',
+    });
+    window.scrollTo(0, 0);
   }
 
-
   onSelect(blogId: number): void {
-    if(blogId===1){
-      this.router.navigate(['/Blog']);
-    }
-    else if(blogId===2){
-      this.router.navigate(['/Blog2']);
-    }
-    else if(blogId===3){
-      this.router.navigate(['/Blog3']);
-    }
+    this.router.navigate(['/blog', blogId]);
   }
 }
   

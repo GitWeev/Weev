@@ -1,14 +1,9 @@
 <section>
    <div class="headingarea ">
-      
-
       <h1 class="pagehead">{{title}}
       </h1>
-      
    </div>
-   
 </section>
-
 <div class="bikes-landingarea">   
    <div *ngIf="loading" class="loading">
       <div class="loader"></div>
@@ -19,7 +14,7 @@
             (click)="onSelect(Cll.twId)">
          <div class="infobox" (click)="onSelect(Cll.twId)">
             <h4>{{Cll.manufacturer}} {{Cll.model}}</h4>
-            <p>Rs. {{Cll.exShowroomPrice}}*</p>
+            <p>Rs. {{Cll.exShowroomPrice}}</p>
             <span>
                <img src="assets/images/star-g.svg"
                   *ngFor="let item of [].constructor(Cll.selectedRating); let i = index">

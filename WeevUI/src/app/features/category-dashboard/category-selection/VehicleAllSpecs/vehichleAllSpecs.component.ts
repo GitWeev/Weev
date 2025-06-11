@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 import { ProductListModel } from 'src/app/modules/auth/_models/product.model';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-vehicleallspecs',
@@ -22,7 +23,9 @@ export class VehicleAllSpecsComponent {
     private router: Router,
     private route: ActivatedRoute,
     private vehiclesService: VehiclesService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private meta: Meta,
+    private titleService: Title,
   ) {
     this.route.params.subscribe(
       (params) => (this.productName = params['twId'])
@@ -47,9 +50,30 @@ export class VehicleAllSpecsComponent {
       this.productID = twowheeler.twId;
       const transformedResponse = this.transformResponse(twowheeler);
       this.productListModel = transformedResponse;
-      console.log(this.productListModel);
+      this.updateSEOTags();
     });
   }
+
+  updateSEOTags() {
+    if (!this.productListModel) return;
+  
+    const manufacturer = this.productListModel.manufacturer ?? '';
+    const model = this.productListModel.model ?? '';
+    const variant = this.productListModel.variant ?? '';
+  
+    const battery = this.productListModel.batteryCapacity ?? '';
+    const range = this.productListModel.rangeOfVehicle ?? '';
+    const topSpeed = this.productListModel.topSpeed ?? '';
+    const charging = this.productListModel.chargingTime ?? '';
+  
+    const title = `${manufacturer} ${model} ${variant} | Full Specifications, Features, Battery, Speed & Range`;
+    const description = `Explore complete specifications and features of the ${manufacturer} ${model} ${variant}. Get detailed info on battery (${battery}), charging (${charging}), range (${range}), top speed (${topSpeed}), motor, brakes, suspension, and smart tech.`;
+  
+    this.titleService.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: description });
+  }
+  
+  
 
   startLoading() {
     this.loading = true;

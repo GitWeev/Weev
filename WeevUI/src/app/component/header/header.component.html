@@ -2,25 +2,27 @@
    <div class="nav">
       <div class="leftarea">
          <a routerLink="/home">
-            <img class="logo" src="assets/images/weev_logo9.svg" />
+            <img class="logo" src="assets/images/weev_logo9.svg" alt="Weev Logo" />
          </a>
       </div>
       <div class="rightarea">
          <div class="search-box">
-            <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="showSuggestions()"
-               (click)="search();"/>
-            <button (click)="search();">
+            <input type="text" placeholder="Search vehicles..." [(ngModel)]="searchTerm" 
+               (input)="showSuggestions()" (focus)="search()" (click)="search()"/>
+            <button (click)="search()">
                <img src="assets/images/search.svg" alt="Search" />
             </button>
-            <div *ngIf="suggestionsVisible" class="suggestions">
-               <!-- <div *ngIf="suggestionTitleVisible" class="suggestion-title">Top vehicles</div> -->
+            <div [ngClass]="{'suggestions': true, 'visible': suggestionsVisible}" class="suggestions">
+               <div *ngIf="suggestionTitleVisible" class="suggestion-title">Popular Searches</div>
                <div *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion.twId)"
                   class="suggestion-item">
                   <div class="trending-icon" *ngIf="specificTwIds.includes(suggestion.twId)">
-                     <img src="assets/svg/trending.svg" />
+                     <img src="assets/svg/trending.svg" alt="Trending" />
                   </div>
                   <div class="suggestion-text">
-                     {{ suggestion.manufacturer }} {{ suggestion.model }} {{ suggestion.variant }}
+                     {{ suggestion.manufacturer !== 'NA' ? suggestion.manufacturer : '' }} 
+                     {{ suggestion.model !== 'NA' ? suggestion.model : '' }} 
+                     {{ suggestion.variant !== 'NA' ? suggestion.variant : '' }}
                   </div>
                </div>
             </div>
@@ -28,22 +30,3 @@
       </div>
    </div>
 </div>
-
-
-
-<!-- <li>
-               <a class=" " href="index.html">
-                  <img src="assets/images/love.svg" />
-               </a>
-            </li>
-            <li>
-               <a class=" " href="index.html">
-                  <img src="assets/images/profile.svg" />
-               </a>
-            </li> -->
-<!-- <li *ngIf="!isLogin">
-               <button class="btorng"  type="button" (click)="onSubmit(isLogin)">LogOut</button>
-            </li>
-            <li *ngIf="isLogin">
-               <button class="btorng"  type="button" (click)="onSubmit(isLogin)">LogIn</button>
-            </li> -->

@@ -1,0 +1,68 @@
+.CompareBanner {
+  width: 100%;
+  img {
+    height: 450px;
+    width: 100vw;
+  }
+}
+
+.compare {
+  margin-left: 16%;
+  margin-right: 16%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.compareCardsContainer {
+  margin-top: 20px;
+  display: flex;
+
+  &.desktop {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &.mobile {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+  }
+}
+
+.message-bar {
+  color: red;
+  text-align: left;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.compare-button {
+  margin-top: 20px;
+  background: #6a0dad;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  width: 195px;
+  height: 41px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .CompareBanner {
+    img {
+      height: 140px;
+    }
+  }
+  .compare {
+    margin: 0;
+  }
+  .compare-button {
+    margin-left: 10px;
+  }
+}

@@ -1,5 +1,5 @@
 import { AuthService } from 'src/app/modules/auth/_services/auth.service';
-import { Component, OnInit, HostListener, Renderer2 } from '@angular/core';
+import { Component, OnInit, HostListener, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 
@@ -11,18 +11,22 @@ import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 export class MobileHeaderComponent implements OnInit {
   token: any;
   isLogin: boolean = false;
-
-  suggestionsVisible: boolean = false; // Initially hidden
+  isSearchBoxActive: boolean = false;
+  suggestionsVisible: boolean = false;
   suggestions: Array<any> = new Array<any>();
-  filteredSuggestions: Array<any> = []; // To hold filtered suggestions
-  searchTerm: string = ''; // To hold the current input value
-  suggestionTitleVisible: boolean = true; // Flag to control suggestion title visibility
+  filteredSuggestions: Array<any> = [];
+  searchTerm: string = '';
+  suggestionTitleVisible: boolean = true;
+  
+  // Featured/trending vehicle IDs
+  specificTwIds: Array<any> = [34, 3, 8, 5, 21];
 
   constructor(
     private authService: AuthService,
     private router: Router,
     public vehiclesService: VehiclesService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -36,15 +40,14 @@ export class MobileHeaderComponent implements OnInit {
 
     if (searchBox && !searchBox.contains(target)) {
       this.suggestionsVisible = false;
-      this.resetLayout(); // Hide suggestions when clicking outside
+      this.resetLayout();
     }
   }
 
-   specificTwIds: Array<any> = [34,3,8,5,21]; 
-
-   showSuggestions() {
+  // Shows filtered suggestions based on search input
+  showSuggestions() {
     if (this.searchTerm) {
-      const searchWords = this.searchTerm.toLowerCase().split(/\s+/); // Split input into words
+      const searchWords = this.searchTerm.toLowerCase().split(/\s+/);
   
       this.filteredSuggestions = this.suggestions.filter(suggestion => 
         searchWords.every(word => 
@@ -56,6 +59,7 @@ export class MobileHeaderComponent implements OnInit {
   
       this.suggestionsVisible = this.filteredSuggestions.length > 0;
     } else {
+      // Show trending/featured vehicles when search is empty
       this.filteredSuggestions = this.suggestions.filter(suggestion =>
         this.specificTwIds.includes(suggestion.twId)
       );
@@ -76,41 +80,40 @@ export class MobileHeaderComponent implements OnInit {
 
   search() {
     this.showSuggestions();
-
   }
 
+  // Fetch vehicle data from service
   getTwoWheelerData() {
     this.vehiclesService.getTwoWheelerData().subscribe((response) => {
       this.suggestions = response.map((item: any) => item);
-      // console.log(this.suggestions);
     });
   }
 
+  // Handle suggestion selection
   selectSuggestion(twId: any) {
     this.onSelect(twId);
     this.searchTerm = ''; 
-    this.hideSuggestions(); 
+    this.hideSuggestions();
+    this.resetLayout();
+    this.isSearchBoxActive = false;
   }
 
+  // Navigate to selected vehicle page
   onSelect(twId: any) {
     const twowheeler = this.suggestions.find(i => i.twId === twId);
     this.router.navigate(['/Selection', twowheeler.manufacturer+'_'+twowheeler.model+'_'+twowheeler.variant]);
   }
 
-  isSearchBoxActive: boolean = false;
-
+  // Reset to default layout
   resetLayout() {
-    this.renderer.setStyle(document.querySelector('.leftarea'), 'width', '15%');
-    this.renderer.setStyle(document.querySelector('.leftarea'), 'display', 'flex');
-    this.renderer.setStyle(document.querySelector('.rightarea'), 'width', '40%');
-    this.renderer.setStyle(document.querySelector('.search-box'), 'width', '100%');
+    setTimeout(() => {
+      this.isSearchBoxActive = false;
+    }, 100);
   }
 
+  // Expand search box when clicked
   onSearchBoxClick() {
     this.search();
-    this.isSearchBoxActive = true; // Set to true when search box is clicked
-    this.renderer.setStyle(document.querySelector('.leftarea'), 'display', 'none');
-    this.renderer.setStyle(document.querySelector('.rightarea'), 'width', '100%');
-    this.renderer.setStyle(document.querySelector('.search-box'), 'width', '100%');
+    this.isSearchBoxActive = true;
   }
 }

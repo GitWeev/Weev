@@ -1,55 +1,86 @@
-<div class="blogssec">
-    <div class="blogssec-title">
-        Blogs
+<div class="blog-section">
+  <div class="container">
+    <h2 class="section-title">Latest Articles</h2>
+    
+    <!-- Carousel Container -->
+    <div class="carousel-container" 
+         (mouseenter)="onMouseEnter()" 
+         (mouseleave)="onMouseLeave()"
+         (touchstart)="onTouchStart($event)"
+         (touchmove)="onTouchMove($event)"
+         (touchend)="onTouchEnd($event)"
+         (pan)="onPan($event)"
+         (panend)="onPanEnd($event)">
+      
+      <!-- Navigation Arrows -->
+      <button class="nav-arrow nav-arrow-prev" 
+              (click)="prevSlide()" 
+              [class.disabled]="currentSlide === 0"
+              [class.hidden-mobile]="true"
+              aria-label="Previous slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"></path>
+        </svg>
+      </button>
+      
+      <button class="nav-arrow nav-arrow-next" 
+              (click)="nextSlide()" 
+              [class.disabled]="currentSlide >= getMaxSlides()"
+              [class.hidden-mobile]="true"
+              aria-label="Next slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+      </button>
+            
+      <!-- Carousel Track -->
+      <div class="carousel-track" 
+           [style.transform]="'translateX(' + (-(currentSlide * (100 / cardsPerView))) + '%)'">
+        <div class="blog-card" 
+             *ngFor="let blog of blogs; trackBy: trackByBlogId" 
+             (click)="openBlog(blog.id)"
+             [style.flex]="'0 0 ' + (100 / cardsPerView) + '%'">
+          <div class="card-image-container">
+            <img [src]="blog.image" [alt]="blog.title" class="card-image">
+            <div class="card-date">
+              <span class="date-day">{{ blog.date.split(' ')[0] }}</span>
+              <span class="date-month">{{ blog.date.split(' ')[1] }}</span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span class="card-author">By {{ blog.author }}</span>
+              <span class="card-category">{{ blog.category }}</span>
+            </div>
+            <h3 class="card-title">{{ blog.title }}</h3>
+            <p class="card-excerpt">{{ blog.excerpt }}</p>
+            <a class="read-more-link">
+              Continue Reading
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pagination Dots -->
+      <div class="carousel-pagination">
+        <button *ngFor="let dot of [].constructor(getMaxSlides() + 1); let i = index" 
+                class="pagination-dot" 
+                [class.active]="i === currentSlide"
+                (click)="currentSlide = i"
+                [attr.aria-label]="'Go to slide ' + (i + 1)">
+        </button>
+      </div>
     </div>
-    <div class="blogcards">
-       
-        <div class="blog-card" (click)="blog()">
-            <img src="assets/images/blogs/1.jpg" alt="Blog Image" class="blog-image" />
-            <div class="blog-content">
-                <div class="blog-title">Definition and Overview of EVs</div>
-                <div class="blog-author">By Kunal</div>
-                <div class="blog-date">24TH JUN 2024</div>
-                <div class="blog-excerpt">Electric vehicles, commonly referred to as EVs, are automobiles powered by electric motors 
-                    instead of traditional internal combustion engines....
-                    <a href="/Blog" class="read-more">Read more</a>
-                </div>
-
-                <!-- <div class="blog-tags">
-                    <span class="tag">Tag 1</span>
-                    <span class="tag">Tag 2</span>
-                </div> -->
-            </div>
-        </div>
-        <div class="blog-card" (click)="blog2()">
-            <img src="assets/images/blogs/2.jpg" alt="Blog Image" class="blog-image" />
-            <div class="blog-content">
-                <div class="blog-title">A Beginner's Guide to Owning an Electric Vehicle: What You Need to Know</div>
-                <div class="blog-author">By Author Name</div>
-                <div class="blog-date">03TH JAN 2024</div>
-                <div class="blog-excerpt">The electric vehicle revolution has been gaining momentum in recent years, with more and more people opting for these environmentally friendly....
-                    <a href="/Blog2" class="read-more">Read more</a>
-                </div>
-                <!-- <div class="blog-tags">
-                    <span class="tag">Tag 1</span>
-                    <span class="tag">Tag 2</span>
-                </div> -->
-            </div>
-        </div>
-        <div class="blog-card" (click)="blog3()">
-            <img src="assets/images/blogs/3.jpg" alt="Blog Image" class="blog-image" />
-            <div class="blog-content">
-                <div class="blog-title">Debunking Myths About Electric Vehicles: Separating Fact from Fiction</div>
-                <div class="blog-author">By Author Name</div>
-                <div class="blog-date">13TH OCT 2024</div>
-                <div class="blog-excerpt">Electric vehicles (EVs) are gaining popularity worldwide as a sustainable and efficient transportation option....
-                    <a href="/Blog3" class="read-more">Read more</a>
-                </div>
-                <!-- <div class="blog-tags">
-                    <span class="tag">Tag 1</span>
-                    <span class="tag">Tag 2</span>
-                </div> -->
-            </div>
-        </div>
+    
+    <!-- Carousel Indicators (Optional - Shows current position) -->
+    <div class="carousel-info">
+      <span class="slide-counter">
+        {{ currentSlide + 1 }} / {{ getMaxSlides() + 1 }}
+      </span>
     </div>
+  </div>
 </div>

@@ -17,6 +17,8 @@ import { takeWhile } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { HttpClient } from '@angular/common/http';
+import { Meta,Title  } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-category-selection',
@@ -79,7 +81,9 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     private readonly dialogService: DialogService,
     private http: HttpClient,
     private cd: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private meta: Meta,
+    private titleService: Title,
   ) {}
 
   ngOnInit(): void {
@@ -105,6 +109,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       if (this.productID != 0 || this.productID != undefined) {
         this.productlist = twowheeler;
         this.productListModel = this.transformResponse(this.productlist);
+        this.updateMetaDescription();
         this.fetchData();
         this.selectedRating = this.productListModel?.ourRating ?? 0;
         this.unSelectRating = this.countRating - this.selectedRating;
@@ -113,10 +118,12 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
         this.getAllTabNameWithID(+this.productID);
         // this.getTwoWheelerData();
         // this.getforVarientsData();
-
         this.variantsList = this.twowheelerlist
           .filter((item) => item.model === this.productListModel?.model)
           .map((item) => item.twId);
+
+        // Empty varientList before fetching new variant data
+        this.varientList = [];
 
         // Fetch variant data once variantsList is populated
         if (this.variantsList.length > 0) {
@@ -145,8 +152,23 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     } catch (err) {}
   }
 
-  //
+  updateMetaDescription() {
+    const manufacturer = this.productListModel?.manufacturer || '';
+    const model = this.productListModel?.model || '';
+    const batteryCapacity = this.productListModel?.batteryCapacity || '';
+    const chargingTime = this.productListModel?.chargingTime || '';
+    const range = this.productListModel?.rangeOfVehicle || '';
+    const maxSpeed = this.productListModel?.maxSpeed || '';
+    const variant = this.productListModel?.variant ?? '';
+  
+    const description = `${manufacturer} ${model} has a battery capacity of ${batteryCapacity} and charges in ${chargingTime}. It offers a maximum range of ${range} and a max speed of ${maxSpeed}.`;
 
+    // const description = `${manufacturer} ${model} ${variant} – Explore price, range, charging time, top speed, specifications, features, and images. Compare electric vehicle variants and book online.`;
+  
+    this.meta.updateTag({ name: 'description', content: description });
+    this.titleService.setTitle(`WEEV | ${manufacturer} ${model} ${variant} - Price, Charging Time, Range, Speed, Specs & Images`);
+  }
+   
   // getProductDataWithID(productID: any) {
   //   this.vehiclesService
   //     .getProductDataWithID(productID)

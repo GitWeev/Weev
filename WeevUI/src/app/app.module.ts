@@ -17,13 +17,12 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { MobileHeaderComponent } from './component/mobile-header/mobileHeader.component';
 import { BlogsComponent } from './features/vehicles-dashboard/blogs/blogs.component';
 import { ElectricVehicleBlogComponent } from './features/electric-vehicle-blog/electric-vehicle-blog.component';
-import { ElectricVehicleBlogComponent2 } from './features/vehicles-dashboard/blogs/electric-vehicle-blog-2/electric-vehicle-blog-2.component';
-import { ElectricVehicleBlogComponent3 } from './features/vehicles-dashboard/blogs/electric-vehicle-blog-3/electric-vehicle-blog-3.component';
 import { PrivacyPolicyComponent } from './features/vehicles-dashboard/privacy-policy/privacy-policy.component';
 import { BlogPageComponent } from './features/vehicles-dashboard/blog-page/blog-page.component';
 
-
 import { GoogleAnalyticsService } from './modules/_services/google-analytics.service';
+import { BlogDetailComponent } from './features/vehicles-dashboard/blogs/blog-details-component/blog-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -36,9 +35,8 @@ import { GoogleAnalyticsService } from './modules/_services/google-analytics.ser
     SearchPipePipe,
     MobileHeaderComponent,
     ElectricVehicleBlogComponent,
-    ElectricVehicleBlogComponent2,
-    ElectricVehicleBlogComponent3,
     BlogPageComponent,
+    BlogDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,16 +44,16 @@ import { GoogleAnalyticsService } from './modules/_services/google-analytics.ser
     HttpClientModule,
     VehiclesDashboardModule,
     CategoryDashboardModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
   ],
   providers: [
-    BsModalService, 
+    BsModalService,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
-    GoogleAnalyticsService
+    GoogleAnalyticsService,
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

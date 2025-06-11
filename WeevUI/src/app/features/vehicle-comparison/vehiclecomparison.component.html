@@ -1,0 +1,25 @@
+<div class="vehicleCompareContainer">
+  <div class="CompareBanner">
+    <img src="assets/images/comparebanner.png" alt="Compare Banner">
+  </div>
+  <div class="compare">
+    <div class="compareCardsContainer" [ngClass]="{'desktop': isDesktop, 'mobile': !isDesktop}">
+      <ng-container *ngFor="let card of cards; let i = index">
+        <CompareSelectedCard
+          *ngIf="card.title"
+          [cardData]="card"
+          (cardRemoved)="onCardRemoved($event, i)"
+        ></CompareSelectedCard>
+        <CompareEmptyCard
+          *ngIf="!card.title"
+          (vehicleSelected)="onVehicleSelected($event, i)"
+        ></CompareEmptyCard>
+      </ng-container>
+    </div>
+    <div *ngIf="showMessage" class="message-bar">
+      Please select at least two vehicles to compare.
+    </div>
+    <div class="compare-button" (click)="compareVehicles()">Compare Models</div>
+  </div>
+  <app-CompareSuggestions></app-CompareSuggestions>
+</div>

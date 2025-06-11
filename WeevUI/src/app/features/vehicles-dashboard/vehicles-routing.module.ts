@@ -5,16 +5,13 @@ import { BikesDetailsComponent } from '../category-dashboard/bikes-details/bikes
 import { CategorySelectionComponent } from '../category-dashboard/category-selection/category-selection.component';
 import { VehicleColorPageComponent } from '../category-dashboard/category-selection/VehicleColorPage/vehiclecolorpage.component';
 import { VehicleAllSpecsComponent } from '../category-dashboard/category-selection/VehicleAllSpecs/vehichleAllSpecs.component';
-import { ElectricVehicleBlogComponent } from './blogs/electric-vehicle-blog/electric-vehicle-blog.component';
-import { ElectricVehicleBlogComponent2 } from './blogs/electric-vehicle-blog-2/electric-vehicle-blog-2.component';
-import { ElectricVehicleBlogComponent3 } from './blogs/electric-vehicle-blog-3/electric-vehicle-blog-3.component';
 import { AboutComponent } from './about/about.component';
 // import { LoginComponent } from './login/login.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
-// import {VehicleComparisonComponent} from 'src/app/features/vehicle-comparison/vehiclecomparison.component';
-// import {CompareMainComponent} from 'src/app/features/vehicle-comparison/CompareMainPage/CompareMainPage.component';
-
+import {VehicleComparisonComponent} from 'src/app/features/vehicle-comparison/vehiclecomparison.component';
+import {CompareMainComponent} from 'src/app/features/vehicle-comparison/CompareMainPage/CompareMainPage.component';
+import { BlogDetailComponent } from 'src/app/features/vehicles-dashboard/blogs/blog-details-component/blog-detail.component';
 
 const routes: Routes = [
   {
@@ -48,20 +45,8 @@ const routes: Routes = [
     component: VehicleAllSpecsComponent,
   },
   {
-    path: 'Blog',
-    component: ElectricVehicleBlogComponent,
-  },
-  {
-    path: 'Blog2',
-    component: ElectricVehicleBlogComponent2,
-  },
-  {
-    path: 'Blog3',
-    component: ElectricVehicleBlogComponent3,
-  },
-  { 
-    path: 'Bikes/Brand/:Brand', 
-    component: BikesDetailsComponent 
+    path: 'Bikes/Brand/:Brand',
+    component: BikesDetailsComponent,
   },
   {
     path: 'Bikes/Type/:type',
@@ -72,12 +57,24 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
-    path:'PrivacyPolicy',
-    component:PrivacyPolicyComponent
+    path: 'PrivacyPolicy',
+    component: PrivacyPolicyComponent,
   },
   {
-    path:'BlogPageComponent',
-    component:BlogPageComponent
+    path: 'BlogPageComponent',
+    component: BlogPageComponent,
+  },
+  {
+    path: 'Compare',
+    component: VehicleComparisonComponent,
+  },
+  {
+    path: 'Compare/:twId1/:twId2/:twId3/:twId4',
+    component: CompareMainComponent,
+  },
+  { 
+    path: 'blog/:id', 
+    component: BlogDetailComponent,
   },
   // {
   //   path:'Compare',
@@ -99,4 +96,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class VehiclesRoutingModule {}
-

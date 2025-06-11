@@ -173,11 +173,8 @@ WHERE
     OR Height = 0 
     OR SaddleHeight = 0 
     OR GroundClearance = 0;
-<<<<<<< Updated upstream
-=======
 
 use weev;
->>>>>>> Stashed changes
 ALTER TABLE `twowheelerdata`
 MODIFY COLUMN `ChargingTime0To80Perc` VARCHAR(30);
 ALTER TABLE `twowheelerdata`
@@ -188,13 +185,10 @@ WHERE ChargingTime0To80Perc=0;
 UPDATE `twowheelerdata`
 SET ChargingTime0To100Perc='NA'
 WHERE ChargingTime0To100Perc=0;
-<<<<<<< Updated upstream
-=======
 
 
 
 
->>>>>>> Stashed changes
 ALTER TABLE `twowheelerdata`
 MODIFY COLUMN `FastChargingTimeUpto80Perc` VARCHAR(30);
 UPDATE `twowheelerdata`

@@ -1,26 +1,28 @@
-<div class="header">
+<div class="header" [ngClass]="{'search-active': isSearchBoxActive}">
    <div class="nav">
       <div class="leftarea">
          <a routerLink="/home">
-            <img class="logo" src="assets/images/weev_logo9.svg" />
+            <img class="logo" src="assets/images/weev_logo9.svg" alt="Weev Logo" />
          </a>
       </div>
       <div class="rightarea">
          <div class="search-box">
-            <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="showSuggestions()"
-               (click)="onSearchBoxClick();" />
-            <button (click)="search();" (click)="onSearchBoxClick();">
+            <input type="text" placeholder="Search vehicles..." [(ngModel)]="searchTerm" (input)="showSuggestions()"
+               (focus)="onSearchBoxClick()" (click)="onSearchBoxClick()" />
+            <button (click)="search()" (focus)="onSearchBoxClick()" (click)="onSearchBoxClick()">
                <img src="assets/images/search.svg" alt="Search" />
             </button>
             <div *ngIf="suggestionsVisible" class="suggestions">
-               <!-- <div *ngIf="suggestionTitleVisible" class="suggestion-title">Top vehicles</div> -->
+               <div *ngIf="suggestionTitleVisible" class="suggestion-title">Popular Searches</div>
                <div *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion.twId)"
                   class="suggestion-item">
                   <div class="trending-icon" *ngIf="specificTwIds.includes(suggestion.twId)">
-                     <img src="assets/svg/trending.svg" />
+                     <img src="assets/svg/trending.svg" alt="Trending" />
                   </div>
                   <div class="suggestion-text">
-                     {{ suggestion.manufacturer }} {{ suggestion.model }} {{ suggestion.variant }}
+                     {{ suggestion.manufacturer !== 'NA' ? suggestion.manufacturer : '' }}
+                     {{ suggestion.model !== 'NA' ? suggestion.model : '' }}
+                     {{ suggestion.variant !== 'NA' ? suggestion.variant : '' }}
                   </div>
                </div>
             </div>

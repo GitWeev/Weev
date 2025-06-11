@@ -1,0 +1,402 @@
+.blog-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.7;
+  color: #333;
+}
+
+.blog-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h1 {
+    color: #6305A8;
+    font-size: 2.5rem;
+    font-weight: 700;
+    border-bottom: 2px solid #6305A8;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+}
+
+// STANDARD BLOG FORMAT STYLES
+.blog-section {
+  margin-bottom: 50px;
+
+  .section-heading {
+    color: #6305A8;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    border-left: 5px solid #6305A8;
+    padding-left: 15px;
+  }
+
+  .section-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.blog-article {
+  margin-bottom: 25px;
+
+  .article-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      background-color: #6305A8;
+      bottom: -5px;
+      left: 0;
+    }
+  }
+
+  .article-content {
+    font-size: 1rem;
+    color: #444;
+    text-align: justify;
+  }
+}
+
+// NEW BLOG FORMAT STYLES
+.new-blog-block {
+  margin-bottom: 50px;
+
+  .block-title {
+    color: #6305A8;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-left: 5px solid #6305A8;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .block-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .block-content {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.7;
+    text-align: justify;
+    
+    // Style for numbered subheadings
+    ::ng-deep h4.subheading {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #6305A8;
+      margin: 20px 0 10px 0;
+      padding-left: 0;
+      text-align: left;
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 2px;
+        background-color: #6305A8;
+        bottom: -3px;
+        left: 0;
+      }
+    }
+    
+    // Style for bold text (converted from markdown)
+    ::ng-deep strong {
+      color: #6305A8;
+      font-weight: 600;
+    }
+    
+    // Style for bullet points (converted from markdown)
+    ::ng-deep ul {
+      margin: 15px 0;
+      padding-left: 20px;
+      
+      li {
+        margin-bottom: 8px;
+        color: #444;
+        
+        &::marker {
+          color: #6305A8;
+        }
+      }
+    }
+    
+    // Style for paragraphs
+    ::ng-deep p {
+      margin-bottom: 12px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    // Style for inline emojis in content
+    ::ng-deep span.emoji {
+      font-size: 1.1em;
+      margin-right: 5px;
+    }
+  }
+}
+
+// MODERN COMPARISON TABLE STYLES
+::ng-deep .comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(99, 5, 168, 0.08);
+  background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+  position: relative;
+
+  // Modern glass effect border
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, #6305A8, #8B5FBF, #6305A8);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+
+  thead {
+    background: linear-gradient(135deg, #6305A8 0%, #8B5FBF 100%);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    }
+
+    th {
+      padding: 14px 32px;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      position: relative;
+      min-width: 120px;
+      
+      &:first-child {
+        text-align: left;
+        min-width: 140px;
+        padding-right: 40px;
+      }
+
+      // Subtle column separators
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 25%;
+        bottom: 25%;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+
+      &:nth-child(even) {
+        background: linear-gradient(135deg, #fafbff 0%, #f8f9ff 100%);
+      }
+
+      &:nth-child(odd) {
+        background: #ffffff;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, #f0f4ff 0%, #e8f2ff 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(99, 5, 168, 0.1);
+        
+        td {
+          color: #2c3e50;
+        }
+      }
+
+      // Subtle row separators
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 8%;
+        right: 8%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(99, 5, 168, 0.08), transparent);
+      }
+
+      td {
+        padding: 12px 32px;
+        text-align: center;
+        color: #4a5568;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+        
+        &:first-child {
+          text-align: left;
+          font-weight: 600;
+          color: #2d3748;
+          padding-right: 40px;
+        }
+
+        // Price formatting
+        &:nth-child(2) {
+          font-weight: 700;
+          color: #6305A8;
+        }
+
+        // Performance metrics styling
+        &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+          font-family: 'Segoe UI', system-ui, sans-serif;
+          font-variant-numeric: tabular-nums;
+        }
+      }
+    }
+  }
+}
+
+// RESPONSIVE DESIGN
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 15px;
+  }
+
+  .blog-header h1 {
+    font-size: 2rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .article-title {
+    font-size: 1.1rem;
+  }
+
+  .new-blog-block {
+    margin-bottom: 40px;
+    
+    .block-title {
+      font-size: 1.5rem;
+    }
+    
+    .block-content {
+      font-size: 1rem;
+    }
+  }
+
+  // Creative Mobile View - Card Layout
+  ::ng-deep .comparison-table {
+    display: block;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 1rem 0;
+    overflow-x: auto;
+
+    &::before {
+      display: none;
+    }
+
+    tbody {
+      tr {
+        background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+        border-radius: 20px;
+        margin-bottom: 20px;
+        padding: 24px;
+        box-shadow: 0 8px 32px rgba(99, 5, 168, 0.08);
+        border: 1px solid rgba(99, 5, 168, 0.1);
+        transform: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &::after {
+          display: none;
+        }
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 40px rgba(99, 5, 168, 0.15);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .new-blog-block {
+    margin-bottom: 30px;
+    
+    .block-title {
+      font-size: 1.3rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  }
+
+  // Extra small mobile screens
+  ::ng-deep .comparison-table tbody tr {
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+  }
+}

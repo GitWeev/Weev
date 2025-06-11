@@ -1,0 +1,254 @@
+.vehicle-card {
+  width: 250px;
+  height: 300px;
+  background: white;
+  border-radius: 15px;
+  padding: 0;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(151, 71, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: visible;
+}
+
+.vehicle-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(245, 230, 255, 0.3));
+  overflow: visible;
+}
+
+.vehicle-icon {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 30px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='rgba(251, 243, 255, 1)' rx='100' ry='100' stroke='rgba(216, 137, 255, 1)' stroke-width='3' stroke-dasharray='10%2c 15' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  transition: all 0.3s ease-in-out;
+}
+
+.vehicle-icon img {
+  width: 60px;
+  height: 60px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.8;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.vehicle-icon::after {
+  content: "+";
+  position: absolute;
+  top: 5%;
+  right: 0%;
+  background: #9813eb;
+  color: white;
+  font-size: 22px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(151, 71, 255, 0.4);
+  line-height: 0;
+  padding-bottom: 2px; 
+}
+
+.comparesearchbox {
+  position: relative;
+  width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  border: none;
+  height: 40px;
+  padding: 0 5px 0 15px;
+  background: #f5e6ff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0 0 0 1px rgba(151, 71, 255, 0.2);
+  overflow: visible;
+  position: relative;
+}
+
+.comparesearchbox:focus-within {
+  box-shadow: 0 0 0 2px rgba(151, 71, 255, 0.3);
+}
+
+.comparesearchbox input {
+  width: 100%;
+  border: none;
+  height: 100%;
+  background: none;
+  color: #49007e;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.comparesearchbox input::placeholder {
+  color: #b28fca;
+  opacity: 0.7;
+}
+
+.comparesearchbox input:focus {
+  background: none;
+  outline: none;
+}
+
+.comparesearchbox button {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.comparesearchbox button:hover {
+  background: rgba(151, 71, 255, 0.1);
+}
+
+.comparesearchbox img {
+  height: 16px;
+  width: 16px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.7;
+}
+
+.comparesearchbox .suggestion-title {
+  padding: 10px 5px 10px 20px;
+  font-size: 12px;
+  color: #7a7a7a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.comparesearchbox .suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: none;
+  border-radius: 0 0 12px 12px;
+  z-index: 10;
+  max-height: 330px;
+  overflow-y: auto;
+  box-shadow: 0 15px 25px rgba(151, 71, 255, 0.15);
+  margin-top: 5px;
+  transition: all 0.3s ease-in-out;
+  height: auto;
+  min-height: 40px;
+}
+
+.comparesearchbox .suggestion-item {
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(151, 71, 255, 0.1);
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.comparesearchbox .suggestion-item .suggestion-text {
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.comparesearchbox .suggestion-item:hover {
+  background-color: #f9f0ff;
+}
+
+.comparesearchbox .suggestion-item:hover .suggestion-text {
+  color: #9813eb;
+}
+
+.comparesearchbox .suggestion-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 12px 12px;
+}
+
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #f5e6ff;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #f0deff;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(151, 71, 255, 0.4);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(151, 71, 255, 0.6);
+}
+
+@media only screen and (max-width: 768px) {
+  .vehicle-card {
+    width: 190px;
+    height: 263px;
+  }
+  
+  .vehicle-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
+
+  .vehicle-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vehicle-icon::after {
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+  }
+
+  .comparesearchbox {
+    width: 150px;
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .comparesearchbox img {
+    height: 14px;
+    width: 14px;
+  }
+
+  .comparesearchbox .suggestion-item {
+    padding: 10px;
+    font-size: 12px;
+  }
+}

@@ -14,19 +14,13 @@ import { AuthInterceptor } from 'src/app/modules/auth/_services/auth-interceptor
 import { AuthService } from 'src/app/modules/auth/_services/auth.service';
 import { AuthGuardService } from 'src/app/modules/auth/_services/auth-guard.service';
 import { BrandsComponent } from './brands/brands.component';
-import { ElectricVehicleBlogComponent } from './blogs/electric-vehicle-blog/electric-vehicle-blog.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { BikesDetailsComponent } from '../category-dashboard/bikes-details/bikes-details.component';
-// import {CompareSuggestionsComponent} from 'src/app/features/vehicle-comparison/CompareSuggestions/CompareSuggestions.component'
-// import {VehicleComparisonComponent} from 'src/app/features/vehicle-comparison/vehiclecomparison.component'
-// import {CompareMainComponent} from 'src/app/features/vehicle-comparison/CompareMainPage/CompareMainPage.component'
-// import {CompareEmptyCard} from 'src/app/features/vehicle-comparison/CompareEmptyCard/CompareEmptyCard.component'
-// import {CompareSelectedCard} from 'src/app/features/vehicle-comparison/CompareSelectedCard/CompareSelectedCard.component'
-// import { VehicleColorPageComponent } from '../category-dashboard/category-selection/VehicleColorPage/VehicleColorPage.component'; // Add this line
-
-
-
-
+import {CompareSuggestionsComponent} from 'src/app/features/vehicle-comparison/CompareSuggestions/CompareSuggestions.component'
+import {VehicleComparisonComponent} from 'src/app/features/vehicle-comparison/vehiclecomparison.component'
+import {CompareMainComponent} from 'src/app/features/vehicle-comparison/CompareMainPage/CompareMainPage.component'
+import {CompareEmptyCard} from 'src/app/features/vehicle-comparison/CompareEmptyCard/CompareEmptyCard.component'
+import {CompareSelectedCard} from 'src/app/features/vehicle-comparison/CompareSelectedCard/CompareSelectedCard.component'
 
 @NgModule({
   declarations: [
@@ -38,13 +32,14 @@ import { BikesDetailsComponent } from '../category-dashboard/bikes-details/bikes
     BlogsComponent,
     LoginComponent,
     BrandsComponent,
-    ElectricVehicleBlogComponent,
     PrivacyPolicyComponent,
-    // CompareSuggestionsComponent,
-    // VehicleComparisonComponent,
-    // CompareMainComponent,
-    // CompareEmptyCard,
-    // CompareSelectedCard
+    
+    CompareSuggestionsComponent,
+    
+    VehicleComparisonComponent,
+    CompareMainComponent,
+    CompareEmptyCard,
+    CompareSelectedCard
   ],
   imports: [
     CommonModule,FormsModule, ReactiveFormsModule,

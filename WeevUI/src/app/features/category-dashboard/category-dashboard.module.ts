@@ -9,6 +9,10 @@ import { VehicleColorPageComponent } from './category-selection/VehicleColorPage
 import { VehicleAllSpecsComponent } from './category-selection/VehicleAllSpecs/vehichleAllSpecs.component';
 import { CategorynavbarComponent } from './category-selection/categorynavbar/categorynavbar.component';
 
+import {CategoryCompareSuggestions} from './category-selection/CategoryCompareSuggestions/CategoryCompareSuggestions.component'
+import {CompareEmptyCard} from './category-selection/CategoryCompareSuggestions/CompareEmptyCard/CompareEmptyCard.component'
+import {CompareSelectedCard} from './category-selection/CategoryCompareSuggestions/CompareSelectedCard/CompareSelectedCard.component'
+
 
 @NgModule({
   declarations: [
@@ -17,7 +21,10 @@ import { CategorynavbarComponent } from './category-selection/categorynavbar/cat
     CategorySelectionComponent,
     VehicleColorPageComponent,
     VehicleAllSpecsComponent,
-    CategorynavbarComponent
+    CategorynavbarComponent,
+    CategoryCompareSuggestions,
+    CompareEmptyCard,
+    CompareSelectedCard
   ],
   imports: [
     CommonModule,
