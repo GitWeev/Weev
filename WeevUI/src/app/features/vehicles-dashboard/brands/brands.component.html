@@ -1,11 +1,14 @@
 <div class="brands-container">
   <div class="brands-header">
-    <div>Brands</div>
+    <h2 class="brands-title">Our Brands</h2>
+    <div class="brands-subtitle">Discover premium quality across our trusted partners</div>
   </div>
   <div class="brands-content">
     <div class="brands-list">
       <div class="brand-item" *ngFor="let brand of brands" (click)="navigateToBrand(brand.name)">
-        <img [src]="brand.image" alt="Brand 1">
+        <div class="brand-image-container">
+          <img [src]="brand.image" [alt]="brand.name + ' logo'">
+        </div>
         <div class="brand-name">{{brand.name}}</div>
       </div>    
     </div>

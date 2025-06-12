@@ -25,7 +25,7 @@ export class BikesDetailsComponent implements OnInit {
   loading: boolean = false;
   activeFilter: string = 'all'; // Track active filter
 
-  itemsToShow: number = 20; // Number of items to show initially
+  itemsToShow: number = 50; // Number of items to show initially
   private loadingMore: boolean = false;
 
   constructor(
@@ -50,7 +50,7 @@ export class BikesDetailsComponent implements OnInit {
     this.cd.detectChanges();
 
     window.scrollTo(0, 0);
-    this.loadMoreItems();
+    // this.loadMoreItems();
   }
 
   loadMoreItems() {
@@ -132,16 +132,15 @@ export class BikesDetailsComponent implements OnInit {
       this.filteredtwowheelerlist = [];
       if (type === 'all') {
         for (var i = 0; i < this.allTwoWheelerList.length; i++) {
-          if (this.allTwoWheelerList[i].variantType === 'Top') {
+          if (this.allTwoWheelerList[i].variantType?.toLowerCase() === 'top') {
             this.filteredtwowheelerlist.push(this.allTwoWheelerList[i]);
           }
         }
-        console.log(this.filteredtwowheelerlist.length);
       } else if (type === 'bike') {
         for (var i = 0; i < this.allTwoWheelerList.length; i++) {
           if (
-            this.allTwoWheelerList[i].variantType === 'Top' &&
-            this.allTwoWheelerList[i].vehicleType === 'Bike'
+            this.allTwoWheelerList[i].variantType?.toLowerCase() === 'top' &&
+            this.allTwoWheelerList[i].vehicleType?.toLowerCase() === 'bike'
           ) {
             this.filteredtwowheelerlist.push(this.allTwoWheelerList[i]);
           }
@@ -149,20 +148,21 @@ export class BikesDetailsComponent implements OnInit {
       } else if (type === 'scooter') {
         for (var i = 0; i < this.allTwoWheelerList.length; i++) {
           if (
-            this.allTwoWheelerList[i].variantType === 'Top' &&
-            this.allTwoWheelerList[i].vehicleType === 'Scooter'
+            this.allTwoWheelerList[i].variantType?.toLowerCase() === 'top' &&
+            this.allTwoWheelerList[i].vehicleType?.toLowerCase() === 'scooter'
           ) {
             this.filteredtwowheelerlist.push(this.allTwoWheelerList[i]);
           }
         }
       } else if (type === 'Brand') {
         for (var i = 0; i < this.allTwoWheelerList.length; i++) {
-          if (this.allTwoWheelerList[i].manufacturer === this.brand) {
+          if (this.allTwoWheelerList[i].manufacturer?.toLowerCase() === this.brand?.toLowerCase()) {
             this.filteredtwowheelerlist.push(this.allTwoWheelerList[i]);
           }
         }
       }
-      // console.log(this.filteredtwowheelerlist);
+      console.log(this.allTwoWheelerList);
+      console.log(this.filteredtwowheelerlist);
       for (var i = 0; i < this.filteredtwowheelerlist.length; i++) {
         this.filteredtwowheelerlist[i] = Object.assign(
           {},

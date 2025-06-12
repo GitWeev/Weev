@@ -5,7 +5,7 @@
   "sections": [
     {
       "title": "Introduction to Electric Vehicles (EVs)",
-      "image": "assets/images/blogs/3.jpg",
+      "image": "assets/images/blogs/blog-3/1.jpg",
       "subsections": [
         {
           "title": "Introduction",
@@ -15,7 +15,7 @@
     },
     {
       "title": "Myth 1: EVs Have Limited Range",
-      "image": "assets/images/blogs/4.jpg",
+      "image": "assets/images/blogs/blog-3/2.jpg",
       "subsections": [
         {
           "title": "The Reality of EV Range Today",
@@ -25,7 +25,7 @@
     },
     {
       "title": "Myth 2: EVs Are Expensive to Purchase and Maintain",
-      "image": "assets/images/blogs/5.jpg",
+      "image": "assets/images/blogs/blog-3/3.jpg",
       "subsections": [
         {
           "title": "Breaking Down the Costs",
@@ -35,7 +35,7 @@
     },
     {
       "title": "Myth 3: EVs Take a Long Time to Charge",
-      "image": "assets/images/blogs/6.jpg",
+      "image": "assets/images/blogs/blog-3/4.jpg",
       "subsections": [
         {
           "title": "Understanding Charging Options",
@@ -45,7 +45,7 @@
     },
     {
       "title": "Myth 4: EVs Are Bad for the Environment",
-      "image": "assets/images/blogs/7.jpg",
+      "image": "assets/images/blogs/blog-3/5.jpg",
       "subsections": [
         {
           "title": "The Truth About EV Environmental Impact",
@@ -55,7 +55,7 @@
     },
     {
       "title": "Myth 5: EVs Are Not as Fun to Drive",
-      "image": "assets/images/blogs/8.jpg",
+      "image": "assets/images/blogs/blog-3/6.jpg",
       "subsections": [
         {
           "title": "Performance Benefits of EVs",
@@ -65,7 +65,7 @@
     },
     {
       "title": "Conclusion",
-      "image": "assets/images/blogs/9.jpg",
+      "image": "assets/images/blogs/blog-3/1.jpg",
       "subsections": [
         {
           "title": "Final Thoughts",

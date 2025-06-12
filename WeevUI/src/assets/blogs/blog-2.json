@@ -5,7 +5,7 @@
     "sections": [
       {
         "title": "Introduction to Electric Vehicles (EVs)",
-        "image": "assets/images/blogs/12.jpg",
+        "image": "assets/images/blogs/blog-2/1.jpg",
         "subsections": [
           {
             "title": "Introduction",
@@ -15,7 +15,7 @@
       },
       {
         "title": "Advantages of Electric Vehicles",
-        "image": "assets/images/blogs/2.jpg",
+        "image": "assets/images/blogs/blog-2/2.jpg",
         "subsections": [
           {
             "title": "Environmental Benefits of Electric Vehicles",
@@ -33,7 +33,7 @@
       },
       {
         "title": "Types of Electric Vehicles",
-        "image": "assets/images/blogs/3.jpg",
+        "image": "assets/images/blogs/blog-2/3.jpg",
         "subsections": [
           {
             "title": "Battery Electric Vehicles (BEVs)",
@@ -55,7 +55,7 @@
       },
       {
         "title": "Choosing the Right Electric Vehicle",
-        "image": "assets/images/blogs/4.jpg",
+        "image": "assets/images/blogs/blog-2/4.jpg",
         "subsections": [
           {
             "title": "Determining Your Needs and Budget",
@@ -77,7 +77,7 @@
       },
       {
         "title": "The Charging Network and Infrastructure",
-        "image": "assets/images/blogs/13.jpg",
+        "image": "assets/images/blogs/blog-2/5.jpg",
         "subsections": [
           {
             "title": "Home Charging Options and Installation",
@@ -99,7 +99,7 @@
       },
       {
         "title": "Maintaining and Extending Battery Life",
-        "image": "assets/images/blogs/5.jpg",
+        "image": "assets/images/blogs/blog-2/6.jpg",
         "subsections": [
           {
             "title": "Battery Maintenance Tips and Best Practices",
@@ -117,7 +117,7 @@
       },
       {
         "title": "Financing and Insurance Considerations",
-        "image": "assets/images/blogs/6.jpg",
+        "image": "assets/images/blogs/blog-2/6.jpg",
         "subsections": [
           {
             "title": "Financing Options for Purchasing an Electric Vehicle",
@@ -135,7 +135,7 @@
       },
       {
         "title": "Overcoming Range Anxiety",
-        "image": "assets/images/blogs/7.jpg",
+        "image": "assets/images/blogs/blog-2/7.jpg",
         "subsections": [
           {
             "title": "Calculating Long-Term Cost Savings and Return on Investment",
@@ -149,7 +149,7 @@
       },
       {
         "title": "Safety and Maintenance Requirements",
-        "image": "assets/images/blogs/9.jpg",
+        "image": "assets/images/blogs/blog-2/8.jpg",
         "subsections": [
           {
             "title": "Basic Safety Features in Electric Vehicles",
@@ -167,7 +167,7 @@
       },
       {
         "title": "EV Ownership and the Future",
-        "image": "assets/images/blogs/10.jpg",
+        "image": "assets/images/blogs/blog-2/9.jpg",
         "subsections": [
           {
             "title": "Industry Trends and Forecasts for Electric Vehicle Adoption",

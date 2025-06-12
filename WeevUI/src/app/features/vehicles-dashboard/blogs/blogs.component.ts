@@ -33,7 +33,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
         author: 'Kunal',
         date: '24 JUN',
         category: 'Electric Vehicles',
-        image: 'assets/images/blogs/1.jpg',
+        image: 'assets/images/blogs/blog-1/1.jpg',
         excerpt: `Electric vehicles, commonly referred to as EVs, are automobiles powered by electric motors instead of traditional internal combustion engines...`
       },
       {
@@ -42,7 +42,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
         author: 'Author Name',
         date: '03 JAN',
         category: 'EV Guide',
-        image: 'assets/images/blogs/2.jpg',
+        image: 'assets/images/blogs/blog-2/2.jpg',
         excerpt: `The electric vehicle revolution has been gaining momentum in recent years, with more and more people opting for these environmentally friendly...`
       },
       {
@@ -51,7 +51,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
         author: 'Author Name',
         date: '13 OCT',
         category: 'EV Myths',
-        image: 'assets/images/blogs/3.jpg',
+        image: 'assets/images/blogs/blog-3/4.jpg',
         excerpt: `Electric vehicles (EVs) are gaining popularity worldwide as a sustainable and efficient transportation option...`
       },
       {
@@ -60,7 +60,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
         author: 'Author Name',
         date: '10 MAY',
         category: 'EV Trends',
-        image: 'assets/images/blogs/rural-ev-data.jpg',
+        image: 'assets/images/blogs/blog-4/2.jpg',
         excerpt: `Rural India is increasingly saying goodbye to petrol and welcoming electric two-wheelers (E2Ws) as a smarter, cost-effective, and sustainable alternative...`
       },
       {
@@ -72,15 +72,15 @@ export class BlogsComponent implements OnInit, OnDestroy {
         image: 'assets/images/blogs/top-5-scooters.jpg',
         excerpt: `Electric scooters are no longer just the future in India—they're here and taking over our roads. Here's a roundup of the top 5 electric scooters in 2025...`
       },
-      {
-        id: 6,
-        title: 'The Future of Electric Vehicle Charging Infrastructure',
-        author: 'Author Name',
-        date: '15 APR',
-        category: 'Infrastructure',
-        image: 'assets/images/blogs/6.jpg',
-        excerpt: `As electric vehicles become more mainstream, the development of robust charging infrastructure becomes crucial for widespread adoption...`
-      }
+      // {
+      //   id: 6,
+      //   title: 'The Future of Electric Vehicle Charging Infrastructure',
+      //   author: 'Author Name',
+      //   date: '15 APR',
+      //   category: 'Infrastructure',
+      //   image: 'assets/images/blogs/6.jpg',
+      //   excerpt: `As electric vehicles become more mainstream, the development of robust charging infrastructure becomes crucial for widespread adoption...`
+      // }
     ];
     this.updateCardsPerView();
     this.startAutoSlide();

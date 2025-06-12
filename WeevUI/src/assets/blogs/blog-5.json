@@ -11,14 +11,39 @@
     {
       "emoji": "🏆",
       "heading": "The Top 5 Electric Scooters",
-      "content": "**1. Ola S1X+**\n• Price: Approx. ₹1.10 lakh\n• Range: 108 km\n• Top Speed: 101 km/h\n• Charging Time (0-80%): 6 hours\n\nOla's S1X+ is a head-turner with sleek looks, voice-enabled features, and a powerful MoveOS platform.\n\n**2. Ather Rizta**\n• Price: Starts ₹1.05 lakh\n• Range: 123 km\n• Top Speed: 80 km/h\n• Charging Time (0-80%): 6.5 hours\n\nAther's most family-focused scooter yet, the Rizta comes with a wider seat and upgraded safety features.\n\n**3. TVS iQube ST**\n• Price: Around ₹1.40 lakh\n• Range: 100km\n• Top Speed: 82 km/h\n• Charging Time: ~3 hours (0-80%)\n\nTVS's iQube ST is a solid choice if comfort and quality matter. Plus, it has a clean, intuitive dashboard.\n\n**4. Bajaj Chetak Premium**\n• Price: ₹1.35 lakh\n• Range: 153 km\n• Top Speed: 73 km/h\n• Charging Time (0-80%): 3 hours\n\nOld-school charm meets modern EV tech. Bajaj Chetak has that premium feel and smooth ride quality.\n\n**5. Hero Vida V1 Plus**\n• Price: ₹85K\n• Range: 94 km\n• Top Speed: 69 km/h\n• Charging Time (0-80%): 3.5 hours\n\nHero's Vida V1 Plus gives you swappable battery convenience and a simple, stylish design.",
-      "image": "assets/images/blogs/top-5-scooters.jpg"
+      "content": "**1. Ola S1X+**\n• Price: Approx. ₹1.10 lakh\n• Range: 108 km\n• Top Speed: 101 km/h\n• Charging Time (0-80%): 6 hours\n\nOla's S1X+ is a head-turner with sleek looks, voice-enabled features, and a powerful MoveOS platform."
+    },
+    {
+      "image": "assets/images/blogs/blog-5/1.jpg"
+    },
+    {
+      "content": "**2. Ather Rizta**\n• Price: Starts ₹1.05 lakh\n• Range: 123 km\n• Top Speed: 80 km/h\n• Charging Time (0-80%): 6.5 hours\n\nAther's most family-focused scooter yet, the Rizta comes with a wider seat and upgraded safety features."
+    },
+    {
+      "image": "assets/images/blogs/blog-5/2.jpg"
+    },
+    {
+      "content": "**3. TVS iQube ST**\n• Price: Around ₹1.40 lakh\n• Range: 100km\n• Top Speed: 82 km/h\n• Charging Time: ~3 hours (0-80%)\n\nTVS's iQube ST is a solid choice if comfort and quality matter. Plus, it has a clean, intuitive dashboard."
+    },
+    {
+      "image": "assets/images/blogs/blog-5/3.png"
+    },
+    {
+      "content": "**4. Bajaj Chetak Premium**\n• Price: ₹1.35 lakh\n• Range: 153 km\n• Top Speed: 73 km/h\n• Charging Time (0-80%): 3 hours\n\nOld-school charm meets modern EV tech. Bajaj Chetak has that premium feel and smooth ride quality."
+    },
+    {
+      "image": "assets/images/blogs/blog-5/4.png"
+    },
+    {
+      "content": "**5. Hero Vida V1 Plus**\n• Price: ₹85K\n• Range: 94 km\n• Top Speed: 69 km/h\n• Charging Time (0-80%): 3.5 hours\n\nHero's Vida V1 Plus gives you swappable battery convenience and a simple, stylish design."
+    },
+    {
+      "image": "assets/images/blogs/blog-5/5.png"
     },
     {
       "emoji": "📊",
       "heading": "Side-by-Side Comparison Table",
-      "content": "| Scooter | Price (₹) | Range (km) | Top Speed (km/h) | Charging Time (0-80%) |\n|---------|-----------|------------|------------------|----------------------|\n| Ola S1X+ | ₹1.10L | 108 | 101 | 6 hrs |\n| Ather Rizta | ₹1.05L | 123 | 80 | 6.5 hrs |\n| TVS iQube ST | ₹1.40L | 100 | 82 | 3 hrs |\n| Bajaj Chetak | ₹1.35L | 153 | 73 | 3 hrs |\n| Hero Vida V1 Plus | ₹0.85L | 94 | 69 | 3.5 hrs |",
-      "image": "assets/images/blogs/scooter-comparison-chart.jpg"
+      "content": "| Scooter | Price (₹) | Range (km) | Top Speed (km/h) | Charging Time (0-80%) |\n|---------|-----------|------------|------------------|----------------------|\n| Ola S1X+ | ₹1.10L | 108 | 101 | 6 hrs |\n| Ather Rizta | ₹1.05L | 123 | 80 | 6.5 hrs |\n| TVS iQube ST | ₹1.40L | 100 | 82 | 3 hrs |\n| Bajaj Chetak | ₹1.35L | 153 | 73 | 3 hrs |\n| Hero Vida V1 Plus | ₹0.85L | 94 | 69 | 3.5 hrs |"
     },
     {
       "emoji": "🎯",
