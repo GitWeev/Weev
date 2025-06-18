@@ -173,11 +173,10 @@ export class BikesDetailsComponent implements OnInit {
           }
         );
       }
-      this.loading = false; // Reset loading state after filtering
-      this.cd.detectChanges(); // Force change detection after navigation
+      this.loading = false;
+      this.cd.detectChanges(); 
     }, 500);
   }
-  // manufacturer + model //exShowroomPrice //
 
   onSelect(twId: any) {
     // this.router.navigate(['/Selection', twId]);

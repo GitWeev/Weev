@@ -46,7 +46,7 @@ interface ComparisonCard {
 
 export class CategoryCompareSuggestions implements OnInit {
   activeType: 'bike' | 'scooter' = 'bike';
-  isComparePage: boolean = false; // Variable to hold the comparison page status
+  isComparePage: boolean = false;
   allTwoWheelerList: Array<any> = new Array<any>();
   selectedVehicles: any[] = [null, null];
   canCompare: boolean = false;
@@ -115,7 +115,6 @@ export class CategoryCompareSuggestions implements OnInit {
         }
       }
       
-      // Generate comparison suggestions
       this.generatePriceSimilarVehicleSuggestions();
       this.initializeComparisonCards();
     });
@@ -143,7 +142,7 @@ export class CategoryCompareSuggestions implements OnInit {
     const sortedVehicles = [...this.allTwoWheelerList].sort((a, b) => {
       const priceA = parseFloat(a.exShowroomPrice) || 0;
       const priceB = parseFloat(b.exShowroomPrice) || 0;
-      return Math.abs(priceA - currentPrice) - Math.abs(priceB - currentPrice); // 🔁 Closest price first
+      return Math.abs(priceA - currentPrice) - Math.abs(priceB - currentPrice);
     });
     
       while (expandedPriceRange <= maxRange) {
@@ -195,8 +194,6 @@ export class CategoryCompareSuggestions implements OnInit {
     };
   }
   
-
-   // Use the default comparison list when no price-similar vehicles are found
    private useDefaultComparisonList() {
     this.comparisonProductNames = {
       bike: [...this.defaultComparisonList.bike],

@@ -1,5 +1,4 @@
 <div class="blog-container">
-  <!-- Display each visible blog -->
   <div class="blog" *ngFor="let blog of visibleBlogs">
     <h3>{{ blog.title }}</h3>
     <div class="introduction">
@@ -10,8 +9,6 @@
       <h4>{{ blog.heading }}</h4>
       <p>{{ blog.para }}</p>
     </div>
-
-    <!-- Image with overlay -->
     <div class="viewBlog" routerLink="/blog.id">
       <div class="viewcontainer">
          <div class="bgg" (click)="onSelect(blog.id)">View Full Blog</div>
