@@ -58,11 +58,11 @@ export class CategorynavbarComponent implements OnInit {
       setTimeout(() => {
         const variants_Container = document.getElementById('variantsContainer');
         if (variants_Container) {
-          this.activeTab = 'varients'; // Change activeTab to 'varients'
+          this.activeTab = 'varients'; 
           variants_Container.scrollIntoView({ behavior: 'smooth' });
           console.log('scrolling');
           setTimeout(() => {
-            this.activeTab = 'model'; // Change it back to 'model' after a delay
+            this.activeTab = 'model';
           }, 200);
         } else {
           console.error('variantsContainer not found');

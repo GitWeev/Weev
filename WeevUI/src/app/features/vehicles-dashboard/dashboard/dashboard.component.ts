@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
-    this.isVisible = window.scrollY > 200; // Change 200 to your desired scroll position
+    this.isVisible = window.scrollY > 200;
   }
 
   scrollToTop(): void{

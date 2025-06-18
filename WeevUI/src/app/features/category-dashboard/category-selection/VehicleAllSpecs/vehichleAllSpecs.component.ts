@@ -30,11 +30,10 @@ export class VehicleAllSpecsComponent {
     this.route.params.subscribe(
       (params) => (this.productName = params['twId'])
     );
-    // console.log(this.productName,'specs');
     this.activeTab = 'specs';
   }
   ngOnInit(): void {
-    window.scrollTo(0, 0); // Scroll to top
+    window.scrollTo(0, 0);
     this.startLoading();
     this.getTwoWheelerDatas();
   }
@@ -79,7 +78,7 @@ export class VehicleAllSpecsComponent {
     this.loading = true;
     this.loadingTimeout = setTimeout(() => {
       this.loading = false;
-      this.cd.detectChanges(); // Force change detection after navigation
+      this.cd.detectChanges();
     }, 500);
   }
 
@@ -126,7 +125,6 @@ export class VehicleAllSpecsComponent {
         const variants_Container = document.getElementById('variantsContainer');
         if (variants_Container) {
           variants_Container.scrollIntoView({ behavior: 'smooth' });
-          // console.log('scrolling');
         } else {
           console.error('variantsContainer not found');
         }
@@ -147,9 +145,8 @@ export class VehicleAllSpecsComponent {
           const imageContainer = document.getElementById('image_container');
           if (imageContainer) {
             imageContainer.scrollIntoView({ behavior: 'smooth' });
-            // console.log('scrolling');
           }
-        }, 200); // Set timeout to 500 milliseconds
+        }, 200); 
       });
   }
 
@@ -173,12 +170,12 @@ export class VehicleAllSpecsComponent {
         const value = this.productListModel?.[key as keyof ProductListModel];
         return value !== undefined && value !== '' && value !== null
           ? {
-              key: this.keyDisplayMap[key] || key, // Use mapped key or original key
-              value: value, // Use the transformed value directly
+              key: this.keyDisplayMap[key] || key,
+              value: value, 
             }
           : null;
       })
-      .filter((item): item is { key: string; value: any } => item !== null); // Type guard to filter out null values
+      .filter((item): item is { key: string; value: any } => item !== null);
   }
 
   getBookingDetailSpecs(): Array<{ key: string; value: any }> {
@@ -194,12 +191,12 @@ export class VehicleAllSpecsComponent {
         const value = this.productListModel?.[key as keyof ProductListModel];
         return value !== undefined && value !== '' && value !== null
           ? {
-              key: this.keyDisplayMap[key] || key, // Use mapped key or original key
-              value: value, // Use the transformed value directly
+              key: this.keyDisplayMap[key] || key,
+              value: value,
             }
           : null;
       })
-      .filter((item): item is { key: string; value: any } => item !== null); // Type guard to filter out null values
+      .filter((item): item is { key: string; value: any } => item !== null); 
   }
 
   getPowerAndBatterySpecs(): Array<{ key: string; value: any }> {
@@ -221,12 +218,12 @@ export class VehicleAllSpecsComponent {
         const value = this.productListModel?.[key as keyof ProductListModel];
         return value !== undefined && value !== '' && value !== null
           ? {
-              key: this.keyDisplayMap[key] || key, // Use mapped key or original key
-              value: value, // Use the transformed value directly
+              key: this.keyDisplayMap[key] || key,
+              value: value, 
             }
           : null;
       })
-      .filter((item): item is { key: string; value: any } => item !== null); // Type guard to filter out null values
+      .filter((item): item is { key: string; value: any } => item !== null);
   }
 
   getFeaturesSpecs(): Array<{ key: string; value: any }> {
@@ -252,12 +249,12 @@ export class VehicleAllSpecsComponent {
         const value = this.productListModel?.[key as keyof ProductListModel];
         return value !== undefined && value !== '' && value !== null
           ? {
-              key: this.keyDisplayMap[key] || key, // Use mapped key or original key
-              value: value, // Use the transformed value directly
+              key: this.keyDisplayMap[key] || key, 
+              value: value, 
             }
           : null;
       })
-      .filter((item): item is { key: string; value: any } => item !== null); // Type guard to filter out null values
+      .filter((item): item is { key: string; value: any } => item !== null);
   }
 
   getAdditionalFeaturesSpecs(): Array<{ key: string; value: any }> {

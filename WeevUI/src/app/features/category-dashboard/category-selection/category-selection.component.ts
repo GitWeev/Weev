@@ -67,7 +67,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
   fastChargingTime: number = 0;
   warranty: number = 0;
   title: string = '';
-  loading: boolean = false; // Add loading state
+  loading: boolean = false;
   loadingTimeout: any;
   productName: string = '';
   twowheelerlist: Array<any> = [];
@@ -137,7 +137,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     this.loading = true;
     this.loadingTimeout = setTimeout(() => {
       this.loading = false;
-      this.cd.detectChanges(); // Force change detection after navigation
+      this.cd.detectChanges();
     }, 500);
   }
 
@@ -210,20 +210,18 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
   getforVarientsData() {
     // console.log(this.variantsList);
 
-    // Ensure variant list is processed sequentially
     this.variantsList.forEach((variantId) => {
       this.vehiclesService
         .getProductDataWithID(variantId)
         .subscribe((response) => {
           const transformedResponse = this.transformResponse(response);
-          this.varientList.push(transformedResponse); // Store transformed response
+          this.varientList.push(transformedResponse); 
         });
     });
   }
 
   onVarientClick(item: any) {
     this.loading = true;
-    // console.log(this.twowheelerlist);
     const twowheeler = this.twowheelerlist.find(
       (i) =>
         // console.log(i.twid);
@@ -264,8 +262,8 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       this.vehiclesService
         .getOtherModelswithID(offset)
         .subscribe((response) => {
-          this.nextproductlist.push(response); // Store each response in the array
-          this.nextproductListModel = response; // Update the current model
+          this.nextproductlist.push(response); 
+          this.nextproductListModel = response; 
         });
     });
 
@@ -353,9 +351,9 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       ],
     };
     // console.log(keyspecsjson);
-    this.keySpecs = keyspecsjson.KeySpecs.slice(0, 5); // Limit to first 5 items
-    this.appFeatures = keyspecsjson.AppFeatures.slice(0, 5); // Limit to first 5 items
-    this.cd.detectChanges(); // Force change detection
+    this.keySpecs = keyspecsjson.KeySpecs.slice(0, 5); 
+    this.appFeatures = keyspecsjson.AppFeatures.slice(0, 5);
+    this.cd.detectChanges();
   }
 
   onTabClick(tabId: string): void {
@@ -408,12 +406,12 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
         const value = this.productListModel?.[key as keyof ProductListModel];
         return value !== undefined && value !== '' && value !== null
           ? {
-              key: this.keyDisplayMap[key] || key, // Use mapped key or original key
-              value: value, // Use the transformed value directly
+              key: this.keyDisplayMap[key] || key,
+              value: value, 
             }
           : null;
       })
-      .filter((item): item is { key: string; value: any } => item !== null); // Type guard to filter out null values
+      .filter((item): item is { key: string; value: any } => item !== null); 
   }
 
   imageCount: number = 0;

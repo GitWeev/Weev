@@ -14,7 +14,7 @@ import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
   styleUrls: ['./CompareEmptyCard.component.scss'],
 })
 export class CompareEmptyCard implements OnInit {
-  @Output() vehicleSelected = new EventEmitter<any>(); // Add this line
+  @Output() vehicleSelected = new EventEmitter<any>();
 
   suggestionsVisible: boolean = false;
   suggestions: Array<any> = new Array<any>();
@@ -101,7 +101,7 @@ export class CompareEmptyCard implements OnInit {
 
   selectSuggestion(twId: any) {
     this.onSelect(twId);
-    this.vehicleSelected.emit(this.vehicle); // Emit the selected vehicle data
+    this.vehicleSelected.emit(this.vehicle);
     this.searchTerm = '';
     this.hideSuggestions();
   }

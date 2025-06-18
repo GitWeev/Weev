@@ -57,12 +57,11 @@ export class VehicleColorPageComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    // Explicitly define the type of event
-    const target = event.target as Window; // Cast the target to Window
+    const target = event.target as Window;
     this.checkMobileView(target.innerWidth);
   }
   checkMobileView(width: number) {
-    this.isMobileView = width < 768; // Adjust the width threshold as needed
+    this.isMobileView = width < 768; 
   }
 
   ngOnInit(): void {
@@ -110,7 +109,7 @@ export class VehicleColorPageComponent {
     this.loading = true;
     this.loadingTimeout = setTimeout(() => {
       this.loading = false;
-      this.cd.detectChanges(); // Force change detection after navigation
+      this.cd.detectChanges();
     }, 500);
   }
 
@@ -124,7 +123,6 @@ export class VehicleColorPageComponent {
   private transformResponse(response: any): any {
     const transformedResponse: any = {};
 
-    // Iterate over the keys in keyDisplayMap
     for (const key in this.keyDisplayMap) {
       if (response.hasOwnProperty(key)) {
         transformedResponse[key] = this.valueTransformMap[key]
@@ -172,7 +170,6 @@ export class VehicleColorPageComponent {
         this.ReqimagePaths = this.imagetabs.map((tab) => ({
           imagePath: this.imagePaths[tab],
         }));
-        // console.log(this.ReqimagePaths);
       });
   }
 
@@ -194,8 +191,6 @@ export class VehicleColorPageComponent {
         colorPath: this.ImgName[tab],
         colorName: tab,
       }));
-
-      // console.log(this.colorimagePaths);
     });
   }
 
