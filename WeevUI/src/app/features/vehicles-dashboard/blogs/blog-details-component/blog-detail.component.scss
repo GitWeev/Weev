@@ -171,6 +171,11 @@
   }
 }
 
+::ng-deep .block-content a {
+  color: #6305A8;
+  font-weight: 600;
+}
+
 // MODERN COMPARISON TABLE STYLES
 ::ng-deep .comparison-table {
   width: 100%;

@@ -8,6 +8,6 @@
     <select class="varient-dropdown">
       <option *ngFor="let variant of cardData?.variants" [value]="variant">{{ variant }}</option>
     </select>
-    <div class="selected-option-price">{{ cardData?.price }}</div>
+    <div class="selected-option-price">{{ exShowroomPrice(cardData?.price) }}</div>
   </div>
 </div>

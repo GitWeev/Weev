@@ -139,13 +139,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-.selected-option-price::before {
-  content: '₹';
-  margin-right: 2px;
-  color: #9813eb;
-  font-weight: 700;
-}
-
 @media only screen and (max-width: 768px) {
   .selected-option {
     width: 190px;

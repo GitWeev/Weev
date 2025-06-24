@@ -44,7 +44,15 @@ export class RecentVehiclesComponent implements OnInit {
         });
       }
     });
-  }  
+  } 
+  
+  exShowroomPrice(value:any):any{
+    return this.isNA(value)?'NA' : `₹ ${value.toLocaleString('en-IN')}`
+  }
+
+  isNA(value: any): boolean {
+    return value === null || value === undefined || value === '' || isNaN(value);
+  }
   onSelect(twId: any) {
     const twowheeler = this.twowheelerlist.find(i => i.twId === twId);
     this.router.navigate(['/Selection', twowheeler.manufacturer+'_'+twowheeler.model+'_'+twowheeler.variant]);
