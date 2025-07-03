@@ -189,7 +189,30 @@
         public string? Path { get; set; }
 
         public string? VehicleType { get; set; }
-
+        public string? ChargingStationLocator { get; set; }
+        public int CertifiedRange { get; set; }
+        public string? BatterySwappingNetwork { get; set; }
+        public string? ChargingAtChargingStation { get; set; }
+        public string? GearBox { get; set; }
+        public string? OTA { get; set; }
+        public string? StartingType { get; set; }
+        public string? RoadsideAssistance { get; set; }
+        public string? HillHold { get; set; }
+        public string? AdditionalFeaturesOfVariant { get; set; }
+        public string? SeatType { get; set; }
+        public string? TractionControl { get; set; }
+        public string? Display { get; set; }
+        public string? Headlight { get; set; }
+        public string? Taillight { get; set; }
+        public string? ProjectorHeadlights { get; set; }
+        public string? LEDTaillights { get; set; }
+        public string? ReverseAssist { get; set; }
+        public string? Transmission { get; set; }
+        public string? ABS { get; set; }
+        public string? TubelessTyre { get; set; }
+        public string? ADAS { get; set; }
+        public string? ChassisandSuspension { get; set; }
+        public string? PassengerFootrest { get; set; }
     }
 
     public class Twoimagedata

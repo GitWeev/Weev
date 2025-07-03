@@ -53,9 +53,22 @@ UPDATE twowheelerdata
 SET Variant = 'F4'
 WHERE twid in('37');
 
+SELECT Accelration0To60kmph
+FROM twowheelerdata
+WHERE TRIM(Accelration0To60kmph) NOT REGEXP '^[0-9]+(\.[0-9]+)?$';
+UPDATE twowheelerdata
+SET Accelration0To60kmph = NULL
+WHERE TRIM(Accelration0To60kmph) NOT REGEXP '^[0-9]+(\.[0-9]+)?$';
+
 ALTER TABLE twowheelerdata 
 CHANGE COLUMN `Accelration0To60kmph` `Acceleration0To60kmph` DECIMAL(10,3);
 
+SELECT Accelration0To40kmph
+FROM twowheelerdata
+WHERE TRIM(Accelration0To40kmph) NOT REGEXP '^[0-9]+(\.[0-9]+)?$';
+UPDATE twowheelerdata
+SET Accelration0To40kmph = NULL
+WHERE TRIM(Accelration0To40kmph) NOT REGEXP '^[0-9]+(\.[0-9]+)?$';
 ALTER TABLE twowheelerdata
 CHANGE COLUMN `Accelration0To40kmph` `Acceleration0To40kmph` DECIMAL(10,3);
 
