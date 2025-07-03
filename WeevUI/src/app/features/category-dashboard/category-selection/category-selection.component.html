@@ -8,19 +8,19 @@
          <div class="mainDetails">
             <div class="gallery-container">
                <div class="main-image-container">
-                  <img src="{{productListModel?.path}}" alt="" onerror="this.src='assets/images/pr4.png';">
+                  <img src="{{productListModel?.path}}" alt="" onerror="this.src='assets/images/pr4.png';" alt="{{productListModel?.manufacturer}} {{productListModel?.model}}">
                </div>
                <div class="thumbnails-container">
                   <div class="thumbnails">
                      <div class="thumbnail" (click)="onImages()">
                         <img src="{{productListModel?.path}}" alt=""
-                           style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px);">
+                           style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px);" alt="{{productListModel?.manufacturer}} {{productListModel?.model}} images">
                         <div class="text-content">
                            {{imageCount}}<br>Images
                         </div>
                      </div>
                      <div class="thumbnail" (click)="onColors()">
-                        <img src="{{productListModel?.path}}" alt=""
+                        <img src="{{productListModel?.path}}" alt="{{productListModel?.manufacturer}} {{productListModel?.model}} colors"
                            style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px);">
                         <div class="text-content">
                            {{colorCount}}<br>Colors
@@ -147,7 +147,7 @@
                {{productListModel?.model}}</div>
             <div class="models">
                <div class="model" *ngFor="let model of nextproductlist" (click)="onVarientClick(model.twId)">
-                  <img src="{{model.path}}" alt="Product Image" onerror="this.src='assets/images/pr4.png';">
+                  <img src="{{model.path}}" alt="Product Image" onerror="this.src='assets/images/pr4.png';" alt="{{ model.manufacturer }} {{ model.model }}">
                   <div class="card-content">
                      <div class="title">{{ model.manufacturer }} {{ model.model }}</div>
                      <p>Price: ₹{{ model.exShowroomPrice }}*</p>

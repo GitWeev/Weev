@@ -11,7 +11,7 @@
    <div *ngIf="!loading" class="landingarea">
       <div class="vehicleBox" *ngFor="let Cll of filteredtwowheelerlist">
          <img src="{{Cll.path}}" alt="" onerror="this.src='assets/images/pr1.png';" class="image"
-            (click)="onSelect(Cll.twId)">
+            (click)="onSelect(Cll.twId)" alt="{{Cll.manufacturer}} {{Cll.model}}">
          <div class="infobox" (click)="onSelect(Cll.twId)">
             <h4>{{Cll.manufacturer}} {{Cll.model}}</h4>
             <p>{{exShowroomPrice(Cll.exShowroomPrice)}}</p>
