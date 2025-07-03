@@ -1,10 +1,10 @@
 <div class="vehicle-card">
   <div class="vehicle-card-content">
-    <div class="vehicle-icon">
+    <div class="vehicle-icon" (click)="focusSearch(searchInput)">
       <img src="assets/images/bike1-svgrepo-com.svg" alt="Vehicle Icon" />
     </div>
     <div class="comparesearchbox">
-      <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="showSuggestions()" />
+      <input #searchInput type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="showSuggestions()" />
       <button (click)="search()">
         <img src="assets/images/search.svg" alt="Search" />
       </button>

@@ -194,6 +194,7 @@ export class CompareMainComponent implements OnInit {
     this.updateSEOTags();
   }
   isNA = (value: any) => value === 'NA' || value === 0;
+  
   updateSections(): void {
     const keyToTitleMap: Record<string, string[]> = {
       powerPerformance: [
@@ -405,13 +406,13 @@ export class CompareMainComponent implements OnInit {
       suspensionRear: (value) => `${value}`,
       brakesFront: (value) => `${value}`,
       brakesRear: (value) => `${value}`,
-      tyreSize: (value: string) => {
-        if (this.isNA(value)) return 'NA';
+      tyreSize: (value: string | null | undefined) => {
+        if (!value || this.isNA(value)) return 'NA';
         const sizes = value.split(',').map((size: string) => size.trim());
         return sizes.join('\n');
-      },
+      },    
       wheelSize: (value: string) => {
-        if (this.isNA(value)) return 'NA';
+        if (!value || this.isNA(value)) return 'NA';
         const sizes = value.split(',').map((size: string) => size.trim());
         return sizes.join('\n');
       },

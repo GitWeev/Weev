@@ -140,7 +140,7 @@ namespace WeevServices.Models
                     {
                         try
                         {
-                            if (value == DBNull.Value)
+                            if (value == DBNull.Value || string.IsNullOrWhiteSpace(value?.ToString()) || value.ToString().ToUpper() == "NA")
                             {
                                 if (Nullable.GetUnderlyingType(pro.PropertyType) != null || pro.PropertyType == typeof(string))
                                 {
