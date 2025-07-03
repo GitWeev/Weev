@@ -154,15 +154,6 @@
           color: #000;
           font-weight: 500;
           margin-top: 2px;
-          
-          &::before {
-            content: 'Rs. ';
-            margin-right: 1px;
-          }
-          
-          &::after {
-            content: '*';
-          }
         }
       }
     }

@@ -18,7 +18,7 @@
                      *ngFor="let item of [].constructor(Cll.unSelectRating); let i = index">
                </div>
             </div>
-            <p class="vehicle-price">₹{{Cll.exShowroomPrice | number:'1.0-0'}}*</p>
+            <p class="vehicle-price">{{exShowroomPrice(Cll.exShowroomPrice)}}*</p>
          </div>
       </div>
    </div>
@@ -52,7 +52,7 @@
                      *ngFor="let item of [].constructor(Cll.unSelectRating); let i = index">
                </div>
             </div>
-            <p class="vehicle-price">₹{{Cll.exShowroomPrice | number:'1.0-0'}}*</p>
+            <p class="vehicle-price">{{exShowroomPrice(Cll.exShowroomPrice)}}*</p>
          </div>
       </div>
    </div>

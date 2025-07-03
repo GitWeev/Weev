@@ -73,18 +73,17 @@ export class CompareMainComponent implements OnInit {
           .filter((item) => item && item !== 'NA')
           .join(' ')
       );
-  
+
     if (names.length === 0) return;
-  
+
     const formattedList = this.formatVehicleList(names);
-  
+
     const title = `Compare ${formattedList} | Specs, Battery, Range, Features & Price`;
     const description = `See detailed electric vehicle comparison between ${formattedList}. Compare battery, range, charging time, top speed, features, and prices of top electric bikes and scooters.`;
-  
+
     this.titleService.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
   }
-  
 
   populatecards() {
     if (this.productKeys.length > 0) {
@@ -426,21 +425,27 @@ export class CompareMainComponent implements OnInit {
       (sectionKey: string, index: number) => ({
         open: index === 0,
         title: this.formatSectionTitle(sectionKey),
-        features: keyToTitleMap[sectionKey].map((key: string) => {
-          const transform =
-            valueTransformMap[key] || ((value: any) => `${value}`);
-          return {
-            key: humanReadableMap[key],
-            values: this.productKeys
-              .map((id: string) => {
-                if (this.vehicleData[id]?.model === 'NA') {
-                  return 'NA';
-                }
-                return transform(this.vehicleData[id]?.[key]) || 'NA';
-              })
-              .filter(Boolean),
-          };
-        }),
+        features: keyToTitleMap[sectionKey]
+          .map((key: string) => {
+            const transform =
+              valueTransformMap[key] || ((value: any) => `${value}`);
+            const values = this.productKeys.map((id: string) => {
+              if (this.vehicleData[id]?.model === 'NA') return 'NA';
+              return transform(this.vehicleData[id]?.[key]) || 'NA';
+            });
+
+            // Show only if at least one vehicle has a non-NA value
+            const atLeastOneAvailable = values.some(
+              (v) => v !== 'NA' && v !== ''
+            );
+            if (!atLeastOneAvailable) return null;
+
+            return {
+              key: humanReadableMap[key],
+              values,
+            };
+          })
+          .filter((f) => f !== null),
       })
     );
   }

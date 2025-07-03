@@ -28,59 +28,50 @@ export class BlogsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.blogs = [
       {
-        id: 1,
-        title: 'Driving Towards a Greener Future: Exploring the EV Market in India',
+        id: 5,
+        title: 'Top 5 Electric Scooters in India for 2025: Performance, Price & Range Compared',
         author: 'Kunal',
-        date: '24 JUN',
-        category: 'Electric Vehicles',
-        image: 'assets/images/blogs/blog-1/1.jpg',
-        excerpt: `Electric vehicles, commonly referred to as EVs, are automobiles powered by electric motors instead of traditional internal combustion engines...`
-      },
-      {
-        id: 2,
-        title: "A Beginner's Guide to Owning an Electric Vehicle",
-        author: 'Author Name',
-        date: '03 JAN',
-        category: 'EV Guide',
-        image: 'assets/images/blogs/blog-2/2.jpg',
-        excerpt: `The electric vehicle revolution has been gaining momentum in recent years, with more and more people opting for these environmentally friendly...`
-      },
-      {
-        id: 3,
-        title: 'Debunking Myths About Electric Vehicles',
-        author: 'Author Name',
-        date: '13 OCT',
-        category: 'EV Myths',
-        image: 'assets/images/blogs/blog-3/4.jpg',
-        excerpt: `Electric vehicles (EVs) are gaining popularity worldwide as a sustainable and efficient transportation option...`
+        date: '14 JUN',
+        category: 'EV Reviews',
+        image: 'assets/images/blogs/blog-5/1.jpg',
+        excerpt: `Electric scooters are no longer just the future in India—they're here and taking over our roads. Here's a roundup of the top 5 electric scooters in 2025...`
       },
       {
         id: 4,
         title: "Rural India's Quiet EV Revolution: How Electric Two-Wheelers Are Gaining Ground Beyond Cities",
-        author: 'Author Name',
-        date: '10 MAY',
+        author: 'Mohit',
+        date: '1 MAY',
         category: 'EV Trends',
         image: 'assets/images/blogs/blog-4/2.jpg',
         excerpt: `Rural India is increasingly saying goodbye to petrol and welcoming electric two-wheelers (E2Ws) as a smarter, cost-effective, and sustainable alternative...`
       },
       {
-        id: 5,
-        title: 'Top 5 Electric Scooters in India for 2025: Performance, Price & Range Compared',
-        author: 'Author Name',
-        date: '25 MAY',
-        category: 'EV Reviews',
-        image: 'assets/images/blogs/top-5-scooters.jpg',
-        excerpt: `Electric scooters are no longer just the future in India—they're here and taking over our roads. Here's a roundup of the top 5 electric scooters in 2025...`
+        id: 3,
+        title: 'Debunking Myths About Electric Vehicles',
+        author: 'Kunal',
+        date: '26 MAR',
+        category: 'EV Myths',
+        image: 'assets/images/blogs/blog-3/4.jpg',
+        excerpt: `Electric vehicles (EVs) are gaining popularity worldwide as a sustainable and efficient transportation option...`
       },
-      // {
-      //   id: 6,
-      //   title: 'The Future of Electric Vehicle Charging Infrastructure',
-      //   author: 'Author Name',
-      //   date: '15 APR',
-      //   category: 'Infrastructure',
-      //   image: 'assets/images/blogs/6.jpg',
-      //   excerpt: `As electric vehicles become more mainstream, the development of robust charging infrastructure becomes crucial for widespread adoption...`
-      // }
+      {
+        id: 2,
+        title: "A Beginner's Guide to Owning an Electric Vehicle",
+        author: 'Abhinav',
+        date: '15 FEB',
+        category: 'EV Guide',
+        image: 'assets/images/blogs/blog-2/2.jpg',
+        excerpt: `The electric vehicle revolution has been gaining momentum in recent years, with more and more people opting for these environmentally friendly...`
+      },
+      {
+        id: 1,
+        title: 'Driving Towards a Greener Future: Exploring the EV Market in India',
+        author: 'Kunal',
+        date: '05 JAN',
+        category: 'Electric Vehicles',
+        image: 'assets/images/blogs/blog-1/1.jpg',
+        excerpt: `Electric vehicles, commonly referred to as EVs, are automobiles powered by electric motors instead of traditional internal combustion engines...`
+      },
     ];
     this.updateCardsPerView();
     this.startAutoSlide();
