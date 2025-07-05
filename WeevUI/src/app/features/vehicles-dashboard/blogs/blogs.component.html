@@ -38,7 +38,7 @@
            [style.transform]="'translateX(' + (-(currentSlide * (100 / cardsPerView))) + '%)'">
         <div class="blog-card" 
              *ngFor="let blog of blogs; trackBy: trackByBlogId" 
-             (click)="openBlog(blog.id)"
+             (click)="openBlog(blog)"
              [style.flex]="'0 0 ' + (100 / cardsPerView) + '%'">
           <div class="card-image-container">
             <img [src]="blog.image" [alt]="blog.title" class="card-image">
@@ -54,7 +54,7 @@
             </div>
             <h3 class="card-title">{{ blog.title }}</h3>
             <p class="card-excerpt">{{ blog.excerpt }}</p>
-            <a class="read-more-link">
+            <a class="read-more-link" (click)="openBlog(blog)">
               Continue Reading
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"></path>

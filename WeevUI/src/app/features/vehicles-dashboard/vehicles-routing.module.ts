@@ -73,7 +73,7 @@ const routes: Routes = [
     component: CompareMainComponent,
   },
   { 
-    path: 'blog/:id', 
+    path: 'blog/:slug', 
     component: BlogDetailComponent,
   },
   // {

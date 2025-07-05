@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Meta, Title } from '@angular/platform-browser';
+import { BlogService } from 'src/app/modules/_services/blog.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -16,14 +17,21 @@ export class BlogDetailComponent implements OnInit {
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
     private meta: Meta,
-    private titleService: Title
+    private titleService: Title,
+    private blogService: BlogService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const blogId = params.get('id');
-      if (blogId) {
-        this.loadBlog(blogId);
+      const slug = params.get('slug');
+      if (slug) {
+        const blog = this.blogService.findBlogBySlug(slug);
+        if (blog) {
+          this.loadBlog(blog.id.toString());
+        } else {
+          console.error('No blog found for slug:', slug);
+          // optional: redirect to 404 page
+        }
       }
     });
     window.scrollTo(0, 0);
@@ -31,9 +39,9 @@ export class BlogDetailComponent implements OnInit {
 
   updateSEOTags(): void {
     if (!this.blog) return;
-  
+
     const blogTitle = this.blog.title || 'Electric Vehicle Blog';
-    const rawText = this.blog.subtitle || this.blog.content || '';  //neeeeeed this from backend what to put
+    const rawText = this.blog.subtitle || this.blog.content || ''; //neeeeeed this from backend what to put
     const cleanText = rawText
       .replace(/[*_#>`]/g, '') // Remove markdown symbols
       .replace(/<\/?[^>]+(>|$)/g, '') // Strip HTML tags
@@ -41,22 +49,21 @@ export class BlogDetailComponent implements OnInit {
       .trim()
       .slice(0, 155); // Limit length
 
-    
-  
     this.titleService.setTitle(`${blogTitle} | WEEV Blog`);
     this.meta.updateTag({
       name: 'description',
-      content: cleanText || 'Read the latest on electric vehicles, trends, tips, and innovations from the WEEV blog.',
+      content:
+        cleanText ||
+        'Read the latest on electric vehicles, trends, tips, and innovations from the WEEV blog.',
     });
   }
-  
 
   loadBlog(id: string) {
     const path = `assets/blogs/blog-${id}.json`;
     this.http.get<any>(path).subscribe({
       next: (data) => {
         this.blog = data;
-        this.updateSEOTags(); 
+        this.updateSEOTags();
         this.cdr.detectChanges();
       },
       error: (err) => {
