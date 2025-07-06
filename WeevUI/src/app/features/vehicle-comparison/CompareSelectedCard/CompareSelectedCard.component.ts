@@ -25,6 +25,14 @@ export class CompareSelectedCard implements OnInit {
     this.router.navigate(["/Selection", this.cardData.manufacturer+'_'+this.cardData.model+'_'+this.cardData.variant]);
   }
 
+  exShowroomPrice(value:any):any{
+    return this.isNA(value)?'NA' : `₹ ${value.toLocaleString('en-IN')}`
+  }
+
+  isNA(value: any): boolean {
+    return value === null || value === undefined || value === '' || isNaN(value);
+  }
+
   removeCard() {
     this.cardRemoved.emit(this.cardData); // Emit the card data to the parent component
   }

@@ -65,12 +65,15 @@ export class CompareSuggestionsComponent {
 
   private comparisonProductNames = {
     bike: [
-      ['Revolt_RV400_STD', 'Torq_Kratos_R'],
-      ['Revolt_RV400_STD', 'Kabira Mobility_KM 4000_NA'],
-      ['Revolt_RV400_STD', 'Kabira Mobility_KM 4000_NA'],
+      ['Ultraviolette_F77 Mach 2_Standard', 'Ola_Roadster Pro_16 kWh'],
+      ['Ultraviolette_F77 Mach 2_Standard', 'Matter_Aera_5000+'],
+      ['Ola_Roadster Pro_16 kWh', 'Matter_Aera_5000+'],
     ],
     scooter: [
-      ['Ola_S1 Pro_NA', 'Bajaj_Chetak_Premium 2023']
+      ['Ather_450X_STD', 'Ola_S1 Pro_STD'],
+      ['TVS_iQube_S', 'Bajaj_Chetak_Premium 2023'],
+      ['Ather_Rizta_S', 'Simple_One_STD'],
+
     ]
   };
 
@@ -204,6 +207,14 @@ export class CompareSuggestionsComponent {
       variants: data.variants || [],
       productName: `${data.manufacturer}_${data.model}_${data.variant}`,
     };
+  }
+
+  exShowroomPrice(value:any):any{
+    return this.isNA(value)?'NA' : `₹ ${value.toLocaleString('en-IN')}`
+  }
+
+  isNA(value: any): boolean {
+    return value === null || value === undefined || value === '' || isNaN(value);
   }
 
   onVehicleSelected(index: number, vehicleData: any) {

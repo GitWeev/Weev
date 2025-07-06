@@ -109,13 +109,14 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       if (this.productID != 0 || this.productID != undefined) {
         this.productlist = twowheeler;
         this.productListModel = this.transformResponse(this.productlist);
-        this.updateMetaDescription();
+        console.log(this.productListModel);
         this.fetchData();
         this.selectedRating = this.productListModel?.ourRating ?? 0;
         this.unSelectRating = this.countRating - this.selectedRating;
         this.getTabNameWithID(this.productID);
         this.getOtherModelswithID(+this.productID);
         this.getAllTabNameWithID(+this.productID);
+        this.updateMetaDescription();
         // this.getTwoWheelerData();
         // this.getforVarientsData();
         this.variantsList = this.twowheelerlist
@@ -155,14 +156,13 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
   updateMetaDescription() {
     const manufacturer = this.productListModel?.manufacturer || '';
     const model = this.productListModel?.model || '';
-    const batteryCapacity = this.productListModel?.batteryCapacity || '';
-    const chargingTime = this.productListModel?.chargingTime || '';
-    const range = this.productListModel?.rangeOfVehicle || '';
-    const maxSpeed = this.productListModel?.maxSpeed || '';
+    const price = this.productListModel?.exShowroomPrice || '';
     const variant = this.productListModel?.variant ?? '';
+    const vehicleType =this.productListModel?.vehicleType ?? '';
+    const colorCount =this.colorCount?? '';
   
-    const description = `${manufacturer} ${model} has a battery capacity of ${batteryCapacity} and charges in ${chargingTime}. It offers a maximum range of ${range} and a max speed of ${maxSpeed}.`;
-
+    // const description = `${manufacturer} ${model} ${variant} electric ${vehicleType} has a battery capacity of ${batteryCapacity} and charges in ${chargingTime}. It offers a maximum range of ${range} and a max speed of ${maxSpeed}.`;
+    const description = `${manufacturer} ${model} ${variant} electric ${vehicleType} starts from ${price}. Check ${model} charging time, range, and top speed in ${colorCount} color options`;
     // const description = `${manufacturer} ${model} ${variant} – Explore price, range, charging time, top speed, specifications, features, and images. Compare electric vehicle variants and book online.`;
   
     this.meta.updateTag({ name: 'description', content: description });
@@ -429,6 +429,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     this.vehiclesService.getTabNameWithID(productID).subscribe((response) => {
       this.colorCount = response.length;
       // console.log(this.colorCount);
+      this.updateMetaDescription();
     });
   }
 
@@ -559,8 +560,9 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     wheelsType: 'Wheels Type',
     ourRating: 'Our Rating',
     path: 'Path',
+    vehicleType:'Vehicle Type',
   };
-  isNA = (value: any) => value === 'NA' || value === 0;
+  isNA = (value: any) => value === 'NA' || value === 0 ||value ==='-1';
 
   valueTransformMap: { [key: string]: (value: any) => string } = {
     exShowroomPrice: (value) =>
@@ -619,13 +621,13 @@ ${value} `),
     suspensionRear: (value) => `${value}`,
     brakesFront: (value) => `${value}`,
     brakesRear: (value) => `${value}`,
-    tyreSize: (value: string) => {
-      if (this.isNA(value)) return 'NA';
+    tyreSize: (value: string | null | undefined) => {
+      if (!value || this.isNA(value)) return 'NA';
       const sizes = value.split(',').map((size: string) => size.trim());
       return sizes.join('\n');
-    },
+    },    
     wheelSize: (value: string) => {
-      if (this.isNA(value)) return 'NA';
+      if (!value || this.isNA(value)) return 'NA';
       const sizes = value.split(',').map((size: string) => size.trim());
       return sizes.join('\n');
     },
@@ -633,6 +635,7 @@ ${value} `),
     bodyType: (value) => `${value}`,
     dimensionsAndCapacity: (value) => `${value}`,
     bootSpace: (value) => (this.isNA(value) ? 'NA' : `${value} liters`),
+    vehicleType:(value)=>`${value}`,
   };
 }
 
@@ -726,4 +729,5 @@ const EMPTY_Application: ProductListModel = {
   wheelsType: undefined,
   ourRating: 0,
   path: undefined,
+  vehicleType:undefined,
 };

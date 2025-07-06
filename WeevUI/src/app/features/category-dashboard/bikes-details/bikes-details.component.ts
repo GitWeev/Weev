@@ -7,6 +7,7 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { VehiclesService } from 'src/app/modules/_services/vehicles.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-bikes-details',
@@ -178,6 +179,16 @@ export class BikesDetailsComponent implements OnInit {
     }, 500);
   }
 
+  exShowroomPrice(value:any):any{
+    return this.isNA(value)?'NA' : `₹ ${value.toLocaleString('en-IN')}`
+  }
+
+  isNA(value: any): boolean {
+    return value === null || value === undefined || value === '' || isNaN(value);
+  }
+    
+
+
   onSelect(twId: any) {
     // this.router.navigate(['/Selection', twId]);
     const twowheeler = this.allTwoWheelerList.find((i) => i.twId === twId);
@@ -191,3 +202,5 @@ export class BikesDetailsComponent implements OnInit {
     ]);
   }
 }
+
+

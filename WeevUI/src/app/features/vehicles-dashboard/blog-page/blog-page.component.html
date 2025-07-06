@@ -9,7 +9,7 @@
       <h4>{{ blog.heading }}</h4>
       <p>{{ blog.para }}</p>
     </div>
-    <div class="viewBlog" routerLink="/blog.id">
+    <div class="viewBlog" (click)="onSelect(blog)">
       <div class="viewcontainer">
          <div class="bgg" (click)="onSelect(blog.id)">View Full Blog</div>
       </div>

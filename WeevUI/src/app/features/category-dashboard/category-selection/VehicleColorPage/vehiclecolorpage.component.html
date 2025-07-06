@@ -8,7 +8,7 @@
     <div *ngIf="!loading" class="mainDetails">
         <div class="gallery-container">
             <div class="main-image-container">
-                <img src="{{productListModel?.path}}" alt="" onerror="this.src='assets/images/pr4.png';">
+                <img src="{{productListModel?.path}}" alt="" onerror="this.src='assets/images/pr4.png';" alt="{{productListModel?.manufacturer}} {{productListModel?.model}}">
             </div>
         </div>
         <div class="description">
@@ -31,7 +31,7 @@
         <div id="colorCarousel" class="carousel-color">
             <div class="carousel-inner">
                 <div *ngFor="let imagePath of ReqimagePaths; let i = index" [class.active]="i === currentIndexImage">
-                    <img [src]="imagePath.imagePath" alt="Vehicle Image" class="carousel-image">
+                    <img [src]="imagePath.imagePath" alt="Vehicle Image" class="carousel-image" alt="{{productListModel?.manufacturer}} {{productListModel?.model}} image">
                 </div>
             </div>
             <div class="carousel-controls">
@@ -46,7 +46,7 @@
                 <div *ngFor="let imagePath of ReqimagePaths; let i = index" class="thumbnail"
                     (click)="currentIndexImage = i; scrollThumbnails(i)" [class.selected]="i === currentIndexImage"
                     [style.opacity]="i === currentIndexImage ? '1' : '0.5'" [style.transition]="'opacity 0.3s ease'">
-                    <img [src]="imagePath.imagePath" alt="Thumbnail" class="thumbnail-image">
+                    <img [src]="imagePath.imagePath" alt="Thumbnail" class="thumbnail-image" alt="{{productListModel?.manufacturer}} {{productListModel?.model}} image preview">
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div id="colorCarousel" class="carousel-image">
             <div class="carousel-inner">
                 <div *ngFor="let imagePath of colorimagePaths; let i = index" [class.active]="i === currentIndexColor">
-                    <img [src]="imagePath.colorPath" alt="Vehicle Image" class="carousel-image">
+                    <img [src]="imagePath.colorPath" alt="Vehicle Image" class="carousel-image" alt="{{productListModel?.manufacturer}} {{productListModel?.model}} color image">
                 </div>
             </div>
             <div class="carousel-controls" style="position: relative; top: -50%;" [ngStyle]="{'display': isMobileView ? 'none' : 'relative'}">
@@ -72,7 +72,7 @@
                 <div *ngFor="let imagePath of colorimagePaths; let i = index" class="thumbnail "
                     (click)="currentIndexColor = i" [class.selected]="i === currentIndexColor"
                     [style.opacity]="i === currentIndexColor ? '1' : '0.5'" [style.transition]="'opacity 0.3s ease'">
-                    <img [src]="imagePath.colorPath" alt="Thumbnail" class="thumbnail-image">
+                    <img [src]="imagePath.colorPath" alt="Thumbnail" class="thumbnail-image" alt="{{productListModel?.manufacturer}} {{productListModel?.model}} color image preview">
                     <div class="color-name">
                         {{imagePath.colorName}}
                     </div>

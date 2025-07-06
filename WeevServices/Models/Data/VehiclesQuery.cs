@@ -124,6 +124,7 @@ namespace WeevServices.Models
             }
             return data;
         }
+
         private static T GetItem<T>(DataRow dr)
         {
             Type temp = typeof(T);
@@ -131,16 +132,48 @@ namespace WeevServices.Models
 
             foreach (DataColumn column in dr.Table.Columns)
             {
+                object value = dr[column.ColumnName];
+
                 foreach (PropertyInfo pro in temp.GetProperties())
                 {
                     if (pro.Name == column.ColumnName)
-                        pro.SetValue(obj, dr[column.ColumnName], null);
-                    else
-                        continue;
+                    {
+                        try
+                        {
+                            if (value == DBNull.Value || string.IsNullOrWhiteSpace(value?.ToString()) || value.ToString().ToUpper() == "NA")
+                            {
+                                if (Nullable.GetUnderlyingType(pro.PropertyType) != null || pro.PropertyType == typeof(string))
+                                {
+                                    pro.SetValue(obj, null, null);
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"⚠️ Cannot assign DBNull to non-nullable property '{pro.Name}' of type '{pro.PropertyType}'");
+                                }
+                            }
+                            else
+                            {
+                                object safeValue = Convert.ChangeType(value, Nullable.GetUnderlyingType(pro.PropertyType) ?? pro.PropertyType);
+                                pro.SetValue(obj, safeValue, null);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"❌ Error setting property '{pro.Name}' from column '{column.ColumnName}'");
+                            Console.WriteLine($"   Value: {value} | Value Type: {(value == null ? "null" : value.GetType().ToString())}");
+                            Console.WriteLine($"   Property Type: {pro.PropertyType}");
+                            Console.WriteLine($"   Exception: {ex.Message}");
+                            throw; // Rethrow or handle gracefully
+                        }
+
+                        break; // Exit property loop once matched
+                    }
                 }
             }
+
             return obj;
         }
+
 
         private async Task<List<TwoWheeler>> ReadAllTaskAsync(DbDataReader reader)
         {
