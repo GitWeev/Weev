@@ -47,9 +47,9 @@ export class HeaderComponent implements OnInit {
   
       this.filteredSuggestions = this.suggestions.filter(suggestion => 
         searchWords.every(word => 
-          suggestion.manufacturer.toLowerCase().includes(word) ||
-          suggestion.model.toLowerCase().includes(word) ||
-          suggestion.variant.toLowerCase().includes(word)
+          suggestion.manufacturer?.toLowerCase().includes(word) ||
+          suggestion.model?.toLowerCase().includes(word) ||
+          suggestion.variant?.toLowerCase().includes(word)
         )
       );
   
