@@ -562,7 +562,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     path: 'Path',
     vehicleType:'Vehicle Type',
   };
-  isNA = (value: any) => value === 'NA' || value === 0 ||value ==='-1';
+  isNA = (value: any) => value === 'NA' || value === 0 || value === undefined;
 
   valueTransformMap: { [key: string]: (value: any) => string } = {
     exShowroomPrice: (value) =>

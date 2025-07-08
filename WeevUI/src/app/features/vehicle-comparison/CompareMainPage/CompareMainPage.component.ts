@@ -12,7 +12,7 @@ export class CompareMainComponent implements OnInit {
   vehicleData: any = {};
   productKeys: string[] = [];
   twowheelerlist: Array<any> = [];
-  sections: any[] = []; // Initialize sections as an empty array
+  sections: any[] = []; 
 
   constructor(
     private route: ActivatedRoute,

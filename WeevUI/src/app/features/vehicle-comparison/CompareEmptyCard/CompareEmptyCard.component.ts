@@ -56,7 +56,6 @@ export class CompareEmptyCard implements OnInit {
     inputElement.focus();
   }
   
-
   specificTwIds: Array<any> = [34, 3, 8, 5, 21];
 
   showSuggestions() {
