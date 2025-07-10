@@ -3,21 +3,21 @@ SET SQL_SAFE_UPDATES = 0;
 
 UPDATE twowheelerdata
 SET ExShowroomPrice = CASE 
-    WHEN manufacturer = 'Ola' AND model = 'S1 Air' AND variant = 'STD' THEN 125885
+    WHEN manufacturer = 'Ola' AND model = 'S1 Air' AND variant = 'STD' THEN 109999
     WHEN manufacturer = 'Ola' AND model = 'S1' AND variant = 'STD' THEN 69999
-    WHEN manufacturer = 'Ola' AND model = 'S1 Pro' AND variant = 'STD' THEN 152000
-    WHEN manufacturer = 'Ather' AND model = '450X' AND variant = 'STD' THEN 127000
-    WHEN manufacturer = 'Ather' AND model = '450X' AND variant = 'With Pro Pack' THEN 179000
+    WHEN manufacturer = 'Ola' AND model = 'S1 Pro' AND variant = 'STD' THEN 157760
+    WHEN manufacturer = 'Ather' AND model = '450X' AND variant = 'STD' THEN 159047
+    WHEN manufacturer = 'Ather' AND model = '450X' AND variant = 'With Pro Pack' THEN 179047
     WHEN manufacturer = 'TVS' AND model = 'iQube' AND variant = 'STD' THEN 94999
-    WHEN manufacturer = 'TVS' AND model = 'iQube' AND variant = 'S' THEN 117642
-    WHEN manufacturer = 'TVS' AND model = 'iQube' AND variant = 'ST' THEN 145000
+    WHEN manufacturer = 'TVS' AND model = 'iQube' AND variant = 'S' THEN 108993
+    WHEN manufacturer = 'TVS' AND model = 'iQube' AND variant = 'ST' THEN 185373
     WHEN manufacturer = 'Revolt' AND model = 'RV400' AND variant = 'STD' THEN 123750
-    WHEN manufacturer = 'Revolt' AND model = 'RV400 BRZ' AND variant = 'STD' THEN 129950
-    WHEN manufacturer = 'Bajaj' AND model = 'Chetak' AND variant = 'Premium' THEN 115000
+    WHEN manufacturer = 'Revolt' AND model = 'RV400 BRZ' AND variant = 'STD' THEN 139950
+    WHEN manufacturer = 'Bajaj' AND model = 'Chetak' AND variant = 'Premium' THEN 109998
     WHEN manufacturer = 'Bajaj' AND model = 'Chetak' AND variant = 'Premium 2023' THEN 99999
-    WHEN manufacturer = 'Hero' AND model = 'Vida' AND variant = 'Plus' THEN 115000
-    WHEN manufacturer = 'Hero' AND model = 'Vida' AND variant = 'Pro' THEN 159000
-    WHEN manufacturer = 'Simple' AND model = 'One' AND variant = 'STD' THEN 139000
+    WHEN manufacturer = 'Hero' AND model = 'Vida' AND variant = 'Plus' THEN 119900
+    WHEN manufacturer = 'Hero' AND model = 'Vida' AND variant = 'Pro' THEN 149900
+    WHEN manufacturer = 'Simple' AND model = 'One' AND variant = 'STD' THEN 139999
     WHEN manufacturer = 'Simple' AND model = 'One' AND variant = 'Extra Range' THEN 167000
     WHEN manufacturer = 'Torq' AND model = 'Kratos' AND variant = 'STD' THEN 132000
     WHEN manufacturer = 'Torq' AND model = 'Kratos' AND variant = 'R' THEN 149999
@@ -58,12 +58,12 @@ SET ExShowroomPrice = CASE
     WHEN manufacturer = 'Ola' AND model = 'Roadster X' AND variant = '4.5 kWh' THEN 124999
     WHEN manufacturer = 'Ola' AND model = 'Roadster Pro' AND variant = '8 kWh' THEN 149999
     WHEN manufacturer = 'Ola' AND model = 'Roadster Pro' AND variant = '16 kWh' THEN 174999
-    WHEN manufacturer = 'Matter' AND model = 'Aera' AND variant = '5000' THEN 524999
-    WHEN manufacturer = 'Matter' AND model = 'Aera' AND variant = '5000+' THEN 554999
-    WHEN manufacturer = 'Ultraviolette' AND model = 'F77' AND variant = 'ORIGNAL' THEN 1200000
-    WHEN manufacturer = 'Ultraviolette' AND model = 'F77' AND variant = 'RECON' THEN 1450000
-    WHEN manufacturer = 'Ultraviolette' AND model = 'F77 Limited' AND variant = 'STD' THEN 1499999
-    WHEN manufacturer = 'Ultraviolette' AND model = 'F77 Mach 2' AND variant = 'Standard' THEN 1550000
-    WHEN manufacturer = 'Ultraviolette' AND model = 'F77 Mach 2' AND variant = 'Recon' THEN 1750000
+    WHEN manufacturer = 'Matter' AND model = 'Aera' AND variant = '5000' THEN 183305
+    WHEN manufacturer = 'Matter' AND model = 'Aera' AND variant = '5000+' THEN 193823
+    WHEN manufacturer = 'Ultraviolette' AND model = 'F77' AND variant = 'ORIGNAL' THEN 399000
+    WHEN manufacturer = 'Ultraviolette' AND model = 'F77' AND variant = 'RECON' THEN 299000
+    WHEN manufacturer = 'Ultraviolette' AND model = 'F77 Limited' AND variant = 'STD' THEN 299000
+    WHEN manufacturer = 'Ultraviolette' AND model = 'F77 Mach 2' AND variant = 'Standard' THEN 299000
+    WHEN manufacturer = 'Ultraviolette' AND model = 'F77 Mach 2' AND variant = 'Recon' THEN 399000
     ELSE ExShowroomPrice
 END;
