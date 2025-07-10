@@ -17,8 +17,7 @@ import { takeWhile } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { HttpClient } from '@angular/common/http';
-import { Meta,Title  } from '@angular/platform-browser';
-
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-category-selection',
@@ -83,7 +82,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     private cd: ChangeDetectorRef,
     private router: Router,
     private meta: Meta,
-    private titleService: Title,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
@@ -158,17 +157,19 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     const model = this.productListModel?.model || '';
     const price = this.productListModel?.exShowroomPrice || '';
     const variant = this.productListModel?.variant ?? '';
-    const vehicleType =this.productListModel?.vehicleType ?? '';
-    const colorCount =this.colorCount?? '';
-  
+    const vehicleType = this.productListModel?.vehicleType ?? '';
+    const colorCount = this.colorCount ?? '';
+
     // const description = `${manufacturer} ${model} ${variant} electric ${vehicleType} has a battery capacity of ${batteryCapacity} and charges in ${chargingTime}. It offers a maximum range of ${range} and a max speed of ${maxSpeed}.`;
     const description = `${manufacturer} ${model} ${variant} electric ${vehicleType} starts from ${price}. Check ${model} charging time, range, and top speed in ${colorCount} color options`;
     // const description = `${manufacturer} ${model} ${variant} – Explore price, range, charging time, top speed, specifications, features, and images. Compare electric vehicle variants and book online.`;
-  
+
     this.meta.updateTag({ name: 'description', content: description });
-    this.titleService.setTitle(`WEEV | ${manufacturer} ${model} ${variant} - Price, Charging Time, Range, Speed, Specs & Images`);
+    this.titleService.setTitle(
+      `WEEV | ${manufacturer} ${model} ${variant} - Price, Charging Time, Range, Speed, Specs & Images`
+    );
   }
-   
+
   // getProductDataWithID(productID: any) {
   //   this.vehiclesService
   //     .getProductDataWithID(productID)
@@ -215,7 +216,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
         .getProductDataWithID(variantId)
         .subscribe((response) => {
           const transformedResponse = this.transformResponse(response);
-          this.varientList.push(transformedResponse); 
+          this.varientList.push(transformedResponse);
         });
     });
   }
@@ -262,8 +263,8 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       this.vehiclesService
         .getOtherModelswithID(offset)
         .subscribe((response) => {
-          this.nextproductlist.push(response); 
-          this.nextproductListModel = response; 
+          this.nextproductlist.push(response);
+          this.nextproductListModel = response;
         });
     });
 
@@ -351,7 +352,7 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
       ],
     };
     // console.log(keyspecsjson);
-    this.keySpecs = keyspecsjson.KeySpecs.slice(0, 5); 
+    this.keySpecs = keyspecsjson.KeySpecs.slice(0, 5);
     this.appFeatures = keyspecsjson.AppFeatures.slice(0, 5);
     this.cd.detectChanges();
   }
@@ -407,11 +408,11 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
         return value !== undefined && value !== '' && value !== null
           ? {
               key: this.keyDisplayMap[key] || key,
-              value: value, 
+              value: value,
             }
           : null;
       })
-      .filter((item): item is { key: string; value: any } => item !== null); 
+      .filter((item): item is { key: string; value: any } => item !== null);
   }
 
   imageCount: number = 0;
@@ -560,33 +561,37 @@ export class CategorySelectionComponent implements OnInit, AfterViewChecked {
     wheelsType: 'Wheels Type',
     ourRating: 'Our Rating',
     path: 'Path',
-    vehicleType:'Vehicle Type',
+    vehicleType: 'Vehicle Type',
   };
-  isNA = (value: any) => value === 'NA' || value === 0 ||value ==='-1';
+  isNA = (value: any) => value === 'NA' || value === 0 || value === null || value === undefined;
 
   valueTransformMap: { [key: string]: (value: any) => string } = {
     exShowroomPrice: (value) =>
       this.isNA(value) ? 'NA' : `₹ ${value.toLocaleString('en-IN')}`,
+
     maxSpeed: (value) => (this.isNA(value) ? 'NA' : `${value} km/h`),
-    chargingTime: (value) => (this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours`),
+    chargingTime: (value) =>
+      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours`,
     batteryCapacity: (value) => (this.isNA(value) ? 'NA' : `${value} kWh`),
     chargingTime0To80Perc: (value) =>
-      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-80%)`,
+      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0–80%)`,
     chargingTime0To100Perc: (value) =>
-      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-100%)`,
-    bookingPrice: (value) => (this.isNA(value) ? 'NA' : ` ₹
-${value} `),
+      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0–100%)`,
+    bookingPrice: (value) => (this.isNA(value) ? 'NA' : `₹ ${value}`),
+
     acceleration0To60kmph: (value) =>
-      this.isNA(value) ? 'NA' : `${value} sec (0-60 km/h)`,
+      this.isNA(value) ? 'NA' : `${value} sec (0–60 km/h)`,
     acceleration0To40kmph: (value) =>
-      this.isNA(value) ? 'NA' : `${value} sec (0-40 km/h)`,
+      this.isNA(value) ? 'NA' : `${value} sec (0–40 km/h)`,
     continuousPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     motorPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     rangeOfVehicle: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
-    underseatStorage: (value) => (this.isNA(value) ? 'NA' : `${value} liters`),
+    underseatStorage: (value) =>
+      this.isNA(value) ? 'NA' : `${value} liters`,
     chargerOutputMin: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     chargerOutputMax: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     gradeability: (value) => (this.isNA(value) ? 'NA' : `${value} degrees`),
+
     width: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     length: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     height: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
@@ -594,48 +599,69 @@ ${value} `),
     groundClearance: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     wheelbase: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     kerbWeight: (value) => (this.isNA(value) ? 'NA' : `${value} kg`),
-    loadCarryingCapacity: (value) => (this.isNA(value) ? 'NA' : `${value} kg`),
+    loadCarryingCapacity: (value) =>
+      this.isNA(value) ? 'NA' : `${value} kg`,
     topSpeed: (value) => (this.isNA(value) ? 'NA' : `${value} km/h`),
-    motorWarrantyForMonths: (value) => (this.isNA(value) ? 'NA' : `${value} months`),
+
+    motorWarrantyForMonths: (value) =>
+      this.isNA(value) ? 'NA' : `${value} months`,
     motorWarrantyForKm: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
-    batteryWarrantyForMonths: (value) => (this.isNA(value) ? 'NA' : `${value} months`),
-    batteryWarrantyForKm: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
-    abstractrtificialExhaustSoundSystem: (value) => `${value}`,
-    drls: (value) => `${value}`,
-    turnSignalLamp: (value) => `${value}`,
-    internetConnectivity: (value) => `${value}`,
-    bluetoothConnectivity: (value) => `${value}`,
-    geoFencing: (value) => `${value}`,
-    antiTheftAlarm: (value) => `${value}`,
-    usbchargingPort: (value) => `${value}`,
-    fastCharging: (value) => `${value}`,
-    fastChargingTimeUpto80Perc: (value) => `${value}`,
-    ridingModes: (value) => `${value}`,
-    musicControl: (value) => `${value}`,
-    externalSpeakers: (value) => `${value}`,
-    centralLocking: (value) => `${value}`,
-    cruiseControl: (value) => `${value}`,
-    lowBatteryIndicator: (value) => `${value}`,
-    waterProofRating: (value) => `${value}`,
-    suspensionFront: (value) => `${value}`,
-    suspensionRear: (value) => `${value}`,
-    brakesFront: (value) => `${value}`,
-    brakesRear: (value) => `${value}`,
+    batteryWarrantyForMonths: (value) =>
+      this.isNA(value) ? 'NA' : `${value} months`,
+    batteryWarrantyForKm: (value) =>
+      this.isNA(value) ? 'NA' : `${value} km`,
+
+    abstractrtificialExhaustSoundSystem: (value) =>
+      this.isNA(value) ? 'NA' : `${value}`,
+    drls: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    turnSignalLamp: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    internetConnectivity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    bluetoothConnectivity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    geoFencing: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    antiTheftAlarm: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    usbchargingPort: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    fastCharging: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    fastChargingTimeUpto80Perc: (value) =>
+      this.isNA(value) ? 'NA' : `${value}`,
+    ridingModes: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    musicControl: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    externalSpeakers: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    centralLocking: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    cruiseControl: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    lowBatteryIndicator: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    waterProofRating: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    suspensionFront: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    suspensionRear: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    brakesFront: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    brakesRear: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+
     tyreSize: (value: string | null | undefined) => {
       if (!value || this.isNA(value)) return 'NA';
       const sizes = value.split(',').map((size: string) => size.trim());
       return sizes.join('\n');
-    },    
+    },
     wheelSize: (value: string) => {
       if (!value || this.isNA(value)) return 'NA';
       const sizes = value.split(',').map((size: string) => size.trim());
       return sizes.join('\n');
     },
-    wheelsType: (value) => `${value}`,
-    bodyType: (value) => `${value}`,
-    dimensionsAndCapacity: (value) => `${value}`,
+    wheelsType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    bodyType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    dimensionsAndCapacity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
     bootSpace: (value) => (this.isNA(value) ? 'NA' : `${value} liters`),
-    vehicleType:(value)=>`${value}`,
+    instrumentConsole: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    navigation: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    distanceToEmptyIndicator: (value) =>
+      this.isNA(value) ? 'NA' : `${value}`,
+    mobileApplication: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    motorType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    chargingAtHome: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    noOfBatteries: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    swappableBattery: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    chargingStationLocater: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    callOrsmsalerts: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    carryHook: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    clock: (value) => (this.isNA(value) ? 'NA' : `${value}`),
   };
 }
 
@@ -729,5 +755,5 @@ const EMPTY_Application: ProductListModel = {
   wheelsType: undefined,
   ourRating: 0,
   path: undefined,
-  vehicleType:undefined,
+  vehicleType: undefined,
 };

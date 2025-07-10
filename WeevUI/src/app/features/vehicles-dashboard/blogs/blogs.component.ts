@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { BlogService } from 'src/app/modules/_services/blog.service';
 
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.scss']
+  styleUrls: ['./blogs.component.scss'],
 })
 export class BlogsComponent implements OnInit, OnDestroy {
   blogs: any[] = [];
@@ -12,7 +13,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
   autoSlideInterval: any;
   cardsPerView = 3;
   isTransitioning = false;
-  
+
   // Touch gesture properties
   touchStartX = 0;
   touchStartY = 0;
@@ -23,56 +24,10 @@ export class BlogsComponent implements OnInit, OnDestroy {
   isSwipeHintVisible = true;
   swipeHintTimeout: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private blogService: BlogService) {}
 
   ngOnInit(): void {
-    this.blogs = [
-      {
-        id: 5,
-        title: 'Top 5 Electric Scooters in India for 2025: Performance, Price & Range Compared',
-        author: 'Kunal',
-        date: '14 JUN',
-        category: 'EV Reviews',
-        image: 'assets/images/blogs/blog-5/1.jpg',
-        excerpt: `Electric scooters are no longer just the future in India—they're here and taking over our roads. Here's a roundup of the top 5 electric scooters in 2025...`
-      },
-      {
-        id: 4,
-        title: "Rural India's Quiet EV Revolution: How Electric Two-Wheelers Are Gaining Ground Beyond Cities",
-        author: 'Mohit',
-        date: '1 MAY',
-        category: 'EV Trends',
-        image: 'assets/images/blogs/blog-4/2.jpg',
-        excerpt: `Rural India is increasingly saying goodbye to petrol and welcoming electric two-wheelers (E2Ws) as a smarter, cost-effective, and sustainable alternative...`
-      },
-      {
-        id: 3,
-        title: 'Debunking Myths About Electric Vehicles',
-        author: 'Kunal',
-        date: '26 MAR',
-        category: 'EV Myths',
-        image: 'assets/images/blogs/blog-3/4.jpg',
-        excerpt: `Electric vehicles (EVs) are gaining popularity worldwide as a sustainable and efficient transportation option...`
-      },
-      {
-        id: 2,
-        title: "A Beginner's Guide to Owning an Electric Vehicle",
-        author: 'Abhinav',
-        date: '15 FEB',
-        category: 'EV Guide',
-        image: 'assets/images/blogs/blog-2/2.jpg',
-        excerpt: `The electric vehicle revolution has been gaining momentum in recent years, with more and more people opting for these environmentally friendly...`
-      },
-      {
-        id: 1,
-        title: 'Driving Towards a Greener Future: Exploring the EV Market in India',
-        author: 'Kunal',
-        date: '05 JAN',
-        category: 'Electric Vehicles',
-        image: 'assets/images/blogs/blog-1/1.jpg',
-        excerpt: `Electric vehicles, commonly referred to as EVs, are automobiles powered by electric motors instead of traditional internal combustion engines...`
-      },
-    ];
+    this.blogs = this.blogService.getAllBlogs();
     this.updateCardsPerView();
     this.startAutoSlide();
     this.hideSwipeHintAfterDelay();
@@ -132,16 +87,16 @@ export class BlogsComponent implements OnInit, OnDestroy {
 
   nextSlide() {
     if (this.isTransitioning) return;
-    
+
     this.isTransitioning = true;
     const maxSlides = this.getMaxSlides();
-    
+
     if (this.currentSlide >= maxSlides) {
       this.currentSlide = 0;
     } else {
       this.currentSlide++;
     }
-    
+
     setTimeout(() => {
       this.isTransitioning = false;
     }, 600);
@@ -149,16 +104,16 @@ export class BlogsComponent implements OnInit, OnDestroy {
 
   prevSlide() {
     if (this.isTransitioning) return;
-    
+
     this.isTransitioning = true;
     const maxSlides = this.getMaxSlides();
-    
+
     if (this.currentSlide <= 0) {
       this.currentSlide = maxSlides;
     } else {
       this.currentSlide--;
     }
-    
+
     setTimeout(() => {
       this.isTransitioning = false;
     }, 600);
@@ -170,7 +125,10 @@ export class BlogsComponent implements OnInit, OnDestroy {
   }
 
   getCurrentVisibleBlogs(): any[] {
-    return this.blogs.slice(this.currentSlide, this.currentSlide + this.cardsPerView);
+    return this.blogs.slice(
+      this.currentSlide,
+      this.currentSlide + this.cardsPerView
+    );
   }
 
   onMouseEnter() {
@@ -196,13 +154,13 @@ export class BlogsComponent implements OnInit, OnDestroy {
 
   onTouchMove(event: TouchEvent) {
     if (!this.touchStartX) return;
-    
+
     this.touchEndX = event.touches[0].clientX;
     this.touchEndY = event.touches[0].clientY;
-    
+
     const deltaX = Math.abs(this.touchEndX - this.touchStartX);
     const deltaY = Math.abs(this.touchEndY - this.touchStartY);
-    
+
     // If horizontal swipe is more prominent than vertical, prevent default scrolling
     if (deltaX > deltaY && deltaX > 10) {
       event.preventDefault();
@@ -212,10 +170,10 @@ export class BlogsComponent implements OnInit, OnDestroy {
 
   onTouchEnd(event: TouchEvent) {
     if (!this.touchStartX || !this.touchEndX) return;
-    
+
     const deltaX = this.touchStartX - this.touchEndX;
     const deltaY = Math.abs(this.touchStartY - this.touchEndY);
-    
+
     // Only trigger swipe if horizontal movement is greater than vertical (not scrolling)
     if (Math.abs(deltaX) > deltaY && Math.abs(deltaX) > this.dragThreshold) {
       if (deltaX > 0) {
@@ -226,13 +184,13 @@ export class BlogsComponent implements OnInit, OnDestroy {
         this.prevSlide();
       }
     }
-    
+
     // Reset touch coordinates
     this.touchStartX = 0;
     this.touchStartY = 0;
     this.touchEndX = 0;
     this.touchEndY = 0;
-    
+
     // Restart auto-slide after a delay
     setTimeout(() => {
       if (!this.isDragging) {
@@ -258,7 +216,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
         this.prevSlide();
       }
     }
-    
+
     setTimeout(() => {
       this.isDragging = false;
       this.startAutoSlide();
@@ -284,9 +242,10 @@ export class BlogsComponent implements OnInit, OnDestroy {
     return window.innerWidth < 768;
   }
 
-  openBlog(id: number) {
+  openBlog(blog: any) {
     if (!this.isDragging) {
-      this.router.navigate(['/blog', id]);
+      const slug = this.blogService.generateSlug(blog.title);
+      this.router.navigate(['/blog', slug]);
     }
   }
 }
