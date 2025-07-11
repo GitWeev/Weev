@@ -118,7 +118,7 @@ export class CompareEmptyCard implements OnInit {
       .filter(
         (item) => item.manufacturer + ' ' + item.model === manufacturerModel
       )
-      .map((item) => item.variantType);
+      .map((item) => item.variant);
     this.vehicle = {
       title: manufacturerModel,
       manufacturer: twowheeler.manufacturer,
