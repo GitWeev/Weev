@@ -19,8 +19,8 @@ SET ExShowroomPrice = CASE
     WHEN manufacturer = 'Hero' AND model = 'Vida' AND variant = 'Pro' THEN 120300
     WHEN manufacturer = 'Simple' AND model = 'One' AND variant = 'STD' THEN 139999
     WHEN manufacturer = 'Simple' AND model = 'One' AND variant = 'Extra Range' THEN 166694
-    WHEN manufacturer = 'Torq' AND model = 'Kratos' AND variant = 'STD' THEN 122499
-    WHEN manufacturer = 'Torq' AND model = 'Kratos' AND variant = 'R' THEN 149999
+    WHEN manufacturer = 'Tork' AND model = 'Kratos' AND variant = 'STD' THEN 122499
+    WHEN manufacturer = 'Tork' AND model = 'Kratos' AND variant = 'R' THEN 149999
     WHEN manufacturer = 'Ampere' AND model = 'Magnus EX' AND variant = 'Top' THEN 84900
     WHEN manufacturer = 'Okinawa' AND model = 'PraisePro' AND variant = 'STD' THEN 84443
     WHEN manufacturer = 'Okinawa' AND model = 'Okhi90' AND variant = 'STD' THEN 149999
@@ -118,7 +118,7 @@ SET Variant = CASE
     WHEN TWid=45 AND manufacturer = 'Bounce' AND model = 'Infinity e.1'  THEN 'STD'
     WHEN TWid=46 AND manufacturer = 'Bounce' AND model = 'Infinity e.1'  THEN 'Limited Edition'
     WHEN TWid=1 AND manufacturer = 'Ola' AND model = 'S1 Air'  THEN 'STD'
-	WHEN TWid= 17  AND manufacturer='Torq' AND model='Kratos' THEN'R'
+	WHEN TWid= 17  AND manufacturer='Tork' AND model='Kratos' THEN'R'
 	WHEN TWid=26   AND manufacturer='Atumobile' AND model='Atum 1.0' THEN'STD'
 	WHEN TWid=33   AND manufacturer='Ultraviolette' AND model='F77' THEN'ORIGINAL'
     WHEN TWid=34   AND manufacturer='Ultraviolette' AND model='F77' THEN'RECON'
@@ -140,21 +140,41 @@ SET Variant = CASE
     WHEN TWid=64   AND manufacturer='Ather' AND model='Rizta' THEN'S'
     WHEN TWid=65   AND manufacturer='Ather' AND model='Rizta' THEN'Z(2.9 kWh)'
     WHEN TWid=66   AND manufacturer='Ather' AND model='Rizta' THEN'Z (3.7 kWh)'
-    WHEN TWid=67   AND manufacturer='Ultraviolette' AND model='F77 Mach 2' THEN' STD'
+    WHEN TWid=67   AND manufacturer='Ultraviolette' AND model='F77 Mach 2' THEN 'STD'
     WHEN TWid=68   AND manufacturer='Ultraviolette' AND model='F77 Mach 2' THEN'Recon'
     WHEN TWid=2    AND manufacturer= 'Ola' AND model='S1' THEN 'STD'
-	WHEN TWid=16   AND manufacturer= 'Torq' AND model='Kratos' THEN 'STD'
+	WHEN TWid=16   AND manufacturer= 'Tork' AND model='Kratos' THEN 'STD'
     WHEN TWid=21   AND manufacturer= 'Kabira Mobility' AND model='KM 4000' THEN 'STD'
     WHEN TWid=23   AND manufacturer= 'Kabira Mobility' AND model='KM 3000' THEN 'STD'
-
-
-
-
-
-	ELSE Available
 END;
-
 UPDATE twowheelerdata 
 SET manufacturer="Tork"
 WHERE manufacturer="Torq";
 
+Update twowheelerdata
+Set VariantType='Top'
+Where Model='S1 Air';
+
+
+Update twowheelerdata
+Set OurRating =3
+Where TWid in('47','48','50','51','57','58','60','64','62');
+
+Update twowheelerdata
+Set OurRating =4
+Where TWid in('49','52','53','54','55','56','59','61','63','65','66','67','68');
+
+
+Update twowheelerdata
+Set VehicleType='Scooter'
+Where TWid In('64','65','66');
+
+
+UPDATE twowheelerdata
+SET available = 'Available'
+WHERE TWId IN (1, 3, 4, 5, 6, 7, 8, 9, 10,12, 13, 14, 17, 18, 19, 20,22, 24, 26, 27, 28, 29, 30,31, 33, 34, 35, 36, 37, 38,40, 41, 42, 43, 44, 45, 46,
+               47, 48, 49, 50, 51, 52, 53,54, 55, 56, 57, 59, 60, 61,62, 63, 64, 65, 66, 67, 68);
+UPDATE twowheelerdata
+SET available = 'Discontinued'
+WHERE TWId IN (2, 11, 15, 16, 21, 23, 32, 58);
+select TWId,available from twowheelerdata

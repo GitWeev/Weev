@@ -19,7 +19,9 @@
                 {{ getTruncatedFeatures(productListModel?.additionalFeatures) }}
             </div>
             <div class="price">Price: {{productListModel?.exShowroomPrice}}</div>
-            <div class="status">Booking Status: <div class="currentStatus">Available</div>
+            <div class="status">Booking Status: <div class="currentStatus">
+                {{productListModel?.available}}
+            </div>
             </div>
             <!-- <div class="color">
                 Colours : 4
