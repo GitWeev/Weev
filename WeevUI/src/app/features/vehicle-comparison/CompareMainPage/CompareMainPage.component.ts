@@ -12,7 +12,7 @@ export class CompareMainComponent implements OnInit {
   vehicleData: any = {};
   productKeys: string[] = [];
   twowheelerlist: Array<any> = [];
-  sections: any[] = []; // Initialize sections as an empty array
+  sections: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -99,7 +99,7 @@ export class CompareMainComponent implements OnInit {
               (item) =>
                 item.manufacturer + ' ' + item.model === manufacturerModel
             )
-            .map((item) => item.variantType);
+            .map((item) => item.variant);
 
           this.vehicleDataObjects.push({
             path: this.vehicleData[key].path || 'path/to/default/image.jpg',
@@ -193,8 +193,10 @@ export class CompareMainComponent implements OnInit {
     this.updateSections();
     this.updateSEOTags();
   }
-  isNA = (value: any) => value === 'NA' || value === 0;
-  
+
+  isNA = (value: any) =>
+    value === 'NA' || value === 0 || value === null || value === undefined;
+
   updateSections(): void {
     const keyToTitleMap: Record<string, string[]> = {
       powerPerformance: [
@@ -250,8 +252,8 @@ export class CompareMainComponent implements OnInit {
         'waterProofRating',
       ],
       performance: [
-        'accelration0To60kmph',
-        'accelration0To40kmph',
+        'acceleration0To60kmph',
+        'acceleration0To40kmph',
         'gradeability',
         'topSpeed',
       ],
@@ -347,19 +349,21 @@ export class CompareMainComponent implements OnInit {
     const valueTransformMap: { [key: string]: (value: any) => string } = {
       exShowroomPrice: (value) =>
         this.isNA(value) ? 'NA' : `₹ ${value.toLocaleString('en-IN')}`,
+
       maxSpeed: (value) => (this.isNA(value) ? 'NA' : `${value} km/h`),
       chargingTime: (value) =>
         this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours`,
       batteryCapacity: (value) => (this.isNA(value) ? 'NA' : `${value} kWh`),
       chargingTime0To80Perc: (value) =>
-        this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-80%)`,
+        this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0–80%)`,
       chargingTime0To100Perc: (value) =>
-        this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-100%)`,
-      bookingPrice: (value) => (this.isNA(value) ? 'NA' : `${value} ₹`),
-      accelration0To60kmph: (value) =>
-        this.isNA(value) ? 'NA' : `${value} sec (0-60 km/h)`,
-      accelration0To40kmph: (value) =>
-        this.isNA(value) ? 'NA' : `${value} sec (0-40 km/h)`,
+        this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0–100%)`,
+      bookingPrice: (value) => (this.isNA(value) ? 'NA' : `₹ ${value}`),
+
+      acceleration0To60kmph: (value) =>
+        this.isNA(value) ? 'NA' : `${value} sec (0–60 km/h)`,
+      acceleration0To40kmph: (value) =>
+        this.isNA(value) ? 'NA' : `${value} sec (0–40 km/h)`,
       continuousPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
       motorPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
       rangeOfVehicle: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
@@ -368,6 +372,7 @@ export class CompareMainComponent implements OnInit {
       chargerOutputMin: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
       chargerOutputMax: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
       gradeability: (value) => (this.isNA(value) ? 'NA' : `${value} degrees`),
+
       width: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
       length: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
       height: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
@@ -378,6 +383,7 @@ export class CompareMainComponent implements OnInit {
       loadCarryingCapacity: (value) =>
         this.isNA(value) ? 'NA' : `${value} kg`,
       topSpeed: (value) => (this.isNA(value) ? 'NA' : `${value} km/h`),
+
       motorWarrantyForMonths: (value) =>
         this.isNA(value) ? 'NA' : `${value} months`,
       motorWarrantyForKm: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
@@ -385,41 +391,58 @@ export class CompareMainComponent implements OnInit {
         this.isNA(value) ? 'NA' : `${value} months`,
       batteryWarrantyForKm: (value) =>
         this.isNA(value) ? 'NA' : `${value} km`,
-      abstractrtificialExhaustSoundSystem: (value) => `${value}`,
-      drls: (value) => `${value}`,
-      turnSignalLamp: (value) => `${value}`,
-      internetConnectivity: (value) => `${value}`,
-      bluetoothConnectivity: (value) => `${value}`,
-      geoFencing: (value) => `${value}`,
-      antiTheftAlarm: (value) => `${value}`,
-      usbchargingPort: (value) => `${value}`,
-      fastCharging: (value) => `${value}`,
-      fastChargingTimeUpto80Perc: (value) => `${value}`,
-      ridingModes: (value) => `${value}`,
-      musicControl: (value) => `${value}`,
-      externalSpeakers: (value) => `${value}`,
-      centralLocking: (value) => `${value}`,
-      cruiseControl: (value) => `${value}`,
-      lowBatteryIndicator: (value) => `${value}`,
-      waterProofRating: (value) => `${value}`,
-      suspensionFront: (value) => `${value}`,
-      suspensionRear: (value) => `${value}`,
-      brakesFront: (value) => `${value}`,
-      brakesRear: (value) => `${value}`,
+
+      abstractrtificialExhaustSoundSystem: (value) =>
+        this.isNA(value) ? 'NA' : `${value}`,
+      drls: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      turnSignalLamp: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      internetConnectivity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      bluetoothConnectivity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      geoFencing: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      antiTheftAlarm: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      usbchargingPort: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      fastCharging: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      fastChargingTimeUpto80Perc: (value) =>
+        this.isNA(value) ? 'NA' : `${value}`,
+      ridingModes: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      musicControl: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      externalSpeakers: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      centralLocking: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      cruiseControl: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      lowBatteryIndicator: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      waterProofRating: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      suspensionFront: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      suspensionRear: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      brakesFront: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      brakesRear: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+
       tyreSize: (value: string | null | undefined) => {
         if (!value || this.isNA(value)) return 'NA';
         const sizes = value.split(',').map((size: string) => size.trim());
         return sizes.join('\n');
-      },    
+      },
       wheelSize: (value: string) => {
         if (!value || this.isNA(value)) return 'NA';
         const sizes = value.split(',').map((size: string) => size.trim());
         return sizes.join('\n');
       },
-      wheelsType: (value) => `${value}`,
-      bodyType: (value) => `${value}`,
-      dimensionsAndCapacity: (value) => `${value}`,
-      bootSpace: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      wheelsType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      bodyType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      dimensionsAndCapacity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      bootSpace: (value) => (this.isNA(value) ? 'NA' : `${value} liters`),
+      instrumentConsole: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      navigation: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      distanceToEmptyIndicator: (value) =>
+        this.isNA(value) ? 'NA' : `${value}`,
+      mobileApplication: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      motorType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      chargingAtHome: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      noOfBatteries: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      swappableBattery: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      chargingStationLocater: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      callOrsmsalerts: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      carryHook: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+      clock: (value) => (this.isNA(value) ? 'NA' : `${value}`),
     };
 
     this.sections = Object.keys(keyToTitleMap).map(

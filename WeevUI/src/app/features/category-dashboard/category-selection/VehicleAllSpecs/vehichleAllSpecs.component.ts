@@ -25,7 +25,7 @@ export class VehicleAllSpecsComponent {
     private vehiclesService: VehiclesService,
     private cd: ChangeDetectorRef,
     private meta: Meta,
-    private titleService: Title,
+    private titleService: Title
   ) {
     this.route.params.subscribe(
       (params) => (this.productName = params['twId'])
@@ -55,24 +55,22 @@ export class VehicleAllSpecsComponent {
 
   updateSEOTags() {
     if (!this.productListModel) return;
-  
+
     const manufacturer = this.productListModel.manufacturer ?? '';
     const model = this.productListModel.model ?? '';
     const variant = this.productListModel.variant ?? '';
-  
+
     const battery = this.productListModel.batteryCapacity ?? '';
     const range = this.productListModel.rangeOfVehicle ?? '';
     const topSpeed = this.productListModel.topSpeed ?? '';
     const charging = this.productListModel.chargingTime ?? '';
-  
+
     const title = `${manufacturer} ${model} ${variant} | Full Specifications, Features, Battery, Speed & Range`;
     const description = `Explore complete specifications and features of the ${manufacturer} ${model} ${variant}. Get detailed info on battery (${battery}), charging (${charging}), range (${range}), top speed (${topSpeed}), motor, brakes, suspension, and smart tech.`;
-  
+
     this.titleService.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
   }
-  
-  
 
   startLoading() {
     this.loading = true;
@@ -146,7 +144,7 @@ export class VehicleAllSpecsComponent {
           if (imageContainer) {
             imageContainer.scrollIntoView({ behavior: 'smooth' });
           }
-        }, 200); 
+        }, 200);
       });
   }
 
@@ -171,7 +169,7 @@ export class VehicleAllSpecsComponent {
         return value !== undefined && value !== '' && value !== null
           ? {
               key: this.keyDisplayMap[key] || key,
-              value: value, 
+              value: value,
             }
           : null;
       })
@@ -196,7 +194,7 @@ export class VehicleAllSpecsComponent {
             }
           : null;
       })
-      .filter((item): item is { key: string; value: any } => item !== null); 
+      .filter((item): item is { key: string; value: any } => item !== null);
   }
 
   getPowerAndBatterySpecs(): Array<{ key: string; value: any }> {
@@ -219,7 +217,7 @@ export class VehicleAllSpecsComponent {
         return value !== undefined && value !== '' && value !== null
           ? {
               key: this.keyDisplayMap[key] || key,
-              value: value, 
+              value: value,
             }
           : null;
       })
@@ -249,8 +247,8 @@ export class VehicleAllSpecsComponent {
         const value = this.productListModel?.[key as keyof ProductListModel];
         return value !== undefined && value !== '' && value !== null
           ? {
-              key: this.keyDisplayMap[key] || key, 
-              value: value, 
+              key: this.keyDisplayMap[key] || key,
+              value: value,
             }
           : null;
       })
@@ -336,7 +334,6 @@ export class VehicleAllSpecsComponent {
       })
       .filter((item): item is { key: string; value: any } => item !== null); // Type guard to filter out null values
   }
-  
 
   private keyDisplayMap: { [key: string]: string } = {
     manufacturer: 'Manufacturer',
@@ -430,32 +427,35 @@ export class VehicleAllSpecsComponent {
     path: 'Path',
   };
 
-  
-
-  isNA = (value: any) => value === 'NA' || value === 0 ||value ==='-1';
+  isNA = (value: any) => value === 'NA' || value === 0 || value === '-1' || value === null || value === undefined;
 
   valueTransformMap: { [key: string]: (value: any) => string } = {
     exShowroomPrice: (value) =>
       this.isNA(value) ? 'NA' : `₹ ${value.toLocaleString('en-IN')}`,
+
     maxSpeed: (value) => (this.isNA(value) ? 'NA' : `${value} km/h`),
-    chargingTime: (value) => (this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours`),
+    chargingTime: (value) =>
+      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours`,
     batteryCapacity: (value) => (this.isNA(value) ? 'NA' : `${value} kWh`),
     chargingTime0To80Perc: (value) =>
-      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-80%)`,
+      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0–80%)`,
     chargingTime0To100Perc: (value) =>
-      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0-100%)`,
-    bookingPrice: (value) => (this.isNA(value) ? 'NA' : ` ₹${value} `),
+      this.isNA(value) ? 'NA' : `${(value / 60).toFixed(2)} hours (0–100%)`,
+    bookingPrice: (value) => (this.isNA(value) ? 'NA' : `₹ ${value}`),
+
     acceleration0To60kmph: (value) =>
-      this.isNA(value) ? 'NA' : `${value} sec (0-60 km/h)`,
+      this.isNA(value) ? 'NA' : `${value} sec (0–60 km/h)`,
     acceleration0To40kmph: (value) =>
-      this.isNA(value) ? 'NA' : `${value} sec (0-40 km/h)`,
+      this.isNA(value) ? 'NA' : `${value} sec (0–40 km/h)`,
     continuousPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     motorPower: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     rangeOfVehicle: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
-    underseatStorage: (value) => (this.isNA(value) ? 'NA' : `${value} liters`),
+    underseatStorage: (value) =>
+      this.isNA(value) ? 'NA' : `${value} liters`,
     chargerOutputMin: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     chargerOutputMax: (value) => (this.isNA(value) ? 'NA' : `${value} kW`),
     gradeability: (value) => (this.isNA(value) ? 'NA' : `${value} degrees`),
+
     width: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     length: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     height: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
@@ -463,49 +463,70 @@ export class VehicleAllSpecsComponent {
     groundClearance: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     wheelbase: (value) => (this.isNA(value) ? 'NA' : `${value} mm`),
     kerbWeight: (value) => (this.isNA(value) ? 'NA' : `${value} kg`),
-    loadCarryingCapacity: (value) => (this.isNA(value) ? 'NA' : `${value} kg`),
+    loadCarryingCapacity: (value) =>
+      this.isNA(value) ? 'NA' : `${value} kg`,
     topSpeed: (value) => (this.isNA(value) ? 'NA' : `${value} km/h`),
-    motorWarrantyForMonths: (value) => (this.isNA(value) ? 'NA' : `${value} months`),
+
+    motorWarrantyForMonths: (value) =>
+      this.isNA(value) ? 'NA' : `${value} months`,
     motorWarrantyForKm: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
-    batteryWarrantyForMonths: (value) => (this.isNA(value) ? 'NA' : `${value} months`),
-    batteryWarrantyForKm: (value) => (this.isNA(value) ? 'NA' : `${value} km`),
-    abstractrtificialExhaustSoundSystem: (value) => `${value}`,
-    drls: (value) => `${value}`,
-    turnSignalLamp: (value) => `${value}`,
-    internetConnectivity: (value) => `${value}`,
-    bluetoothConnectivity: (value) => `${value}`,
-    geoFencing: (value) => `${value}`,
-    antiTheftAlarm: (value) => `${value}`,
-    usbchargingPort: (value) => `${value}`,
-    fastCharging: (value) => `${value}`,
-    fastChargingTimeUpto80Perc: (value) => `${value}`,
-    ridingModes: (value) => `${value}`,
-    musicControl: (value) => `${value}`,
-    externalSpeakers: (value) => `${value}`,
-    centralLocking: (value) => `${value}`,
-    cruiseControl: (value) => `${value}`,
-    lowBatteryIndicator: (value) => `${value}`,
-    waterProofRating: (value) => `${value}`,
-    suspensionFront: (value) => `${value}`,
-    suspensionRear: (value) => `${value}`,
-    brakesFront: (value) => `${value}`,
-    brakesRear: (value) => `${value}`,
+    batteryWarrantyForMonths: (value) =>
+      this.isNA(value) ? 'NA' : `${value} months`,
+    batteryWarrantyForKm: (value) =>
+      this.isNA(value) ? 'NA' : `${value} km`,
+
+    abstractrtificialExhaustSoundSystem: (value) =>
+      this.isNA(value) ? 'NA' : `${value}`,
+    drls: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    turnSignalLamp: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    internetConnectivity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    bluetoothConnectivity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    geoFencing: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    antiTheftAlarm: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    usbchargingPort: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    fastCharging: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    fastChargingTimeUpto80Perc: (value) =>
+      this.isNA(value) ? 'NA' : `${value}`,
+    ridingModes: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    musicControl: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    externalSpeakers: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    centralLocking: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    cruiseControl: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    lowBatteryIndicator: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    waterProofRating: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    suspensionFront: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    suspensionRear: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    brakesFront: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    brakesRear: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+
     tyreSize: (value: string | null | undefined) => {
       if (!value || this.isNA(value)) return 'NA';
       const sizes = value.split(',').map((size: string) => size.trim());
       return sizes.join('\n');
-    },    
+    },
     wheelSize: (value: string) => {
       if (!value || this.isNA(value)) return 'NA';
       const sizes = value.split(',').map((size: string) => size.trim());
       return sizes.join('\n');
     },
-    wheelsType: (value) => `${value}`,
-    bodyType: (value) => `${value}`,
-    dimensionsAndCapacity: (value) => `${value}`,
+    wheelsType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    bodyType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    dimensionsAndCapacity: (value) => (this.isNA(value) ? 'NA' : `${value}`),
     bootSpace: (value) => (this.isNA(value) ? 'NA' : `${value} liters`),
+    instrumentConsole: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    navigation: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    distanceToEmptyIndicator: (value) =>
+      this.isNA(value) ? 'NA' : `${value}`,
+    mobileApplication: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    motorType: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    chargingAtHome: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    noOfBatteries: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    swappableBattery: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    chargingStationLocater: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    callOrsmsalerts: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    carryHook: (value) => (this.isNA(value) ? 'NA' : `${value}`),
+    clock: (value) => (this.isNA(value) ? 'NA' : `${value}`),
   };
-  
 }
 
 const EMPTY_Application: ProductListModel = {

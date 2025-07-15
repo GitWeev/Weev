@@ -9,8 +9,7 @@
         <img src="assets/images/search.svg" alt="Search" />
       </button>
       <div *ngIf="suggestionsVisible" class="suggestions">
-        <div *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion.twId)"
-          class="suggestion-item">
+        <div *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion.twId)" class="suggestion-item">
           <div class="suggestion-text">
             {{ suggestion.manufacturer !== 'NA' ? suggestion.manufacturer : '' }} 
             {{ suggestion.model !== 'NA' ? suggestion.model : '' }} 

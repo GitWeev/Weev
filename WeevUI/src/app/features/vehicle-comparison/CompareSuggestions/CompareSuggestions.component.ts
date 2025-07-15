@@ -73,7 +73,6 @@ export class CompareSuggestionsComponent {
       ['Ather_450X_STD', 'Ola_S1 Pro_STD'],
       ['TVS_iQube_S', 'Bajaj_Chetak_Premium 2023'],
       ['Ather_Rizta_S', 'Simple_One_STD'],
-
     ]
   };
 
