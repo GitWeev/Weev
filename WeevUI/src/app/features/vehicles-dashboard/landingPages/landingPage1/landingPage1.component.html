@@ -1,0 +1,96 @@
+<div class="landing-hero">
+    <div class="hero-content">
+        <h1>
+            Compare and Discover<br>
+            the Best Electric<br>
+            Scooters in India <span class="year">(2025)</span>
+        </h1>
+        <p class="subtitle">
+            See specs, range, price-subsidy and<br>
+            make smarter EV choices.
+        </p>
+        <button class="cta-btn" (click)="toComparePage()">Compare & Choose</button>
+    </div>
+    <img src="assets/images/landingPages/ola-bg-removed.png" alt="Electric Scooter" class="hero-img" />
+</div>
+
+<section class="top-evs-section" aria-labelledby="top-evs-title">
+    <h2 id="top-evs-title" class="section-title">Top EVs</h2>
+    <div class="ev-cards-grid" role="list">
+        <div class="ev-card-item" *ngFor="let ev of evList" role="listitem" tabindex="0"
+            [attr.aria-label]="ev.name + ' by ' + ev.brand">
+            <h3 class="ev-card-title">{{ ev.name }}</h3>
+            <p class="ev-card-brand">{{ ev.brand }}</p>
+            <img [src]="ev.img" [alt]="ev.name + ' electric scooter'" class="ev-image" role="img" loading="lazy"
+                [attr.aria-label]="ev.name + ', ' + ev.brand" />
+            <div class="ev-card-info" role="group" aria-label="EV Details">
+                <span class="badge" [ngClass]="ev.badgeClass" [attr.aria-label]="'Badge: ' + ev.badge">
+                    {{ ev.badge }}
+                </span>
+                <div class="ev-card-specs" role="group" aria-label="Specifications">
+                    <span class="spec-detail" [attr.aria-label]="'Range: ' + ev.range">
+                        <span class="spec-icon">🎯</span> {{ ev.range }}
+                    </span>
+                    <span class="spec-detail" [attr.aria-label]="'Top Speed: ' + ev.speed">
+                        <span class="spec-icon">⚡️</span> {{ ev.speed }}
+                    </span>
+                </div>
+
+                <button class="ev-compare-btn"
+                    [attr.aria-label]="'Compare ' + ev.name + ' with other electric scooters'" (click)="toCompareSelectionPage(ev.twId)">
+                    Compare Now
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="compare-section">
+    <div class="compare-table-container">
+        <h3>Compare Specs, Range, and More</h3>
+        <table class="compare-table">
+            <tr>
+                <th></th>
+                <th>Ola S1 Pro</th>
+                <th>Ather 450X</th>
+                <th>TVS’ Qube</th>
+            </tr>
+            <tr>
+                <td>Real World Range</td>
+                <td>151 km</td>
+                <td>110 km</td>
+                <td>100 km</td>
+            </tr>
+            <tr>
+                <td>Battery Type</td>
+                <td>Lithium-ion</td>
+                <td>Lithium-ion</td>
+                <td>Lithium-ion</td>
+            </tr>
+            <tr>
+                <td>Charging Time</td>
+                <td>6.5 hours</td>
+                <td>5.4 hours</td>
+                <td>5 hours</td>
+            </tr>
+            <tr>
+                <td>Subsidy Amount</td>
+                <td>₹15,000</td>
+                <td>₹20,000</td>
+                <td>₹25,000</td>
+            </tr>
+        </table>
+        <button class="download-btn" (click)="open(popup)">Get a Free Recommendation</button>
+    </div>
+    <div class="buyer-guide">
+        <h4>Download Free<br>EV Buyer Guide</h4>
+        <ul>
+            <li>We compare over 100+ models</li>
+            <li>Real range, pricing & subsidy updates.</li>
+            <li>Free expert suggestions</li>
+        </ul>
+        <button class="recommend-btn" (click)="open(popup)">Get a Free Recommendation</button>
+    </div>
+</section>

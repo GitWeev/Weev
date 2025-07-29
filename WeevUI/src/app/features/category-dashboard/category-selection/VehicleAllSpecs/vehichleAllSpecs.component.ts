@@ -178,7 +178,7 @@ export class VehicleAllSpecsComponent {
 
   getBookingDetailSpecs(): Array<{ key: string; value: any }> {
     const selectedKeys = [
-      'available',
+      'Available',
       'offlineOronline',
       'bookingSite',
       'bookingPrice',

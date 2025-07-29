@@ -70,8 +70,8 @@ export class CategoryCompareSuggestions implements OnInit {
 
   private defaultComparisonList = {
     bike: [
-      ['Ultraviolette_F77 Mach 2_Standard', 'Ola_Roadster Pro_16 kWh'],
-      ['Ultraviolette_F77 Mach 2_Standard', 'Matter_Aera_5000+'],
+      ['Ultraviolette_F77_Mach 2_Standard', 'Ola_Roadster Pro_16 kWh'],
+      ['Ultraviolette_F77_Mach 2_Standard', 'Matter_Aera_5000+'],
       ['Ola_Roadster Pro_16 kWh', 'Matter_Aera_5000+'],
     ],
     scooter: [
