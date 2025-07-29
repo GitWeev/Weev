@@ -12,6 +12,7 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
 import {VehicleComparisonComponent} from 'src/app/features/vehicle-comparison/vehiclecomparison.component';
 import {CompareMainComponent} from 'src/app/features/vehicle-comparison/CompareMainPage/CompareMainPage.component';
 import { BlogDetailComponent } from 'src/app/features/vehicles-dashboard/blogs/blog-details-component/blog-detail.component';
+import { LandingPage1Component } from './landingPages/landingPage1/landingPage1.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
     path: 'blog/:slug', 
     component: BlogDetailComponent,
   },
+  { 
+    path: 'article', 
+    component: LandingPage1Component, 
+  },
   // {
   //   path:'Compare',
   //   component:VehicleComparisonComponent
@@ -85,6 +90,7 @@ const routes: Routes = [
   //   component:LoginComponent
   // },
   { path: '**', redirectTo: '' },
+
 ];
 
 @NgModule({

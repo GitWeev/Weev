@@ -40,7 +40,6 @@ interface ComparisonCard {
   templateUrl: './CompareSuggestions.component.html',
   styleUrls: ['./CompareSuggestions.component.scss'],
 })
-
 export class CompareSuggestionsComponent {
   activeType: 'bike' | 'scooter' = 'bike';
   isComparePage: boolean = false; // Variable to hold the comparison page status
@@ -65,15 +64,20 @@ export class CompareSuggestionsComponent {
 
   private comparisonProductNames = {
     bike: [
+<<<<<<< Updated upstream
       ['Ultraviolette_F77 Mach 2_STD', 'Ola_Roadster Pro_16 kWh'],
       ['Ultraviolette_F77 Mach 2_STD', 'Matter_Aera_5000+'],
+=======
+      ['Ultraviolette_F77 Mach 2_ STD', 'Ola_Roadster Pro_16 kWh'],
+      ['Ultraviolette_F77 Mach 2_ STD', 'Matter_Aera_5000+'],
+>>>>>>> Stashed changes
       ['Ola_Roadster Pro_16 kWh', 'Matter_Aera_5000+'],
     ],
     scooter: [
-      ['Ather_450X_STD', 'Ola_S1 Pro_STD'],
-      ['TVS_iQube_S', 'Bajaj_Chetak_Premium 2023'],
+      ['Ather_450X_2.9 kWh Pro Pack', 'Ola_S1 Pro_3 kWh'],
+      ['TVS_iQube_ST 3.5kWh', 'Bajaj_Chetak_Premium 2023'],
       ['Ather_Rizta_S', 'Simple_One_STD'],
-    ]
+    ],
   };
 
   ngOnInit(): void {
@@ -82,7 +86,7 @@ export class CompareSuggestionsComponent {
   }
 
   @ViewChild('suggestcards', { static: false }) suggestcards!: ElementRef;
-  showLeftArrow = false; 
+  showLeftArrow = false;
   showRightArrow = false;
 
   ngAfterViewInit(): void {
@@ -100,40 +104,42 @@ export class CompareSuggestionsComponent {
   private initializeComparisonCards() {
     this.comparisonCards = {
       bike: this.createComparisonCards('bike'),
-      scooter: this.createComparisonCards('scooter')
+      scooter: this.createComparisonCards('scooter'),
     };
   }
 
   private createComparisonCards(type: 'bike' | 'scooter'): ComparisonCard[] {
-    return this.comparisonProductNames[type].map(pair => {
+    return this.comparisonProductNames[type].map((pair) => {
       return {
-        vehicles: pair.map(productName => {
+        vehicles: pair.map((productName) => {
           const vehicle = this.findVehicleByProductName(productName);
           return vehicle || this.createFallbackVehicle(productName);
-        })
+        }),
       };
     });
   }
 
   private findVehicleByProductName(productName: string): Vehicle | null {
     const twowheeler = this.allTwoWheelerList.find(
-      i => `${i.manufacturer}_${i.model}_${i.variant}` === productName
+      (i) => `${i.manufacturer}_${i.model}_${i.variant}` === productName
     );
-    
+
     return twowheeler ? this.createVehicleObject(twowheeler) : null;
   }
 
   private createFallbackVehicle(productName: string): Vehicle {
     const [manufacturer, model, variant] = productName.split('_');
     return {
-      title: [manufacturer, model, variant].filter(item => item !== 'NA').join(' '),
+      title: [manufacturer, model, variant]
+        .filter((item) => item !== 'NA')
+        .join(' '),
       manufacturer,
       model,
       variant,
       price: 'Price not available',
       path: 'assets/images/default-vehicle.jpg',
       variants: [],
-      productName
+      productName,
     };
   }
 
@@ -208,12 +214,14 @@ export class CompareSuggestionsComponent {
     };
   }
 
-  exShowroomPrice(value:any):any{
-    return this.isNA(value)?'NA' : `₹ ${value.toLocaleString('en-IN')}`
+  exShowroomPrice(value: any): any {
+    return this.isNA(value) ? 'NA' : `₹ ${value.toLocaleString('en-IN')}`;
   }
 
   isNA(value: any): boolean {
-    return value === null || value === undefined || value === '' || isNaN(value);
+    return (
+      value === null || value === undefined || value === '' || isNaN(value)
+    );
   }
 
   onVehicleSelected(index: number, vehicleData: any) {
