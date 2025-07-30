@@ -64,13 +64,8 @@ export class CompareSuggestionsComponent {
 
   private comparisonProductNames = {
     bike: [
-<<<<<<< Updated upstream
-      ['Ultraviolette_F77 Mach 2_STD', 'Ola_Roadster Pro_16 kWh'],
-      ['Ultraviolette_F77 Mach 2_STD', 'Matter_Aera_5000+'],
-=======
       ['Ultraviolette_F77 Mach 2_ STD', 'Ola_Roadster Pro_16 kWh'],
       ['Ultraviolette_F77 Mach 2_ STD', 'Matter_Aera_5000+'],
->>>>>>> Stashed changes
       ['Ola_Roadster Pro_16 kWh', 'Matter_Aera_5000+'],
     ],
     scooter: [
