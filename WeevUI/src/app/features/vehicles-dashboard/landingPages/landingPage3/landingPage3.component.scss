@@ -1,0 +1,135 @@
+/* SCSS Variables for colors, fonts, and other properties for easy maintenance */
+$gradient-start: #4a00e0;
+$gradient-end: #8e2de2;
+$primary-text-color: white;
+$form-bg-color: rgba(255, 255, 255, 0.1);
+$input-bg-color: white;
+$input-text-color: #333;
+$button-bg-color: #ff4081;
+$button-hover-color: #e0004d;
+$primary-font: 'Inter', sans-serif;
+
+/* Main container styling using nested selectors */
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, $gradient-start, $gradient-end);
+  color: $primary-text-color;
+  font-family: $primary-font;
+  padding: 2rem;
+  flex-wrap: wrap;
+
+  /* Styling for the left content section */
+  .content-section {
+    flex: 1;
+    padding: 2rem;
+    max-width: 600px;
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 4rem;
+    }
+
+    .text-content {
+      h2 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .scooter-image {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      margin-top: 2rem;
+    }
+  }
+
+  /* Styling for the right form section */
+  .form-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+
+    .form-container {
+      background-color: $form-bg-color;
+      padding: 2.5rem;
+      border-radius: 15px;
+      width: 100%;
+
+      h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        background-color: $input-bg-color;
+        font-size: 1rem;
+        color: $input-text-color;
+      }
+
+      select {
+        appearance: none;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5%208l5%205%205-5z%22%20fill%3D%22%23888%22/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+      }
+
+      button {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        background-color: $button-bg-color;
+        color: $primary-text-color;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        /* Nesting the hover pseudo-class */
+        &:hover {
+          background-color: $button-hover-color;
+        }
+      }
+    }
+  }
+
+  /* Responsive adjustments using a nested media query */
+  @media (max-width: 992px) {
+    flex-direction: column;
+    text-align: center;
+
+    .content-section, .form-section {
+      max-width: 100%;
+      padding: 1rem;
+    }
+
+    .scooter-image {
+      margin: 2rem auto;
+    }
+  }
+}

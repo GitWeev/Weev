@@ -1,0 +1,49 @@
+<!-- 
+  This is the main container for the entire page. 
+  It uses flexbox to arrange the content and form side-by-side.
+-->
+<div class="main-container">
+
+  <!-- Left Section: Contains the descriptive text and the scooter image -->
+  <div class="content-section">
+    <header>
+      <h1 class="logo">Weev</h1>
+    </header>
+    <main>
+      <div class="text-content">
+        <h2>Compare and Discover the Best Electric Scooters in India (2025)</h2>
+        <p>See specs, range, price, subsidy, and make smarter EV choices</p>
+      </div>
+      <img class="scooter-image" src="assets/images/landingPages/lp3.png" alt="Electric Scooter">
+    </main>
+  </div>
+
+  <!-- Right Section: Contains the "Compare & Choose" form -->
+  <div class="form-section">
+    <div class="form-container">
+      <h3>Compare & Choose</h3>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Name" [(ngModel)]="formData.name" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="phone" name="phone" placeholder="Phone" [(ngModel)]="formData.phone" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="budget" name="budget" placeholder="Budget" [(ngModel)]="formData.budget" required>
+        </div>
+        <div class="form-group">
+          <select id="city" name="city" [(ngModel)]="formData.city" required>
+            <option value="" disabled selected>City</option>
+            <option value="delhi">Delhi</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="chennai">Chennai</option>
+          </select>
+        </div>
+        <button type="submit">Get Expert EV Picks</button>
+      </form>
+    </div>
+  </div>
+
+</div>

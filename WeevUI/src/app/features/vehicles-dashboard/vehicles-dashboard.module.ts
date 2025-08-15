@@ -22,6 +22,7 @@ import {CompareMainComponent} from 'src/app/features/vehicle-comparison/CompareM
 import {CompareEmptyCard} from 'src/app/features/vehicle-comparison/CompareEmptyCard/CompareEmptyCard.component'
 import {CompareSelectedCard} from 'src/app/features/vehicle-comparison/CompareSelectedCard/CompareSelectedCard.component'
 import { LandingPage1Component } from './landingPages/landingPage1/landingPage1.component';
+import { LandingPage3Component } from './landingPages/landingPage3/landingPage3.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +35,13 @@ import { LandingPage1Component } from './landingPages/landingPage1/landingPage1.
     LoginComponent,
     BrandsComponent,
     PrivacyPolicyComponent,
-    
     CompareSuggestionsComponent,
-    
     VehicleComparisonComponent,
     CompareMainComponent,
     CompareEmptyCard,
     CompareSelectedCard,
-    LandingPage1Component
+    LandingPage1Component,
+    LandingPage3Component    
   ],
   imports: [
     CommonModule,FormsModule, ReactiveFormsModule,
