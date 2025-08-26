@@ -28,9 +28,9 @@
 
         public string? ConditionOfVehicle { get; set; }
 
-        public decimal? Accelration0To60kmph { get; set; }
+        public decimal? Acceleration0To60kmph { get; set; }
 
-        public decimal? Accelration0To40kmph { get; set; }
+        public decimal? Acceleration0To40kmph { get; set; }
 
         public string? Category { get; set; }
 
@@ -182,11 +182,13 @@
 
         public string? WheelSize { get; set; }
 
-        public string? WheelsType { get; set; }        
+        public string? WheelsType { get; set; }
 
         public int? OurRating { get; set; }
-        
+
         public string? Path { get; set; }
+
+        public string? VehicleType { get; set; }
 
     }
 
@@ -203,9 +205,10 @@
         public int Id { get; set; }
         public int TW_Ref_ID { get; set; }
 
+
         public string? Path { get; set; }
         public string? Grey { get; set; }
-        public string? Gray { get; set; }
+        public string? Greylight { get; set; }
         public string? White { get; set; }
         public string? Black { get; set; }
         public string? Blacklight { get; set; }
@@ -218,6 +221,39 @@
         public string? Saffron { get; set; }
         public string? Orange { get; set; }
         public string? Bronze { get; set; }
+    }
+    public class TwoMainimagedata
+    {
+        internal AppDb Db { get; set; }
+        public TwoMainimagedata()
+        {
+        }
+        internal TwoMainimagedata(AppDb db)
+        {
+            Db = db;
+        }
+        public int TW_Ref_ID { get; set; }
+        public string? Path { get; set; }
+        public string? Image1 { get; set; }
+        public string? Image2 { get; set; }
+        public string? Image3 { get; set; }
+        public string? Image4 { get; set; }
+        public string? Image5 { get; set; }
+        public string? Image6 { get; set; }
+        public string? Image7 { get; set; }
+        public string? Image8 { get; set; }
+        public string? Image9 { get; set; }
+        public string? Image10 { get; set; }
+        public string? Image11 { get; set; }
+        public string? Image12 { get; set; }
+        public string? Image13 { get; set; }
+        public string? Image14 { get; set; }
+        public string? Image15 { get; set; }
+        public string? Image16 { get; set; }
+        public string? Image17 { get; set; }
+        public string? Image18 { get; set; }
+        public string? Image19 { get; set; }
+        public string? Image20 { get; set; }
     }
 
 

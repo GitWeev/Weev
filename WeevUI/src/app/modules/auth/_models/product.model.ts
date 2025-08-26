@@ -1,6 +1,6 @@
 export interface  ProductListModel
     {        
-        tWId?: number ;
+        twId?: number ;
         manufacturer?: string;
         model?: string;
         variant?: string;
@@ -9,8 +9,8 @@ export interface  ProductListModel
         maxSpeed?: number;
         chargingTime?: number;
         conditionOfVehicle?: string;
-        accelration0To60kmph?: number;
-        accelration0To40kmph?: number;
+        acceleration0To60kmph?: number;
+        acceleration0To40kmph?: number;
         category?: string;
         available?: string;
         offlineOronline?: string;

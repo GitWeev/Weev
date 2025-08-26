@@ -1,0 +1,111 @@
+/* Reset default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General Styling for Desktop */
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.about-us-section,
+.mission-section,
+.vision-section {
+  width: 100vw;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+  margin: 0 0 5px 0; /* Bottom margin for separation */
+  box-sizing: border-box;
+}
+
+.about-us-section {
+  background: url("../../../../assets/images/About.jpg") no-repeat center center/cover;
+}
+
+.mission-section {
+  background: url("../../../../assets/images/mission.jpg") no-repeat center center/cover;
+}
+
+.vision-section {
+  background: url("../../../../assets/images/Vision.png") no-repeat center center/cover;
+}
+
+.about-us-header,
+.mission-header,
+.vision-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: flex-start;
+  width: 100%;
+  // padding: 50px;
+  // border-radius: 20px;
+  text-align: center;
+
+  /* Glass effect */
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.1), /* More transparent at the start */
+    rgba(255, 255, 255, 0.03) /* Very light transparency at the end */
+  );
+  backdrop-filter: blur(7px); /* Stronger blur for better separation */
+  -webkit-backdrop-filter: blur(20px); /* Safari support */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border for subtle edge */
+  color: white;
+}
+
+
+/* Headings and text styling */
+h1,
+h2 {
+  margin: 10px ;
+  font-size: 3rem;
+  color: white;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .about-us-section,
+  .mission-section,
+  .vision-section {
+    min-height: 300px;
+  }
+
+  .about-us-header,
+  .mission-header,
+  .vision-header {
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  h1,
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
